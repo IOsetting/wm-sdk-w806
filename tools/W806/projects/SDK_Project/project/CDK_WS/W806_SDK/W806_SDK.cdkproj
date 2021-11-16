@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Name="W806_SDK" Version="1" Language="C">
+  <Description/>
+  <Dependencies Name="Debug"/>
+  <VirtualDirectory Name="platform">
+    <VirtualDirectory Name="arch">
+      <VirtualDirectory Name="xt804">
+        <VirtualDirectory Name="bsp">
+          <File Name="../../../../../../../platform/arch/xt804/bsp/startup.S">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/arch/xt804/bsp/system.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/arch/xt804/bsp/trap_c.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/arch/xt804/bsp/vectors.S">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/arch/xt804/bsp/board_init.c">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+        <VirtualDirectory Name="libc">
+          <File Name="../../../../../../../platform/arch/xt804/libc/libc_port.c">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="driver">
+      <File Name="../../../../../../../platform/drivers/wm_gpio.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_uart.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_cpu.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_hal.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_spi.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_wdg.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_tim.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_internal_flash.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_adc.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_pwm.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_pmu.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_spi_flash.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_i2c.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_touch.c">
+        <FileOption/>
+      </File>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="ld">
+    <VirtualDirectory Name="W806">
+      <File Name="../../../../../../../ld/W806/gcc_csky.ld">
+        <FileOption/>
+      </File>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <VirtualDirectory Name="arch">
+      <VirtualDirectory Name="xt804">
+        <File Name="../../../../../../../include/arch/xt804/csi_config.h">
+          <FileOption/>
+        </File>
+        <VirtualDirectory Name="csi_core">
+          <File Name="../../../../../../../include/arch/xt804/csi_core/core_804.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../include/arch/xt804/csi_core/csi_core.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../include/arch/xt804/csi_core/csi_gcc.h">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+        <VirtualDirectory Name="csi_dsp">
+          <File Name="../../../../../../../include/arch/xt804/csi_dsp/csky_common_tables.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../include/arch/xt804/csi_dsp/csky_const_structs.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../include/arch/xt804/csi_dsp/csky_math.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../include/arch/xt804/csi_dsp/csky_vdsp2_const_structs.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../include/arch/xt804/csi_dsp/csky_vdsp2_math.h">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <File Name="../../../../../../../include/wm_regs.h">
+      <FileOption/>
+    </File>
+    <File Name="../../../../../../../include/wm_type_def.h">
+      <FileOption/>
+    </File>
+    <VirtualDirectory Name="driver">
+      <File Name="../../../../../../../include/driver/wm_cpu.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_gpio.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_uart.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_hal.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_gpio_ex.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_rcc.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_spi.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_wdg.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_tim.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_internal_flash.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_adc.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_pwm.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_pmu.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_spi_flash.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_i2c.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_touch.h">
+        <FileOption/>
+      </File>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="app">
+    <VirtualDirectory Name="src">
+      <File Name="../../../../../../../app/src/main.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../app/src/wm_hal_msp.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../app/src/wm_it.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="inc">
+      <File Name="../../../../../../../app/inc/wm_it.h">
+        <FileOption/>
+      </File>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <MonitorProgress>
+    <FlashOperate>84</FlashOperate>
+    <DebugLaunch>41</DebugLaunch>
+  </MonitorProgress>
+  <DebugSessions>
+    <watchExpressions/>
+    <memoryExpressions>;;;</memoryExpressions>
+    <statistics>;;MHZ;</statistics>
+    <peripheralTabs/>
+    <WatchDisplayFormat>1</WatchDisplayFormat>
+    <LocalDisplayFormat>1</LocalDisplayFormat>
+    <debugLayout/>
+    <memoryTabColSizeExpressions>100:8;100:8;100:8;100:8;</memoryTabColSizeExpressions>
+  </DebugSessions>
+  <BuildConfigs>
+    <BuildConfig Name="BuildSet">
+      <Target>
+        <ROMBank Selected="1">
+          <ROM1>
+            <InUse>yes</InUse>
+            <Start>0x0</Start>
+            <Size>0x5000</Size>
+          </ROM1>
+          <ROM2>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+          </ROM2>
+          <ROM3>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+          </ROM3>
+          <ROM4>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+          </ROM4>
+          <ROM5>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+          </ROM5>
+        </ROMBank>
+        <RAMBank>
+          <RAM1>
+            <InUse>yes</InUse>
+            <Start>0x20000000</Start>
+            <Size>0x48000</Size>
+            <Init>yes</Init>
+          </RAM1>
+          <RAM2>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+            <Init>yes</Init>
+          </RAM2>
+          <RAM3>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+            <Init>yes</Init>
+          </RAM3>
+          <RAM4>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+            <Init>yes</Init>
+          </RAM4>
+          <RAM5>
+            <InUse>no</InUse>
+            <Start/>
+            <Size/>
+            <Init>yes</Init>
+          </RAM5>
+        </RAMBank>
+        <CPU>ck804ef</CPU>
+        <UseMiniLib>yes</UseMiniLib>
+        <Endian>little</Endian>
+        <UseHardFloat>yes</UseHardFloat>
+        <UseEnhancedLRW>no</UseEnhancedLRW>
+        <UseContinueBuild>no</UseContinueBuild>
+        <UseSemiHost>no</UseSemiHost>
+      </Target>
+      <Output>
+        <OutputName>W806</OutputName>
+        <Type>Executable</Type>
+        <CreateHexFile>no</CreateHexFile>
+        <CreateBinFile>yes</CreateBinFile>
+        <Preprocessor>no</Preprocessor>
+        <Disassmeble>yes</Disassmeble>
+        <CallGraph>no</CallGraph>
+        <Map>yes</Map>
+      </Output>
+      <User>
+        <BeforeCompile>
+          <RunUserProg>no</RunUserProg>
+          <UserProgName/>
+        </BeforeCompile>
+        <BeforeMake>
+          <RunUserProg>no</RunUserProg>
+          <UserProgName/>
+        </BeforeMake>
+        <AfterMake>
+          <RunUserProg>yes</RunUserProg>
+          <UserProgName>../../../../../../../tools/W806/utilities/cdk_aft_build.sh;../../../../../../../tools/W806/utilities/aft_build_project.sh</UserProgName>
+        </AfterMake>
+      </User>
+      <Compiler>
+        <Define>GCC_COMPILE=1;TLS_CONFIG_CPU_XT804=1</Define>
+        <Undefine/>
+        <Optim>Optimize more (-O2)</Optim>
+        <DebugLevel>Maximum (-g3)</DebugLevel>
+        <IncludePath>$(CDKPath)/CSKY/MinGW/csky-abiv2-elf-toolchain/csky-elfabiv2/include;$(ProjectPath);$(ProjectPath)/../../../../../../../include;$(ProjectPath)/../../../../../../../include/arch/xt804;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_core;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_dsp;$(ProjectPath)/../../../../../../../include/driver;$(ProjectPath)/../../../../../../../app/inc</IncludePath>
+        <OtherFlags>-fdata-sections -c</OtherFlags>
+        <Verbose>no</Verbose>
+        <Ansi>no</Ansi>
+        <Syntax>no</Syntax>
+        <Pedantic>no</Pedantic>
+        <PedanticErr>no</PedanticErr>
+        <InhibitWarn>no</InhibitWarn>
+        <AllWarn>yes</AllWarn>
+        <WarnErr>no</WarnErr>
+        <OneElfS>yes</OneElfS>
+        <Fstrict>no</Fstrict>
+      </Compiler>
+      <Asm>
+        <Define/>
+        <Undefine/>
+        <IncludePath>$(CDKPath)/CSKY/csi/csi_core/csi_cdk/;$(CDKPath)/CSKY/csi/csi_core/include/;$(CDKPath)/CSKY/csi/csi_driver/include/;$(ProjectPath);$(ProjectPath)/../../../../../../../include;$(ProjectPath)/../../../../../../../include/arch/xt804;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_core;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_dsp;$(ProjectPath)/../../../../../../../include/os;$(ProjectPath)/../../../../../../../include/platform;$(ProjectPath)/../../../../../../../src/app/fatfs;$(ProjectPath)/../../../../../../../src/os/rtos/include</IncludePath>
+        <OtherFlags/>
+        <DebugLevel>gdwarf2</DebugLevel>
+      </Asm>
+      <Linker>
+        <Garbage>yes</Garbage>
+        <Garbage2>yes</Garbage2>
+        <LDFile>$(ProjectPath)..\..\..\..\..\..\..\ld\W806\gcc_csky.ld</LDFile>
+        <LibName>dsp</LibName>
+        <LibPath>..\..\..\..\..\..\..\lib\W806</LibPath>
+        <OtherFlags>-Wl,-zmax-page-size=1024 -mhard-float</OtherFlags>
+        <AutoLDFile>no</AutoLDFile>
+        <LinkType/>
+      </Linker>
+      <Debug>
+        <LoadApplicationAtStartup>yes</LoadApplicationAtStartup>
+        <Connector>ICE</Connector>
+        <StopAt>yes</StopAt>
+        <StopAtText>main</StopAtText>
+        <InitFile>$(ProjectPath)..\..\..\..\..\..\..\tools\W806\utilities\gdb.init</InitFile>
+        <AutoRun>yes</AutoRun>
+        <ResetType>Hard Reset</ResetType>
+        <SoftResetVal>0</SoftResetVal>
+        <ResetAfterLoad>no</ResetAfterLoad>
+        <Dumpcore>no</Dumpcore>
+        <DumpcoreText>$(ProjectPath)/$(ProjectName).cdkcore</DumpcoreText>
+        <ConfigICE>
+          <IP>localhost</IP>
+          <PORT>1025</PORT>
+          <CPUNumber>0</CPUNumber>
+          <Clock>12000</Clock>
+          <Delay>10</Delay>
+          <WaitReset>50</WaitReset>
+          <DDC>yes</DDC>
+          <TRST>no</TRST>
+          <DebugPrint>no</DebugPrint>
+          <Connect>Normal</Connect>
+          <ResetType>soft</ResetType>
+          <SoftResetVal>0</SoftResetVal>
+          <RTOSType>None</RTOSType>
+          <DownloadToFlash>no</DownloadToFlash>
+          <ResetAfterConnect>yes</ResetAfterConnect>
+          <GDBName/>
+          <GDBServerType>Local</GDBServerType>
+          <OtherFlags/>
+        </ConfigICE>
+        <ConfigSIM>
+          <SIMTarget/>
+          <OtherFlags/>
+          <NoGraphic>yes</NoGraphic>
+          <Log>no</Log>
+          <SimTrace>no</SimTrace>
+        </ConfigSIM>
+        <ConfigOpenOCD>
+          <OpenOCDExecutablePath/>
+          <OpenOCDTelnetPortEnable>no</OpenOCDTelnetPortEnable>
+          <OpenOCDTelnetPort>4444</OpenOCDTelnetPort>
+          <OpenOCDTclPortEnable>no</OpenOCDTclPortEnable>
+          <OpenOCDTclPort>6666</OpenOCDTclPort>
+          <OpenOCDConfigOptions/>
+        </ConfigOpenOCD>
+      </Debug>
+      <Flash>
+        <InitFile>$(ProjectPath)..\..\..\..\..\..\..\tools\W806\utilities\flashinit</InitFile>
+        <Erase>Erase Sectors</Erase>
+        <Algorithms Path="">W800_Flash_Tool.elf</Algorithms>
+        <Program>yes</Program>
+        <Verify>yes</Verify>
+        <ResetAndRun>no</ResetAndRun>
+        <ResetType>Soft Reset</ResetType>
+        <SoftResetVal/>
+        <External>no</External>
+        <Command/>
+        <Arguments/>
+      </Flash>
+    </BuildConfig>
+  </BuildConfigs>
+</Project>
