@@ -47,4 +47,5 @@
 .tmp_versions/
 tools/W806/wm_tool
 tools/W806/wm_getver
+tools/W806/.config.old
 bin/*

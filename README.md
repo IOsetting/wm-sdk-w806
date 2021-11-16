@@ -2,6 +2,23 @@
 
 This is a SDK for WinnerMicro W806, migrated from W800 SDK.
 
+## SDK File Structure
+
+```
+WM_SDK 
+├─app              # User application source code
+├─bin              # Binary executables, compilaion results
+├─demo             # Demos
+├─doc              # Release notes, API Docs 
+├─include          # API header files 
+├─ld               # Link scripts
+├─lib              # Libraries
+├─Makefile
+├─platform         # Chip&Platform related common code
+├─src              # Applications, network protocols, OS and 3rd party source code
+└─tools            # Compilation scripts, tools for CDS IDE project、CDK project and IMAGE generation
+```
+
 # How To
 
 ## Install Toolchain
