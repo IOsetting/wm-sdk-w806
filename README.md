@@ -1,3 +1,5 @@
+English Readme | [中文说明](https://github.com/IOsetting/wm-sdk-w806/blob/main/README.cn.md)
+
 # About 
 
 A SDK for WinnerMicro MCU W806, it's migrated from W800 SDK.
