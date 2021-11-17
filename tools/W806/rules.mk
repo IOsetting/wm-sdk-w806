@@ -66,7 +66,11 @@ else
 ifeq ($(UNAME_O),Darwin)
 	@gcc $(SDK_TOOLS)/wm_tool.c -lpthread -o $(WM_TOOL)
 else
+ifeq ($(UNAME_O),Msys)
+	@gcc $(SDK_TOOLS)/wm_tool.c -lpthread -o $(WM_TOOL)
+else
 # windows, cygwin-gcc exist bug for uart rts/cts
+endif
 endif
 endif
 
