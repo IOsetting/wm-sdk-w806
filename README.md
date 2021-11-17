@@ -7,7 +7,7 @@ A SDK for WinnerMicro MCU W806, it's migrated from W800 SDK.
 ```
 WM_SDK 
 ├─app              # User application source code
-├─bin              # Binary executables, compilaion results
+├─bin              # Compilaion results
 ├─demo             # Demos
 ├─doc              # Release notes, API Docs 
 ├─include          # API header files 
@@ -16,7 +16,7 @@ WM_SDK
 ├─Makefile
 ├─platform         # Chip&Platform related common code
 ├─src              # Applications, network protocols, OS and 3rd party source code
-└─tools            # Compilation scripts, tools for CDS IDE project、CDK project and IMAGE generation
+└─tools            # Compilation scripts, utilities for CDS IDE project、CDK project and IMAGE generation
 ```
 
 # How To
