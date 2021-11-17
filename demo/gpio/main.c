@@ -52,7 +52,7 @@ static void GPIO_Init(void)
 
 }
 
-void HAL_GPIO_EXTI_Callback(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
+void HAL_GPIO_EXTI_Callback(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin)
 {
     if ((GPIOx == GPIOB) && (GPIO_Pin == GPIO_PIN_5))
     {
