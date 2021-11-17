@@ -261,7 +261,7 @@ HAL_StatusTypeDef HAL_PWM_Stop(PWM_HandleTypeDef *hpwm)
     return HAL_OK;
 }
 
-HAL_StatusTypeDef HAL_PWM_Duty_Set(PWM_HandleTypeDef *hpwm, uint32_t Channel, uint32_t Duty)
+HAL_StatusTypeDef HAL_PWM_Duty_Set(PWM_HandleTypeDef *hpwm, uint32_t Duty)
 {
     if (hpwm == NULL)
     {
@@ -269,15 +269,15 @@ HAL_StatusTypeDef HAL_PWM_Duty_Set(PWM_HandleTypeDef *hpwm, uint32_t Channel, ui
     }
     
     assert_param(IS_PWM_INSTANCE(hpwm->Instance));
-    assert_param(IS_PWM_CHANNELS(Channel));
+    assert_param(IS_PWM_CHANNELS(hpwm->Channel));
     assert_param(IS_PWM_PULSE(Duty));
     
-    __PWM_Duty_Config(hpwm, Channel, Duty);
+    __PWM_Duty_Config(hpwm, hpwm->Channel, Duty);
     
     return HAL_OK;
 }
 
-HAL_StatusTypeDef HAL_PWM_Freq_Set(PWM_HandleTypeDef *hpwm, uint32_t Channel, uint32_t Prescaler, uint32_t Period)
+HAL_StatusTypeDef HAL_PWM_Freq_Set(PWM_HandleTypeDef *hpwm, uint32_t Prescaler, uint32_t Period)
 {
     if (hpwm == NULL)
     {
@@ -285,10 +285,10 @@ HAL_StatusTypeDef HAL_PWM_Freq_Set(PWM_HandleTypeDef *hpwm, uint32_t Channel, ui
     }
     
     assert_param(IS_PWM_INSTANCE(hpwm->Instance));
-    assert_param(IS_PWM_CHANNELS(Channel));
+    assert_param(IS_PWM_CHANNELS(hpwm->Channel));
     assert_param(IS_PWM_PULSE(Period));
     
-    __PWM_Freq_Config(hpwm, Channel, Prescaler, Period);
+    __PWM_Freq_Config(hpwm, hpwm->Channel, Prescaler, Period);
     
     return HAL_OK;
 }

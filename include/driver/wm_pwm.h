@@ -131,6 +131,6 @@ void                HAL_PWM_MspDeInit(PWM_HandleTypeDef *hpwm);
 
 HAL_StatusTypeDef    HAL_PWM_Start(PWM_HandleTypeDef *hpwm);
 HAL_StatusTypeDef    HAL_PWM_Stop(PWM_HandleTypeDef *hpwm);
-HAL_StatusTypeDef    HAL_PWM_Duty_Set(PWM_HandleTypeDef *hpwm, uint32_t Channel, uint32_t Duty);
-HAL_StatusTypeDef    HAL_PWM_Freq_Set(PWM_HandleTypeDef *hpwm, uint32_t Channel, uint32_t Prescaler, uint32_t Period);
+HAL_StatusTypeDef    HAL_PWM_Duty_Set(PWM_HandleTypeDef *hpwm, uint32_t Duty);
+HAL_StatusTypeDef    HAL_PWM_Freq_Set(PWM_HandleTypeDef *hpwm, uint32_t Prescaler, uint32_t Period);
 #endif
