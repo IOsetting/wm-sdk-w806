@@ -13,16 +13,16 @@
 #include "wm_hal.h"
 
 /**BASE PLL CLOCK*/
-#define W806_PLL_CLK_MHZ  		(480)
+#define W806_PLL_CLK_MHZ          (480)
 
 #define IS_NVIC_DEVICE_IRQ(IRQ)                ((IRQ) >= (IRQn_Type)0x00U)
 
 enum CPU_CLK{
-	CPU_CLK_240M = 2,
-	CPU_CLK_160M = 3,
-	CPU_CLK_80M  = 6,
-	CPU_CLK_40M  = 12,
-	CPU_CLK_2M  = 240,		
+    CPU_CLK_240M = 2,
+    CPU_CLK_160M = 3,
+    CPU_CLK_80M  = 6,
+    CPU_CLK_40M  = 12,
+    CPU_CLK_2M  = 240,        
 };
 
 typedef union {
@@ -37,21 +37,21 @@ typedef union {
     uint32_t w;
 } clk_div_reg;
 
-#define UNIT_MHZ		(1000000)
+#define UNIT_MHZ        (1000000)
 
 
 typedef struct{
-	uint32_t apbclk;
-	uint32_t cpuclk;
-	uint32_t wlanclk;
+    uint32_t apbclk;
+    uint32_t cpuclk;
+    uint32_t wlanclk;
 }wm_sys_clk;
 
 typedef enum
 {
-	HAL_TICK_FREQ_10HZ         = 10,
-	HAL_TICK_FREQ_100HZ        = 100,
-	HAL_TICK_FREQ_1KHZ         = 1000,
-	HAL_TICK_FREQ_DEFAULT      = HAL_TICK_FREQ_1KHZ
+    HAL_TICK_FREQ_10HZ         = 10,
+    HAL_TICK_FREQ_100HZ        = 100,
+    HAL_TICK_FREQ_1KHZ         = 1000,
+    HAL_TICK_FREQ_DEFAULT      = HAL_TICK_FREQ_1KHZ
 } HAL_TickFreqTypeDef;
 
 

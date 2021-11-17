@@ -90,8 +90,8 @@
 
 #define printd(mask, fmt...) if (cdebug & (mask)) printf(fmt)
 
-#define PRINTD		0x0001
-#define DEBUG_PARSE	0x0002
+#define PRINTD        0x0001
+#define DEBUG_PARSE    0x0002
 
 int cdebug = PRINTD;
 
@@ -176,12 +176,12 @@ typedef union YYSTYPE
 {
 
 
-	char *string;
-	struct file *file;
-	struct symbol *symbol;
-	struct expr *expr;
-	struct menu *menu;
-	const struct kconf_id *id;
+    char *string;
+    struct file *file;
+    struct symbol *symbol;
+    struct expr *expr;
+    struct menu *menu;
+    const struct kconf_id *id;
 
 
 
@@ -330,7 +330,7 @@ YYID (yyi)
 #  endif
 #  if (defined __cplusplus && ! defined EXIT_SUCCESS \
        && ! ((defined YYMALLOC || defined malloc) \
-	     && (defined YYFREE || defined free)))
+         && (defined YYFREE || defined free)))
 #   include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
 #   ifndef EXIT_SUCCESS
 #    define EXIT_SUCCESS 0
@@ -356,7 +356,7 @@ void free (void *); /* INFRINGES ON USER NAME SPACE */
 
 #if (! defined yyoverflow \
      && (! defined __cplusplus \
-	 || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
+     || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
 
 /* A type that is properly aligned for any stack member.  */
 union yyalloc
@@ -381,15 +381,15 @@ union yyalloc
    elements in the stack, and YYPTR gives the new location of the
    stack.  Advance YYPTR to a properly aligned location for the next
    stack.  */
-# define YYSTACK_RELOCATE(Stack_alloc, Stack)				\
-    do									\
-      {									\
-	YYSIZE_T yynewbytes;						\
-	YYCOPY (&yyptr->Stack_alloc, Stack, yysize);			\
-	Stack = &yyptr->Stack_alloc;					\
-	yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
-	yyptr += yynewbytes / sizeof (*yyptr);				\
-      }									\
+# define YYSTACK_RELOCATE(Stack_alloc, Stack)                \
+    do                                    \
+      {                                    \
+    YYSIZE_T yynewbytes;                        \
+    YYCOPY (&yyptr->Stack_alloc, Stack, yysize);            \
+    Stack = &yyptr->Stack_alloc;                    \
+    yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
+    yyptr += yynewbytes / sizeof (*yyptr);                \
+      }                                    \
     while (YYID (0))
 
 #endif
@@ -402,13 +402,13 @@ union yyalloc
 #   define YYCOPY(To, From, Count) \
       __builtin_memcpy (To, From, (Count) * sizeof (*(From)))
 #  else
-#   define YYCOPY(To, From, Count)		\
-      do					\
-	{					\
-	  YYSIZE_T yyi;				\
-	  for (yyi = 0; yyi < (Count); yyi++)	\
-	    (To)[yyi] = (From)[yyi];		\
-	}					\
+#   define YYCOPY(To, From, Count)        \
+      do                    \
+    {                    \
+      YYSIZE_T yyi;                \
+      for (yyi = 0; yyi < (Count); yyi++)    \
+        (To)[yyi] = (From)[yyi];        \
+    }                    \
       while (YYID (0))
 #  endif
 # endif
@@ -432,7 +432,7 @@ union yyalloc
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   290
 
-#define YYTRANSLATE(YYX)						\
+#define YYTRANSLATE(YYX)                        \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
 /* YYTRANSLATE[YYLEX] -- Bison symbol number corresponding to YYLEX.  */
@@ -796,14 +796,14 @@ static const yytype_uint8 yystos[] =
       79
 };
 
-#define yyerrok		(yyerrstatus = 0)
-#define yyclearin	(yychar = YYEMPTY)
-#define YYEMPTY		(-2)
-#define YYEOF		0
+#define yyerrok        (yyerrstatus = 0)
+#define yyclearin    (yychar = YYEMPTY)
+#define YYEMPTY        (-2)
+#define YYEOF        0
 
-#define YYACCEPT	goto yyacceptlab
-#define YYABORT		goto yyabortlab
-#define YYERROR		goto yyerrorlab
+#define YYACCEPT    goto yyacceptlab
+#define YYABORT        goto yyabortlab
+#define YYERROR        goto yyerrorlab
 
 
 /* Like YYERROR except do call yyerror.  This remains here temporarily
@@ -813,7 +813,7 @@ static const yytype_uint8 yystos[] =
    in Bison 2.4.2's NEWS entry, where a plan to phase it out is
    discussed.  */
 
-#define YYFAIL		goto yyerrlab
+#define YYFAIL        goto yyerrlab
 #if defined YYFAIL
   /* This is here to suppress warnings from the GCC cpp's
      -Wunused-macros.  Normally we don't worry about that warning, but
@@ -823,25 +823,25 @@ static const yytype_uint8 yystos[] =
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)					\
-do								\
-  if (yychar == YYEMPTY && yylen == 1)				\
-    {								\
-      yychar = (Token);						\
-      yylval = (Value);						\
-      YYPOPSTACK (1);						\
-      goto yybackup;						\
-    }								\
-  else								\
-    {								\
+#define YYBACKUP(Token, Value)                    \
+do                                \
+  if (yychar == YYEMPTY && yylen == 1)                \
+    {                                \
+      yychar = (Token);                        \
+      yylval = (Value);                        \
+      YYPOPSTACK (1);                        \
+      goto yybackup;                        \
+    }                                \
+  else                                \
+    {                                \
       yyerror (YY_("syntax error: cannot back up")); \
-      YYERROR;							\
-    }								\
+      YYERROR;                            \
+    }                                \
 while (YYID (0))
 
 
-#define YYTERROR	1
-#define YYERRCODE	256
+#define YYTERROR    1
+#define YYERRCODE    256
 
 
 /* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
@@ -850,22 +850,22 @@ while (YYID (0))
 
 #define YYRHSLOC(Rhs, K) ((Rhs)[K])
 #ifndef YYLLOC_DEFAULT
-# define YYLLOC_DEFAULT(Current, Rhs, N)				\
-    do									\
+# define YYLLOC_DEFAULT(Current, Rhs, N)                \
+    do                                    \
       if (YYID (N))                                                    \
-	{								\
-	  (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;	\
-	  (Current).first_column = YYRHSLOC (Rhs, 1).first_column;	\
-	  (Current).last_line    = YYRHSLOC (Rhs, N).last_line;		\
-	  (Current).last_column  = YYRHSLOC (Rhs, N).last_column;	\
-	}								\
-      else								\
-	{								\
-	  (Current).first_line   = (Current).last_line   =		\
-	    YYRHSLOC (Rhs, 0).last_line;				\
-	  (Current).first_column = (Current).last_column =		\
-	    YYRHSLOC (Rhs, 0).last_column;				\
-	}								\
+    {                                \
+      (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;    \
+      (Current).first_column = YYRHSLOC (Rhs, 1).first_column;    \
+      (Current).last_line    = YYRHSLOC (Rhs, N).last_line;        \
+      (Current).last_column  = YYRHSLOC (Rhs, N).last_column;    \
+    }                                \
+      else                                \
+    {                                \
+      (Current).first_line   = (Current).last_line   =        \
+        YYRHSLOC (Rhs, 0).last_line;                \
+      (Current).first_column = (Current).last_column =        \
+        YYRHSLOC (Rhs, 0).last_column;                \
+    }                                \
     while (YYID (0))
 #endif
 
@@ -893,21 +893,21 @@ while (YYID (0))
 #  define YYFPRINTF fprintf
 # endif
 
-# define YYDPRINTF(Args)			\
-do {						\
-  if (yydebug)					\
-    YYFPRINTF Args;				\
+# define YYDPRINTF(Args)            \
+do {                        \
+  if (yydebug)                    \
+    YYFPRINTF Args;                \
 } while (YYID (0))
 
-# define YY_SYMBOL_PRINT(Title, Type, Value, Location)			  \
-do {									  \
-  if (yydebug)								  \
-    {									  \
-      YYFPRINTF (stderr, "%s ", Title);					  \
-      yy_symbol_print (stderr,						  \
-		  Type, Value); \
-      YYFPRINTF (stderr, "\n");						  \
-    }									  \
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)              \
+do {                                      \
+  if (yydebug)                                  \
+    {                                      \
+      YYFPRINTF (stderr, "%s ", Title);                      \
+      yy_symbol_print (stderr,                          \
+          Type, Value); \
+      YYFPRINTF (stderr, "\n");                          \
+    }                                      \
 } while (YYID (0))
 
 
@@ -939,7 +939,7 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep)
   switch (yytype)
     {
       default:
-	break;
+    break;
     }
 }
 
@@ -994,10 +994,10 @@ yy_stack_print (yybottom, yytop)
   YYFPRINTF (stderr, "\n");
 }
 
-# define YY_STACK_PRINT(Bottom, Top)				\
-do {								\
-  if (yydebug)							\
-    yy_stack_print ((Bottom), (Top));				\
+# define YY_STACK_PRINT(Bottom, Top)                \
+do {                                \
+  if (yydebug)                            \
+    yy_stack_print ((Bottom), (Top));                \
 } while (YYID (0))
 
 
@@ -1020,21 +1020,21 @@ yy_reduce_print (yyvsp, yyrule)
   int yyi;
   unsigned long int yylno = yyrline[yyrule];
   YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
-	     yyrule - 1, yylno);
+         yyrule - 1, yylno);
   /* The symbols being reduced.  */
   for (yyi = 0; yyi < yynrhs; yyi++)
     {
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
-		       &(yyvsp[(yyi + 1) - (yynrhs)])
-		       		       );
+               &(yyvsp[(yyi + 1) - (yynrhs)])
+                              );
       YYFPRINTF (stderr, "\n");
     }
 }
 
-# define YY_REDUCE_PRINT(Rule)		\
-do {					\
-  if (yydebug)				\
+# define YY_REDUCE_PRINT(Rule)        \
+do {                    \
+  if (yydebug)                \
     yy_reduce_print (yyvsp, Rule); \
 } while (YYID (0))
 
@@ -1050,7 +1050,7 @@ int yydebug;
 
 
 /* YYINITDEPTH -- initial size of the parser's stacks.  */
-#ifndef	YYINITDEPTH
+#ifndef    YYINITDEPTH
 # define YYINITDEPTH 200
 #endif
 
@@ -1136,27 +1136,27 @@ yytnamerr (char *yyres, const char *yystr)
       char const *yyp = yystr;
 
       for (;;)
-	switch (*++yyp)
-	  {
-	  case '\'':
-	  case ',':
-	    goto do_not_strip_quotes;
+    switch (*++yyp)
+      {
+      case '\'':
+      case ',':
+        goto do_not_strip_quotes;
 
-	  case '\\':
-	    if (*++yyp != '\\')
-	      goto do_not_strip_quotes;
-	    /* Fall through.  */
-	  default:
-	    if (yyres)
-	      yyres[yyn] = *yyp;
-	    yyn++;
-	    break;
+      case '\\':
+        if (*++yyp != '\\')
+          goto do_not_strip_quotes;
+        /* Fall through.  */
+      default:
+        if (yyres)
+          yyres[yyn] = *yyp;
+        yyn++;
+        break;
 
-	  case '"':
-	    if (yyres)
-	      yyres[yyn] = '\0';
-	    return yyn;
-	  }
+      case '"':
+        if (yyres)
+          yyres[yyn] = '\0';
+        return yyn;
+      }
     do_not_strip_quotes: ;
     }
 
@@ -1331,37 +1331,37 @@ yydestruct (yymsg, yytype, yyvaluep)
     {
       case 53: /* "choice_entry" */
 
-	{
-	fprintf(stderr, "%s:%d: missing end statement for this entry\n",
-		(yyvaluep->menu)->file->name, (yyvaluep->menu)->lineno);
-	if (current_menu == (yyvaluep->menu))
-		menu_end_menu();
+    {
+    fprintf(stderr, "%s:%d: missing end statement for this entry\n",
+        (yyvaluep->menu)->file->name, (yyvaluep->menu)->lineno);
+    if (current_menu == (yyvaluep->menu))
+        menu_end_menu();
 };
 
-	break;
+    break;
       case 59: /* "if_entry" */
 
-	{
-	fprintf(stderr, "%s:%d: missing end statement for this entry\n",
-		(yyvaluep->menu)->file->name, (yyvaluep->menu)->lineno);
-	if (current_menu == (yyvaluep->menu))
-		menu_end_menu();
+    {
+    fprintf(stderr, "%s:%d: missing end statement for this entry\n",
+        (yyvaluep->menu)->file->name, (yyvaluep->menu)->lineno);
+    if (current_menu == (yyvaluep->menu))
+        menu_end_menu();
 };
 
-	break;
+    break;
       case 65: /* "menu_entry" */
 
-	{
-	fprintf(stderr, "%s:%d: missing end statement for this entry\n",
-		(yyvaluep->menu)->file->name, (yyvaluep->menu)->lineno);
-	if (current_menu == (yyvaluep->menu))
-		menu_end_menu();
+    {
+    fprintf(stderr, "%s:%d: missing end statement for this entry\n",
+        (yyvaluep->menu)->file->name, (yyvaluep->menu)->lineno);
+    if (current_menu == (yyvaluep->menu))
+        menu_end_menu();
 };
 
-	break;
+    break;
 
       default:
-	break;
+    break;
     }
 }
 
@@ -1501,23 +1501,23 @@ yyparse ()
 
 #ifdef yyoverflow
       {
-	/* Give user a chance to reallocate the stack.  Use copies of
-	   these so that the &'s don't force the real ones into
-	   memory.  */
-	YYSTYPE *yyvs1 = yyvs;
-	yytype_int16 *yyss1 = yyss;
+    /* Give user a chance to reallocate the stack.  Use copies of
+       these so that the &'s don't force the real ones into
+       memory.  */
+    YYSTYPE *yyvs1 = yyvs;
+    yytype_int16 *yyss1 = yyss;
 
-	/* Each stack pointer address is followed by the size of the
-	   data in use in that stack, in bytes.  This used to be a
-	   conditional around just the two extra args, but that might
-	   be undefined if yyoverflow is a macro.  */
-	yyoverflow (YY_("memory exhausted"),
-		    &yyss1, yysize * sizeof (*yyssp),
-		    &yyvs1, yysize * sizeof (*yyvsp),
-		    &yystacksize);
+    /* Each stack pointer address is followed by the size of the
+       data in use in that stack, in bytes.  This used to be a
+       conditional around just the two extra args, but that might
+       be undefined if yyoverflow is a macro.  */
+    yyoverflow (YY_("memory exhausted"),
+            &yyss1, yysize * sizeof (*yyssp),
+            &yyvs1, yysize * sizeof (*yyvsp),
+            &yystacksize);
 
-	yyss = yyss1;
-	yyvs = yyvs1;
+    yyss = yyss1;
+    yyvs = yyvs1;
       }
 #else /* no yyoverflow */
 # ifndef YYSTACK_RELOCATE
@@ -1525,22 +1525,22 @@ yyparse ()
 # else
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
-	goto yyexhaustedlab;
+    goto yyexhaustedlab;
       yystacksize *= 2;
       if (YYMAXDEPTH < yystacksize)
-	yystacksize = YYMAXDEPTH;
+    yystacksize = YYMAXDEPTH;
 
       {
-	yytype_int16 *yyss1 = yyss;
-	union yyalloc *yyptr =
-	  (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
-	if (! yyptr)
-	  goto yyexhaustedlab;
-	YYSTACK_RELOCATE (yyss_alloc, yyss);
-	YYSTACK_RELOCATE (yyvs_alloc, yyvs);
+    yytype_int16 *yyss1 = yyss;
+    union yyalloc *yyptr =
+      (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
+    if (! yyptr)
+      goto yyexhaustedlab;
+    YYSTACK_RELOCATE (yyss_alloc, yyss);
+    YYSTACK_RELOCATE (yyvs_alloc, yyvs);
 #  undef YYSTACK_RELOCATE
-	if (yyss1 != yyssa)
-	  YYSTACK_FREE (yyss1);
+    if (yyss1 != yyssa)
+      YYSTACK_FREE (yyss1);
       }
 # endif
 #endif /* no yyoverflow */
@@ -1549,10 +1549,10 @@ yyparse ()
       yyvsp = yyvs + yysize - 1;
 
       YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-		  (unsigned long int) yystacksize));
+          (unsigned long int) yystacksize));
 
       if (yyss + yystacksize - 1 <= yyssp)
-	YYABORT;
+    YYABORT;
     }
 
   YYDPRINTF ((stderr, "Entering state %d\n", yystate));
@@ -1670,7 +1670,7 @@ yyreduce:
   case 12:
 
     {
-	zconf_error("unexpected option \"%s\"", kconf_id_strings + (yyvsp[(2) - (4)].id)->name);
+    zconf_error("unexpected option \"%s\"", kconf_id_strings + (yyvsp[(2) - (4)].id)->name);
 }
     break;
 
@@ -1692,98 +1692,98 @@ yyreduce:
   case 30:
 
     {
-	struct symbol *sym = sym_lookup((yyvsp[(2) - (3)].string), 0);
-	sym->flags |= SYMBOL_OPTIONAL;
-	menu_add_entry(sym);
-	printd(DEBUG_PARSE, "%s:%d:config %s\n", zconf_curname(), zconf_lineno(), (yyvsp[(2) - (3)].string));
+    struct symbol *sym = sym_lookup((yyvsp[(2) - (3)].string), 0);
+    sym->flags |= SYMBOL_OPTIONAL;
+    menu_add_entry(sym);
+    printd(DEBUG_PARSE, "%s:%d:config %s\n", zconf_curname(), zconf_lineno(), (yyvsp[(2) - (3)].string));
 }
     break;
 
   case 31:
 
     {
-	menu_end_entry();
-	printd(DEBUG_PARSE, "%s:%d:endconfig\n", zconf_curname(), zconf_lineno());
+    menu_end_entry();
+    printd(DEBUG_PARSE, "%s:%d:endconfig\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 32:
 
     {
-	struct symbol *sym = sym_lookup((yyvsp[(2) - (3)].string), 0);
-	sym->flags |= SYMBOL_OPTIONAL;
-	menu_add_entry(sym);
-	printd(DEBUG_PARSE, "%s:%d:menuconfig %s\n", zconf_curname(), zconf_lineno(), (yyvsp[(2) - (3)].string));
+    struct symbol *sym = sym_lookup((yyvsp[(2) - (3)].string), 0);
+    sym->flags |= SYMBOL_OPTIONAL;
+    menu_add_entry(sym);
+    printd(DEBUG_PARSE, "%s:%d:menuconfig %s\n", zconf_curname(), zconf_lineno(), (yyvsp[(2) - (3)].string));
 }
     break;
 
   case 33:
 
     {
-	if (current_entry->prompt)
-		current_entry->prompt->type = P_MENU;
-	else
-		zconfprint("warning: menuconfig statement without prompt");
-	menu_end_entry();
-	printd(DEBUG_PARSE, "%s:%d:endconfig\n", zconf_curname(), zconf_lineno());
+    if (current_entry->prompt)
+        current_entry->prompt->type = P_MENU;
+    else
+        zconfprint("warning: menuconfig statement without prompt");
+    menu_end_entry();
+    printd(DEBUG_PARSE, "%s:%d:endconfig\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 41:
 
     {
-	menu_set_type((yyvsp[(1) - (3)].id)->stype);
-	printd(DEBUG_PARSE, "%s:%d:type(%u)\n",
-		zconf_curname(), zconf_lineno(),
-		(yyvsp[(1) - (3)].id)->stype);
+    menu_set_type((yyvsp[(1) - (3)].id)->stype);
+    printd(DEBUG_PARSE, "%s:%d:type(%u)\n",
+        zconf_curname(), zconf_lineno(),
+        (yyvsp[(1) - (3)].id)->stype);
 }
     break;
 
   case 42:
 
     {
-	menu_add_prompt(P_PROMPT, (yyvsp[(2) - (4)].string), (yyvsp[(3) - (4)].expr));
-	printd(DEBUG_PARSE, "%s:%d:prompt\n", zconf_curname(), zconf_lineno());
+    menu_add_prompt(P_PROMPT, (yyvsp[(2) - (4)].string), (yyvsp[(3) - (4)].expr));
+    printd(DEBUG_PARSE, "%s:%d:prompt\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 43:
 
     {
-	menu_add_expr(P_DEFAULT, (yyvsp[(2) - (4)].expr), (yyvsp[(3) - (4)].expr));
-	if ((yyvsp[(1) - (4)].id)->stype != S_UNKNOWN)
-		menu_set_type((yyvsp[(1) - (4)].id)->stype);
-	printd(DEBUG_PARSE, "%s:%d:default(%u)\n",
-		zconf_curname(), zconf_lineno(),
-		(yyvsp[(1) - (4)].id)->stype);
+    menu_add_expr(P_DEFAULT, (yyvsp[(2) - (4)].expr), (yyvsp[(3) - (4)].expr));
+    if ((yyvsp[(1) - (4)].id)->stype != S_UNKNOWN)
+        menu_set_type((yyvsp[(1) - (4)].id)->stype);
+    printd(DEBUG_PARSE, "%s:%d:default(%u)\n",
+        zconf_curname(), zconf_lineno(),
+        (yyvsp[(1) - (4)].id)->stype);
 }
     break;
 
   case 44:
 
     {
-	menu_add_symbol(P_SELECT, sym_lookup((yyvsp[(2) - (4)].string), 0), (yyvsp[(3) - (4)].expr));
-	printd(DEBUG_PARSE, "%s:%d:select\n", zconf_curname(), zconf_lineno());
+    menu_add_symbol(P_SELECT, sym_lookup((yyvsp[(2) - (4)].string), 0), (yyvsp[(3) - (4)].expr));
+    printd(DEBUG_PARSE, "%s:%d:select\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 45:
 
     {
-	menu_add_expr(P_RANGE, expr_alloc_comp(E_RANGE,(yyvsp[(2) - (5)].symbol), (yyvsp[(3) - (5)].symbol)), (yyvsp[(4) - (5)].expr));
-	printd(DEBUG_PARSE, "%s:%d:range\n", zconf_curname(), zconf_lineno());
+    menu_add_expr(P_RANGE, expr_alloc_comp(E_RANGE,(yyvsp[(2) - (5)].symbol), (yyvsp[(3) - (5)].symbol)), (yyvsp[(4) - (5)].expr));
+    printd(DEBUG_PARSE, "%s:%d:range\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 48:
 
     {
-	const struct kconf_id *id = kconf_id_lookup((yyvsp[(2) - (3)].string), strlen((yyvsp[(2) - (3)].string)));
-	if (id && id->flags & TF_OPTION)
-		menu_add_option(id->token, (yyvsp[(3) - (3)].string));
-	else
-		zconfprint("warning: ignoring unknown option %s", (yyvsp[(2) - (3)].string));
-	free((yyvsp[(2) - (3)].string));
+    const struct kconf_id *id = kconf_id_lookup((yyvsp[(2) - (3)].string), strlen((yyvsp[(2) - (3)].string)));
+    if (id && id->flags & TF_OPTION)
+        menu_add_option(id->token, (yyvsp[(3) - (3)].string));
+    else
+        zconfprint("warning: ignoring unknown option %s", (yyvsp[(2) - (3)].string));
+    free((yyvsp[(2) - (3)].string));
 }
     break;
 
@@ -1800,183 +1800,183 @@ yyreduce:
   case 51:
 
     {
-	struct symbol *sym = sym_lookup((yyvsp[(2) - (3)].string), SYMBOL_CHOICE);
-	sym->flags |= SYMBOL_AUTO;
-	menu_add_entry(sym);
-	menu_add_expr(P_CHOICE, NULL, NULL);
-	printd(DEBUG_PARSE, "%s:%d:choice\n", zconf_curname(), zconf_lineno());
+    struct symbol *sym = sym_lookup((yyvsp[(2) - (3)].string), SYMBOL_CHOICE);
+    sym->flags |= SYMBOL_AUTO;
+    menu_add_entry(sym);
+    menu_add_expr(P_CHOICE, NULL, NULL);
+    printd(DEBUG_PARSE, "%s:%d:choice\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 52:
 
     {
-	(yyval.menu) = menu_add_menu();
+    (yyval.menu) = menu_add_menu();
 }
     break;
 
   case 53:
 
     {
-	if (zconf_endtoken((yyvsp[(1) - (1)].id), T_CHOICE, T_ENDCHOICE)) {
-		menu_end_menu();
-		printd(DEBUG_PARSE, "%s:%d:endchoice\n", zconf_curname(), zconf_lineno());
-	}
+    if (zconf_endtoken((yyvsp[(1) - (1)].id), T_CHOICE, T_ENDCHOICE)) {
+        menu_end_menu();
+        printd(DEBUG_PARSE, "%s:%d:endchoice\n", zconf_curname(), zconf_lineno());
+    }
 }
     break;
 
   case 61:
 
     {
-	menu_add_prompt(P_PROMPT, (yyvsp[(2) - (4)].string), (yyvsp[(3) - (4)].expr));
-	printd(DEBUG_PARSE, "%s:%d:prompt\n", zconf_curname(), zconf_lineno());
+    menu_add_prompt(P_PROMPT, (yyvsp[(2) - (4)].string), (yyvsp[(3) - (4)].expr));
+    printd(DEBUG_PARSE, "%s:%d:prompt\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 62:
 
     {
-	if ((yyvsp[(1) - (3)].id)->stype == S_BOOLEAN || (yyvsp[(1) - (3)].id)->stype == S_TRISTATE) {
-		menu_set_type((yyvsp[(1) - (3)].id)->stype);
-		printd(DEBUG_PARSE, "%s:%d:type(%u)\n",
-			zconf_curname(), zconf_lineno(),
-			(yyvsp[(1) - (3)].id)->stype);
-	} else
-		YYERROR;
+    if ((yyvsp[(1) - (3)].id)->stype == S_BOOLEAN || (yyvsp[(1) - (3)].id)->stype == S_TRISTATE) {
+        menu_set_type((yyvsp[(1) - (3)].id)->stype);
+        printd(DEBUG_PARSE, "%s:%d:type(%u)\n",
+            zconf_curname(), zconf_lineno(),
+            (yyvsp[(1) - (3)].id)->stype);
+    } else
+        YYERROR;
 }
     break;
 
   case 63:
 
     {
-	current_entry->sym->flags |= SYMBOL_OPTIONAL;
-	printd(DEBUG_PARSE, "%s:%d:optional\n", zconf_curname(), zconf_lineno());
+    current_entry->sym->flags |= SYMBOL_OPTIONAL;
+    printd(DEBUG_PARSE, "%s:%d:optional\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 64:
 
     {
-	if ((yyvsp[(1) - (4)].id)->stype == S_UNKNOWN) {
-		menu_add_symbol(P_DEFAULT, sym_lookup((yyvsp[(2) - (4)].string), 0), (yyvsp[(3) - (4)].expr));
-		printd(DEBUG_PARSE, "%s:%d:default\n",
-			zconf_curname(), zconf_lineno());
-	} else
-		YYERROR;
+    if ((yyvsp[(1) - (4)].id)->stype == S_UNKNOWN) {
+        menu_add_symbol(P_DEFAULT, sym_lookup((yyvsp[(2) - (4)].string), 0), (yyvsp[(3) - (4)].expr));
+        printd(DEBUG_PARSE, "%s:%d:default\n",
+            zconf_curname(), zconf_lineno());
+    } else
+        YYERROR;
 }
     break;
 
   case 67:
 
     {
-	printd(DEBUG_PARSE, "%s:%d:if\n", zconf_curname(), zconf_lineno());
-	menu_add_entry(NULL);
-	menu_add_dep((yyvsp[(2) - (3)].expr));
-	(yyval.menu) = menu_add_menu();
+    printd(DEBUG_PARSE, "%s:%d:if\n", zconf_curname(), zconf_lineno());
+    menu_add_entry(NULL);
+    menu_add_dep((yyvsp[(2) - (3)].expr));
+    (yyval.menu) = menu_add_menu();
 }
     break;
 
   case 68:
 
     {
-	if (zconf_endtoken((yyvsp[(1) - (1)].id), T_IF, T_ENDIF)) {
-		menu_end_menu();
-		printd(DEBUG_PARSE, "%s:%d:endif\n", zconf_curname(), zconf_lineno());
-	}
+    if (zconf_endtoken((yyvsp[(1) - (1)].id), T_IF, T_ENDIF)) {
+        menu_end_menu();
+        printd(DEBUG_PARSE, "%s:%d:endif\n", zconf_curname(), zconf_lineno());
+    }
 }
     break;
 
   case 74:
 
     {
-	menu_add_prompt(P_MENU, (yyvsp[(2) - (3)].string), NULL);
+    menu_add_prompt(P_MENU, (yyvsp[(2) - (3)].string), NULL);
 }
     break;
 
   case 75:
 
     {
-	menu_add_entry(NULL);
-	menu_add_prompt(P_MENU, (yyvsp[(2) - (3)].string), NULL);
-	printd(DEBUG_PARSE, "%s:%d:menu\n", zconf_curname(), zconf_lineno());
+    menu_add_entry(NULL);
+    menu_add_prompt(P_MENU, (yyvsp[(2) - (3)].string), NULL);
+    printd(DEBUG_PARSE, "%s:%d:menu\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 76:
 
     {
-	(yyval.menu) = menu_add_menu();
+    (yyval.menu) = menu_add_menu();
 }
     break;
 
   case 77:
 
     {
-	if (zconf_endtoken((yyvsp[(1) - (1)].id), T_MENU, T_ENDMENU)) {
-		menu_end_menu();
-		printd(DEBUG_PARSE, "%s:%d:endmenu\n", zconf_curname(), zconf_lineno());
-	}
+    if (zconf_endtoken((yyvsp[(1) - (1)].id), T_MENU, T_ENDMENU)) {
+        menu_end_menu();
+        printd(DEBUG_PARSE, "%s:%d:endmenu\n", zconf_curname(), zconf_lineno());
+    }
 }
     break;
 
   case 83:
 
     {
-	printd(DEBUG_PARSE, "%s:%d:source %s\n", zconf_curname(), zconf_lineno(), (yyvsp[(2) - (3)].string));
-	zconf_nextfile((yyvsp[(2) - (3)].string));
+    printd(DEBUG_PARSE, "%s:%d:source %s\n", zconf_curname(), zconf_lineno(), (yyvsp[(2) - (3)].string));
+    zconf_nextfile((yyvsp[(2) - (3)].string));
 }
     break;
 
   case 84:
 
     {
-	menu_add_entry(NULL);
-	menu_add_prompt(P_COMMENT, (yyvsp[(2) - (3)].string), NULL);
-	printd(DEBUG_PARSE, "%s:%d:comment\n", zconf_curname(), zconf_lineno());
+    menu_add_entry(NULL);
+    menu_add_prompt(P_COMMENT, (yyvsp[(2) - (3)].string), NULL);
+    printd(DEBUG_PARSE, "%s:%d:comment\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 85:
 
     {
-	menu_end_entry();
+    menu_end_entry();
 }
     break;
 
   case 86:
 
     {
-	printd(DEBUG_PARSE, "%s:%d:help\n", zconf_curname(), zconf_lineno());
-	zconf_starthelp();
+    printd(DEBUG_PARSE, "%s:%d:help\n", zconf_curname(), zconf_lineno());
+    zconf_starthelp();
 }
     break;
 
   case 87:
 
     {
-	current_entry->help = (yyvsp[(2) - (2)].string);
+    current_entry->help = (yyvsp[(2) - (2)].string);
 }
     break;
 
   case 92:
 
     {
-	menu_add_dep((yyvsp[(3) - (4)].expr));
-	printd(DEBUG_PARSE, "%s:%d:depends on\n", zconf_curname(), zconf_lineno());
+    menu_add_dep((yyvsp[(3) - (4)].expr));
+    printd(DEBUG_PARSE, "%s:%d:depends on\n", zconf_curname(), zconf_lineno());
 }
     break;
 
   case 96:
 
     {
-	menu_add_visibility((yyvsp[(2) - (2)].expr));
+    menu_add_visibility((yyvsp[(2) - (2)].expr));
 }
     break;
 
   case 98:
 
     {
-	menu_add_prompt(P_PROMPT, (yyvsp[(1) - (2)].string), (yyvsp[(2) - (2)].expr));
+    menu_add_prompt(P_PROMPT, (yyvsp[(1) - (2)].string), (yyvsp[(2) - (2)].expr));
 }
     break;
 
@@ -2146,20 +2146,20 @@ yyerrlab:
   if (yyerrstatus == 3)
     {
       /* If just tried and failed to reuse lookahead token after an
-	 error, discard it.  */
+     error, discard it.  */
 
       if (yychar <= YYEOF)
-	{
-	  /* Return failure if at end of input.  */
-	  if (yychar == YYEOF)
-	    YYABORT;
-	}
+    {
+      /* Return failure if at end of input.  */
+      if (yychar == YYEOF)
+        YYABORT;
+    }
       else
-	{
-	  yydestruct ("Error: discarding",
-		      yytoken, &yylval);
-	  yychar = YYEMPTY;
-	}
+    {
+      yydestruct ("Error: discarding",
+              yytoken, &yylval);
+      yychar = YYEMPTY;
+    }
     }
 
   /* Else will try to reuse lookahead token after shifting the error
@@ -2191,29 +2191,29 @@ yyerrorlab:
 | yyerrlab1 -- common code for both syntax error and YYERROR.  |
 `-------------------------------------------------------------*/
 yyerrlab1:
-  yyerrstatus = 3;	/* Each real token shifted decrements this.  */
+  yyerrstatus = 3;    /* Each real token shifted decrements this.  */
 
   for (;;)
     {
       yyn = yypact[yystate];
       if (!yypact_value_is_default (yyn))
-	{
-	  yyn += YYTERROR;
-	  if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
-	    {
-	      yyn = yytable[yyn];
-	      if (0 < yyn)
-		break;
-	    }
-	}
+    {
+      yyn += YYTERROR;
+      if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
+        {
+          yyn = yytable[yyn];
+          if (0 < yyn)
+        break;
+        }
+    }
 
       /* Pop the current state because it cannot handle the error token.  */
       if (yyssp == yyss)
-	YYABORT;
+    YYABORT;
 
 
       yydestruct ("Error: popping",
-		  yystos[yystate], yyvsp);
+          yystos[yystate], yyvsp);
       YYPOPSTACK (1);
       yystate = *yyssp;
       YY_STACK_PRINT (yyss, yyssp);
@@ -2269,7 +2269,7 @@ yyreturn:
   while (yyssp != yyss)
     {
       yydestruct ("Cleanup: popping",
-		  yystos[*yyssp], yyvsp);
+          yystos[*yyssp], yyvsp);
       YYPOPSTACK (1);
     }
 #ifndef yyoverflow
@@ -2290,243 +2290,243 @@ yyreturn:
 
 void conf_parse(const char *name)
 {
-	struct symbol *sym;
-	int i;
+    struct symbol *sym;
+    int i;
 
-	zconf_initscan(name);
+    zconf_initscan(name);
 
-	sym_init();
-	_menu_init();
-	rootmenu.prompt = menu_add_prompt(P_MENU, "Linux Kernel Configuration", NULL);
+    sym_init();
+    _menu_init();
+    rootmenu.prompt = menu_add_prompt(P_MENU, "Linux Kernel Configuration", NULL);
 
-	if (getenv("ZCONF_DEBUG"))
-		zconfdebug = 1;
-	zconfparse();
-	if (zconfnerrs)
-		exit(1);
-	if (!modules_sym)
-		modules_sym = sym_find( "n" );
+    if (getenv("ZCONF_DEBUG"))
+        zconfdebug = 1;
+    zconfparse();
+    if (zconfnerrs)
+        exit(1);
+    if (!modules_sym)
+        modules_sym = sym_find( "n" );
 
-	rootmenu.prompt->text = _(rootmenu.prompt->text);
-	rootmenu.prompt->text = sym_expand_string_value(rootmenu.prompt->text);
+    rootmenu.prompt->text = _(rootmenu.prompt->text);
+    rootmenu.prompt->text = sym_expand_string_value(rootmenu.prompt->text);
 
-	menu_finalize(&rootmenu);
-	for_all_symbols(i, sym) {
-		if (sym_check_deps(sym))
-			zconfnerrs++;
-	}
-	if (zconfnerrs)
-		exit(1);
-	sym_set_change_count(1);
+    menu_finalize(&rootmenu);
+    for_all_symbols(i, sym) {
+        if (sym_check_deps(sym))
+            zconfnerrs++;
+    }
+    if (zconfnerrs)
+        exit(1);
+    sym_set_change_count(1);
 }
 
 static const char *zconf_tokenname(int token)
 {
-	switch (token) {
-	case T_MENU:		return "menu";
-	case T_ENDMENU:		return "endmenu";
-	case T_CHOICE:		return "choice";
-	case T_ENDCHOICE:	return "endchoice";
-	case T_IF:		return "if";
-	case T_ENDIF:		return "endif";
-	case T_DEPENDS:		return "depends";
-	case T_VISIBLE:		return "visible";
-	}
-	return "<token>";
+    switch (token) {
+    case T_MENU:        return "menu";
+    case T_ENDMENU:        return "endmenu";
+    case T_CHOICE:        return "choice";
+    case T_ENDCHOICE:    return "endchoice";
+    case T_IF:        return "if";
+    case T_ENDIF:        return "endif";
+    case T_DEPENDS:        return "depends";
+    case T_VISIBLE:        return "visible";
+    }
+    return "<token>";
 }
 
 static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtoken)
 {
-	if (id->token != endtoken) {
-		zconf_error("unexpected '%s' within %s block",
-			kconf_id_strings + id->name, zconf_tokenname(starttoken));
-		zconfnerrs++;
-		return false;
-	}
-	if (current_menu->file != current_file) {
-		zconf_error("'%s' in different file than '%s'",
-			kconf_id_strings + id->name, zconf_tokenname(starttoken));
-		fprintf(stderr, "%s:%d: location of the '%s'\n",
-			current_menu->file->name, current_menu->lineno,
-			zconf_tokenname(starttoken));
-		zconfnerrs++;
-		return false;
-	}
-	return true;
+    if (id->token != endtoken) {
+        zconf_error("unexpected '%s' within %s block",
+            kconf_id_strings + id->name, zconf_tokenname(starttoken));
+        zconfnerrs++;
+        return false;
+    }
+    if (current_menu->file != current_file) {
+        zconf_error("'%s' in different file than '%s'",
+            kconf_id_strings + id->name, zconf_tokenname(starttoken));
+        fprintf(stderr, "%s:%d: location of the '%s'\n",
+            current_menu->file->name, current_menu->lineno,
+            zconf_tokenname(starttoken));
+        zconfnerrs++;
+        return false;
+    }
+    return true;
 }
 
 static void zconfprint(const char *err, ...)
 {
-	va_list ap;
+    va_list ap;
 
-	fprintf(stderr, "%s:%d: ", zconf_curname(), zconf_lineno());
-	va_start(ap, err);
-	vfprintf(stderr, err, ap);
-	va_end(ap);
-	fprintf(stderr, "\n");
+    fprintf(stderr, "%s:%d: ", zconf_curname(), zconf_lineno());
+    va_start(ap, err);
+    vfprintf(stderr, err, ap);
+    va_end(ap);
+    fprintf(stderr, "\n");
 }
 
 static void zconf_error(const char *err, ...)
 {
-	va_list ap;
+    va_list ap;
 
-	zconfnerrs++;
-	fprintf(stderr, "%s:%d: ", zconf_curname(), zconf_lineno());
-	va_start(ap, err);
-	vfprintf(stderr, err, ap);
-	va_end(ap);
-	fprintf(stderr, "\n");
+    zconfnerrs++;
+    fprintf(stderr, "%s:%d: ", zconf_curname(), zconf_lineno());
+    va_start(ap, err);
+    vfprintf(stderr, err, ap);
+    va_end(ap);
+    fprintf(stderr, "\n");
 }
 
 static void zconferror(const char *err)
 {
-	fprintf(stderr, "%s:%d: %s\n", zconf_curname(), zconf_lineno() + 1, err);
+    fprintf(stderr, "%s:%d: %s\n", zconf_curname(), zconf_lineno() + 1, err);
 }
 
 static void print_quoted_string(FILE *out, const char *str)
 {
-	const char *p;
-	int len;
+    const char *p;
+    int len;
 
-	putc('"', out);
-	while ((p = strchr(str, '"'))) {
-		len = p - str;
-		if (len)
-			fprintf(out, "%.*s", len, str);
-		fputs("\\\"", out);
-		str = p + 1;
-	}
-	fputs(str, out);
-	putc('"', out);
+    putc('"', out);
+    while ((p = strchr(str, '"'))) {
+        len = p - str;
+        if (len)
+            fprintf(out, "%.*s", len, str);
+        fputs("\\\"", out);
+        str = p + 1;
+    }
+    fputs(str, out);
+    putc('"', out);
 }
 
 static void print_symbol(FILE *out, struct menu *menu)
 {
-	struct symbol *sym = menu->sym;
-	struct property *prop;
+    struct symbol *sym = menu->sym;
+    struct property *prop;
 
-	if (sym_is_choice(sym))
-		fprintf(out, "\nchoice\n");
-	else
-		fprintf(out, "\nconfig %s\n", sym->name);
-	switch (sym->type) {
-	case S_BOOLEAN:
-		fputs("  boolean\n", out);
-		break;
-	case S_TRISTATE:
-		fputs("  tristate\n", out);
-		break;
-	case S_STRING:
-		fputs("  string\n", out);
-		break;
-	case S_INT:
-		fputs("  integer\n", out);
-		break;
-	case S_HEX:
-		fputs("  hex\n", out);
-		break;
-	default:
-		fputs("  ???\n", out);
-		break;
-	}
-	for (prop = sym->prop; prop; prop = prop->next) {
-		if (prop->menu != menu)
-			continue;
-		switch (prop->type) {
-		case P_PROMPT:
-			fputs("  prompt ", out);
-			print_quoted_string(out, prop->text);
-			if (!expr_is_yes(prop->visible.expr)) {
-				fputs(" if ", out);
-				expr_fprint(prop->visible.expr, out);
-			}
-			fputc('\n', out);
-			break;
-		case P_DEFAULT:
-			fputs( "  default ", out);
-			expr_fprint(prop->expr, out);
-			if (!expr_is_yes(prop->visible.expr)) {
-				fputs(" if ", out);
-				expr_fprint(prop->visible.expr, out);
-			}
-			fputc('\n', out);
-			break;
-		case P_CHOICE:
-			fputs("  #choice value\n", out);
-			break;
-		case P_SELECT:
-			fputs( "  select ", out);
-			expr_fprint(prop->expr, out);
-			fputc('\n', out);
-			break;
-		case P_RANGE:
-			fputs( "  range ", out);
-			expr_fprint(prop->expr, out);
-			fputc('\n', out);
-			break;
-		case P_MENU:
-			fputs( "  menu ", out);
-			print_quoted_string(out, prop->text);
-			fputc('\n', out);
-			break;
-		default:
-			fprintf(out, "  unknown prop %d!\n", prop->type);
-			break;
-		}
-	}
-	if (menu->help) {
-		int len = strlen(menu->help);
-		while (menu->help[--len] == '\n')
-			menu->help[len] = 0;
-		fprintf(out, "  help\n%s\n", menu->help);
-	}
+    if (sym_is_choice(sym))
+        fprintf(out, "\nchoice\n");
+    else
+        fprintf(out, "\nconfig %s\n", sym->name);
+    switch (sym->type) {
+    case S_BOOLEAN:
+        fputs("  boolean\n", out);
+        break;
+    case S_TRISTATE:
+        fputs("  tristate\n", out);
+        break;
+    case S_STRING:
+        fputs("  string\n", out);
+        break;
+    case S_INT:
+        fputs("  integer\n", out);
+        break;
+    case S_HEX:
+        fputs("  hex\n", out);
+        break;
+    default:
+        fputs("  ???\n", out);
+        break;
+    }
+    for (prop = sym->prop; prop; prop = prop->next) {
+        if (prop->menu != menu)
+            continue;
+        switch (prop->type) {
+        case P_PROMPT:
+            fputs("  prompt ", out);
+            print_quoted_string(out, prop->text);
+            if (!expr_is_yes(prop->visible.expr)) {
+                fputs(" if ", out);
+                expr_fprint(prop->visible.expr, out);
+            }
+            fputc('\n', out);
+            break;
+        case P_DEFAULT:
+            fputs( "  default ", out);
+            expr_fprint(prop->expr, out);
+            if (!expr_is_yes(prop->visible.expr)) {
+                fputs(" if ", out);
+                expr_fprint(prop->visible.expr, out);
+            }
+            fputc('\n', out);
+            break;
+        case P_CHOICE:
+            fputs("  #choice value\n", out);
+            break;
+        case P_SELECT:
+            fputs( "  select ", out);
+            expr_fprint(prop->expr, out);
+            fputc('\n', out);
+            break;
+        case P_RANGE:
+            fputs( "  range ", out);
+            expr_fprint(prop->expr, out);
+            fputc('\n', out);
+            break;
+        case P_MENU:
+            fputs( "  menu ", out);
+            print_quoted_string(out, prop->text);
+            fputc('\n', out);
+            break;
+        default:
+            fprintf(out, "  unknown prop %d!\n", prop->type);
+            break;
+        }
+    }
+    if (menu->help) {
+        int len = strlen(menu->help);
+        while (menu->help[--len] == '\n')
+            menu->help[len] = 0;
+        fprintf(out, "  help\n%s\n", menu->help);
+    }
 }
 
 void zconfdump(FILE *out)
 {
-	struct property *prop;
-	struct symbol *sym;
-	struct menu *menu;
+    struct property *prop;
+    struct symbol *sym;
+    struct menu *menu;
 
-	menu = rootmenu.list;
-	while (menu) {
-		if ((sym = menu->sym))
-			print_symbol(out, menu);
-		else if ((prop = menu->prompt)) {
-			switch (prop->type) {
-			case P_COMMENT:
-				fputs("\ncomment ", out);
-				print_quoted_string(out, prop->text);
-				fputs("\n", out);
-				break;
-			case P_MENU:
-				fputs("\nmenu ", out);
-				print_quoted_string(out, prop->text);
-				fputs("\n", out);
-				break;
-			default:
-				;
-			}
-			if (!expr_is_yes(prop->visible.expr)) {
-				fputs("  depends ", out);
-				expr_fprint(prop->visible.expr, out);
-				fputc('\n', out);
-			}
-		}
+    menu = rootmenu.list;
+    while (menu) {
+        if ((sym = menu->sym))
+            print_symbol(out, menu);
+        else if ((prop = menu->prompt)) {
+            switch (prop->type) {
+            case P_COMMENT:
+                fputs("\ncomment ", out);
+                print_quoted_string(out, prop->text);
+                fputs("\n", out);
+                break;
+            case P_MENU:
+                fputs("\nmenu ", out);
+                print_quoted_string(out, prop->text);
+                fputs("\n", out);
+                break;
+            default:
+                ;
+            }
+            if (!expr_is_yes(prop->visible.expr)) {
+                fputs("  depends ", out);
+                expr_fprint(prop->visible.expr, out);
+                fputc('\n', out);
+            }
+        }
 
-		if (menu->list)
-			menu = menu->list;
-		else if (menu->next)
-			menu = menu->next;
-		else while ((menu = menu->parent)) {
-			if (menu->prompt && menu->prompt->type == P_MENU)
-				fputs("\nendmenu\n", out);
-			if (menu->next) {
-				menu = menu->next;
-				break;
-			}
-		}
-	}
+        if (menu->list)
+            menu = menu->list;
+        else if (menu->next)
+            menu = menu->next;
+        else while ((menu = menu->parent)) {
+            if (menu->prompt && menu->prompt->type == P_MENU)
+                fputs("\nendmenu\n", out);
+            if (menu->next) {
+                menu = menu->next;
+                break;
+            }
+        }
+    }
 }
 
 #include "zconf.lex.c"

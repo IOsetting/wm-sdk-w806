@@ -48,7 +48,7 @@
                                   do{                                       \
                                       (__HANDLE__)->Lock = HAL_UNLOCKED;    \
                                     }while (0)
-										
+                                        
 
 HAL_StatusTypeDef HAL_Init(void);
 HAL_StatusTypeDef HAL_DeInit(void);

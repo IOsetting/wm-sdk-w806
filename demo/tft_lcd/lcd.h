@@ -3,8 +3,8 @@
 
 #include "wm_hal.h"
 
-#define ST7789_SPI	1
-#define ST7789_8080	1
+#define ST7789_SPI    1
+#define ST7789_8080    1
 
 #if ST7789_SPI
 #include "st7789_serial.h"

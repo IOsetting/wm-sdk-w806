@@ -17,7 +17,7 @@ SUBDIRS += \
 endif
 endif
 
-COMPONENTS_$(TARGET) =	\
+COMPONENTS_$(TARGET) =    \
     $(TOP_DIR)/app/libappuser$(LIB_EXT)     \
     $(TOP_DIR)/demo/libdemo$(LIB_EXT)    
 
@@ -28,20 +28,20 @@ COMPONENTS_$(TARGET) += \
 endif
 
 
-LINKLIB = 	\
-    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libdsp$(LIB_EXT)	
+LINKLIB =     \
+    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libdsp$(LIB_EXT)    
 
 
 LINKFLAGS_$(TARGET) =  \
-	$(LINKLIB)
+    $(LINKLIB)
 
-CONFIGURATION_DEFINES =	
+CONFIGURATION_DEFINES =    
 
-DEFINES +=				\
-	$(CONFIGURATION_DEFINES)
+DEFINES +=                \
+    $(CONFIGURATION_DEFINES)
 
-DDEFINES +=				\
-	$(CONFIGURATION_DEFINES)
+DDEFINES +=                \
+    $(CONFIGURATION_DEFINES)
 
 INCLUDES := $(INCLUDES) -I$(PDIR)include
 INCLUDES += -I ./

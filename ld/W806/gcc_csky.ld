@@ -22,9 +22,9 @@
  ******************************************************************************/
 MEMORY
 {
-	I-SRAM : ORIGIN = 0x08010400 , LENGTH = 0xEFC00 /* I-SRAM  1MB */ 
-	D-SRAM : ORIGIN = 0x20000100 , LENGTH = 0x47f00   /* D-SRAM  288KB */
-	V-SRAM : ORIGIN = 0x20000000 , LENGTH = 0x100   /* off-chip SRAM 8MB */
+    I-SRAM : ORIGIN = 0x08010400 , LENGTH = 0xEFC00 /* I-SRAM  1MB */ 
+    D-SRAM : ORIGIN = 0x20000100 , LENGTH = 0x47f00   /* D-SRAM  288KB */
+    V-SRAM : ORIGIN = 0x20000000 , LENGTH = 0x100   /* off-chip SRAM 8MB */
 }
 
 __min_heap_size = 0;
@@ -88,11 +88,11 @@ SECTIONS
   __erodata = .;
  } > REGION_RODATA
  .vdata : {
- 	. = ALIGN(0x4) ;
-  	__vdata_start__ = . ;
- 	KEEP(*startup.o(.vdata))
- 	. = ALIGN(0x4) ;
-  	__vdata_end__ = .;
+     . = ALIGN(0x4) ;
+      __vdata_start__ = . ;
+     KEEP(*startup.o(.vdata))
+     . = ALIGN(0x4) ;
+      __vdata_end__ = .;
  } > REGION_VDATA
  .data : {
   . = ALIGN(0x4) ;

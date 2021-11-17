@@ -19,7 +19,7 @@ typedef enum IRQn
 {
 /****** specific Interrupt Numbers *********************************************************/
   SDIO_IRQn                   = 0,      /*!< SDIO Receiver/Transmit/Command Receiver/SDIO Command Transmit Interrupt */
-  MAC_IRQn                 	  = 1,      /*!< MAC Interrupt                                        */
+  MAC_IRQn                       = 1,      /*!< MAC Interrupt                                        */
   RF_CFG_IRQn                 = 2,      /*!< RF_CFG Interrupt                                        */
   SEC_IRQn                    = 3,      /*!< SEC RX/TX_MNGT/TX_DATA Interrupt                     */
   DMA_Channel0_IRQn           = 4,      /*!< DMA  Channel 0 global Interrupt                      */
@@ -28,15 +28,15 @@ typedef enum IRQn
   DMA_Channel3_IRQn           = 7,      /*!< DMA  Channel 3 global Interrupt                      */
   DMA_Channel4_7_IRQn         = 8,      /*!< DMA  Channel 4~7 global Interrupt                    */
   DMA_BRUST_IRQn              = 9,      /*!< DMA Burst global Interrupt                           */
-  I2C_IRQn         			  = 10,     /*!< I2C Interrupts                                       */
-  ADC_IRQn        			  = 11,     /*!< ADC Convert Interrupts                               */
+  I2C_IRQn                       = 10,     /*!< I2C Interrupts                                       */
+  ADC_IRQn                      = 11,     /*!< ADC Convert Interrupts                               */
   SPI_LS_IRQn                 = 12,     /*!< Low Speed SPI Interrupt                              */
   SPI_HS_IRQn                 = 13,     /*!< High Speed SPI Interrupt                             */
   GPIOA_IRQn                  = 14,     /*!< GPIO A Interrupt                                     */
   GPIOB_IRQn                  = 15,     /*!< GPIO B Interrupt                                     */
   UART0_IRQn                  = 16,     /*!< UART0 Interrupts                                     */
-  UART1_IRQn               	  = 17,     /*!< UART1 Interrupt                                      */
-  TOUCH_IRQn				  = 18,		/*!< TOUCH SENSOR                                      */
+  UART1_IRQn                     = 17,     /*!< UART1 Interrupt                                      */
+  TOUCH_IRQn                  = 18,		/*!< TOUCH SENSOR                                      */
   UART2_5_IRQn                = 19,     /*!< UART2/3/4/5 Interrupt                                */
   BLE_IRQn                    = 20,     /*!< BLE Interrupt                                        */
   BT_IRQn                     = 21,     /*!< BT Interrupt                                         */

@@ -7,16 +7,16 @@
 
 typedef struct
 {
-	uint32_t Reload;	// unit: us
-	
+    uint32_t Reload;    // unit: us
+    
 } WDG_InitTypeDef;
 
 typedef struct
 {
-	WDG_TypeDef *Instance;
-	
-	WDG_InitTypeDef Init;
-	
+    WDG_TypeDef *Instance;
+    
+    WDG_InitTypeDef Init;
+    
 } WDG_HandleTypeDef;
 
 

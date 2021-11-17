@@ -21,14 +21,14 @@ CONFBASE    := $(MENUBUILD)/lxdialog/menubox.o   \
 all: mconf
 
 $(MENUBUILD)/%.o: %.c
-	@mkdir -p $(MENUBUILD)
-	@mkdir -p $(MENUBUILD)/lxdialog
-	@echo "HOSTCC   $<"; $(HOSTCC) -c $(MENUCFLAGS) $< -o $@
+    @mkdir -p $(MENUBUILD)
+    @mkdir -p $(MENUBUILD)/lxdialog
+    @echo "HOSTCC   $<"; $(HOSTCC) -c $(MENUCFLAGS) $< -o $@
 
 mconf: $(CONFBASE) \
         $(MENUBUILD)/mconf.o
-	@echo "HOSTLD   $@"; $(HOSTCC) -o $(MENUBUILD)/$@ $^ $(MENULDFLAGS)
+    @echo "HOSTLD   $@"; $(HOSTCC) -o $(MENUBUILD)/$@ $^ $(MENULDFLAGS)
 
 clean :
-	@find $(MENUBUILD) -name "*.o" -exec rm "{}" \;
-#	@rm -rf $(MENUBUILD)
+    @find $(MENUBUILD) -name "*.o" -exec rm "{}" \;
+#    @rm -rf $(MENUBUILD)

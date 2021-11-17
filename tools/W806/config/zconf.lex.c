@@ -110,15 +110,15 @@ typedef unsigned int flex_uint32_t;
 /* The "const" storage-class-modifier is valid. */
 #define YY_USE_CONST
 
-#else	/* ! __cplusplus */
+#else    /* ! __cplusplus */
 
 /* C99 requires __STDC__ to be defined as 1. */
 #if defined (__STDC__)
 
 #define YY_USE_CONST
 
-#endif	/* defined (__STDC__) */
-#endif	/* ! __cplusplus */
+#endif    /* defined (__STDC__) */
+#endif    /* ! __cplusplus */
 
 #ifdef YY_USE_CONST
 #define yyconst const
@@ -183,17 +183,17 @@ extern FILE *zconfin, *zconfout;
     
 /* Return all but the first "n" matched characters back to the input stream. */
 #define yyless(n) \
-	do \
-		{ \
-		/* Undo effects of setting up zconftext. */ \
+    do \
+        { \
+        /* Undo effects of setting up zconftext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		*yy_cp = (yy_hold_char); \
-		YY_RESTORE_YY_MORE_OFFSET \
-		(yy_c_buf_p) = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up zconftext again */ \
-		} \
-	while ( 0 )
+        *yy_cp = (yy_hold_char); \
+        YY_RESTORE_YY_MORE_OFFSET \
+        (yy_c_buf_p) = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
+        YY_DO_BEFORE_ACTION; /* set up zconftext again */ \
+        } \
+    while ( 0 )
 
 #define unput(c) yyunput( c, (yytext_ptr)  )
 
@@ -205,66 +205,66 @@ typedef size_t yy_size_t;
 #ifndef YY_STRUCT_YY_BUFFER_STATE
 #define YY_STRUCT_YY_BUFFER_STATE
 struct yy_buffer_state
-	{
-	FILE *yy_input_file;
+    {
+    FILE *yy_input_file;
 
-	char *yy_ch_buf;		/* input buffer */
-	char *yy_buf_pos;		/* current position in input buffer */
+    char *yy_ch_buf;        /* input buffer */
+    char *yy_buf_pos;        /* current position in input buffer */
 
-	/* Size of input buffer in bytes, not including room for EOB
-	 * characters.
-	 */
-	yy_size_t yy_buf_size;
+    /* Size of input buffer in bytes, not including room for EOB
+     * characters.
+     */
+    yy_size_t yy_buf_size;
 
-	/* Number of characters read into yy_ch_buf, not including EOB
-	 * characters.
-	 */
-	int yy_n_chars;
+    /* Number of characters read into yy_ch_buf, not including EOB
+     * characters.
+     */
+    int yy_n_chars;
 
-	/* Whether we "own" the buffer - i.e., we know we created it,
-	 * and can realloc() it to grow it, and should free() it to
-	 * delete it.
-	 */
-	int yy_is_our_buffer;
+    /* Whether we "own" the buffer - i.e., we know we created it,
+     * and can realloc() it to grow it, and should free() it to
+     * delete it.
+     */
+    int yy_is_our_buffer;
 
-	/* Whether this is an "interactive" input source; if so, and
-	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
-	 * each newline.
-	 */
-	int yy_is_interactive;
+    /* Whether this is an "interactive" input source; if so, and
+     * if we're using stdio for input, then we want to use getc()
+     * instead of fread(), to make sure we stop fetching input after
+     * each newline.
+     */
+    int yy_is_interactive;
 
-	/* Whether we're considered to be at the beginning of a line.
-	 * If so, '^' rules will be active on the next match, otherwise
-	 * not.
-	 */
-	int yy_at_bol;
+    /* Whether we're considered to be at the beginning of a line.
+     * If so, '^' rules will be active on the next match, otherwise
+     * not.
+     */
+    int yy_at_bol;
 
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
     
-	/* Whether to try to fill the input buffer when we reach the
-	 * end of it.
-	 */
-	int yy_fill_buffer;
+    /* Whether to try to fill the input buffer when we reach the
+     * end of it.
+     */
+    int yy_fill_buffer;
 
-	int yy_buffer_status;
+    int yy_buffer_status;
 
 #define YY_BUFFER_NEW 0
 #define YY_BUFFER_NORMAL 1
-	/* When an EOF's been seen but there's still some text to process
-	 * then we mark the buffer as YY_EOF_PENDING, to indicate that we
-	 * shouldn't try reading from the input source any more.  We might
-	 * still have a bunch of tokens to match, though, because of
-	 * possible backing-up.
-	 *
-	 * When we actually see the EOF, we change the status to "new"
-	 * (via zconfrestart()), so that the user can continue scanning by
-	 * just pointing zconfin at a new input file.
-	 */
+    /* When an EOF's been seen but there's still some text to process
+     * then we mark the buffer as YY_EOF_PENDING, to indicate that we
+     * shouldn't try reading from the input source any more.  We might
+     * still have a bunch of tokens to match, though, because of
+     * possible backing-up.
+     *
+     * When we actually see the EOF, we change the status to "new"
+     * (via zconfrestart()), so that the user can continue scanning by
+     * just pointing zconfin at a new input file.
+     */
 #define YY_BUFFER_EOF_PENDING 2
 
-	};
+    };
 #endif /* !YY_STRUCT_YY_BUFFER_STATE */
 
 /* Stack of input buffers. */
@@ -289,13 +289,13 @@ static YY_BUFFER_STATE * yy_buffer_stack = 0; /**< Stack as an array. */
 
 /* yy_hold_char holds the character lost when zconftext is formed. */
 static char yy_hold_char;
-static int yy_n_chars;		/* number of characters read into yy_ch_buf */
+static int yy_n_chars;        /* number of characters read into yy_ch_buf */
 int zconfleng;
 
 /* Points to current character in buffer. */
 static char *yy_c_buf_p = (char *) 0;
-static int yy_init = 0;		/* whether we need to initialize */
-static int yy_start = 0;	/* start state number */
+static int yy_init = 0;        /* whether we need to initialize */
+static int yy_start = 0;    /* start state number */
 
 /* Flag which is used to allow zconfwrap()'s to do buffer switches
  * instead of setting up a fresh zconfin.  A bit of a hack ...
@@ -327,24 +327,24 @@ void zconffree (void *  );
 #define yy_new_buffer zconf_create_buffer
 
 #define yy_set_interactive(is_interactive) \
-	{ \
-	if ( ! YY_CURRENT_BUFFER ){ \
+    { \
+    if ( ! YY_CURRENT_BUFFER ){ \
         zconfensure_buffer_stack (); \
-		YY_CURRENT_BUFFER_LVALUE =    \
+        YY_CURRENT_BUFFER_LVALUE =    \
             zconf_create_buffer(zconfin,YY_BUF_SIZE ); \
-	} \
-	YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
-	}
+    } \
+    YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
+    }
 
 #define yy_set_bol(at_bol) \
-	{ \
-	if ( ! YY_CURRENT_BUFFER ){\
+    { \
+    if ( ! YY_CURRENT_BUFFER ){\
         zconfensure_buffer_stack (); \
-		YY_CURRENT_BUFFER_LVALUE =    \
+        YY_CURRENT_BUFFER_LVALUE =    \
             zconf_create_buffer(zconfin,YY_BUF_SIZE ); \
-	} \
-	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
-	}
+    } \
+    YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
+    }
 
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
@@ -695,21 +695,21 @@ static void yy_fatal_error (yyconst char msg[]  );
  * corresponding action - sets up zconftext.
  */
 #define YY_DO_BEFORE_ACTION \
-	(yytext_ptr) = yy_bp; \
-	zconfleng = (size_t) (yy_cp - yy_bp); \
-	(yy_hold_char) = *yy_cp; \
-	*yy_cp = '\0'; \
-	(yy_c_buf_p) = yy_cp;
+    (yytext_ptr) = yy_bp; \
+    zconfleng = (size_t) (yy_cp - yy_bp); \
+    (yy_hold_char) = *yy_cp; \
+    *yy_cp = '\0'; \
+    (yy_c_buf_p) = yy_cp;
 
 #define YY_NUM_RULES 33
 #define YY_END_OF_BUFFER 34
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
-	{
-	flex_int32_t yy_verify;
-	flex_int32_t yy_nxt;
-	};
+    {
+    flex_int32_t yy_verify;
+    flex_int32_t yy_nxt;
+    };
 static yyconst flex_int16_t yy_accept[61] =
     {   0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -778,19 +778,19 @@ char *zconftext;
 
 #include "lkc.h"
 
-#define START_STRSIZE	16
+#define START_STRSIZE    16
 
 static struct {
-	struct file *file;
-	int lineno;
+    struct file *file;
+    int lineno;
 } current_pos;
 
 static char *text;
 static int text_size, text_asize;
 
 struct buffer {
-	struct buffer *parent;
-	YY_BUFFER_STATE state;
+    struct buffer *parent;
+    YY_BUFFER_STATE state;
 };
 
 struct buffer *current_buf;
@@ -802,31 +802,31 @@ static void zconf_endfile(void);
 
 static void new_string(void)
 {
-	text = xmalloc(START_STRSIZE);
-	text_asize = START_STRSIZE;
-	text_size = 0;
-	*text = 0;
+    text = xmalloc(START_STRSIZE);
+    text_asize = START_STRSIZE;
+    text_size = 0;
+    *text = 0;
 }
 
 static void append_string(const char *str, int size)
 {
-	int new_size = text_size + size + 1;
-	if (new_size > text_asize) {
-		new_size += START_STRSIZE - 1;
-		new_size &= -START_STRSIZE;
-		text = realloc(text, new_size);
-		text_asize = new_size;
-	}
-	memcpy(text + text_size, str, size);
-	text_size += size;
-	text[text_size] = 0;
+    int new_size = text_size + size + 1;
+    if (new_size > text_asize) {
+        new_size += START_STRSIZE - 1;
+        new_size &= -START_STRSIZE;
+        text = realloc(text, new_size);
+        text_asize = new_size;
+    }
+    memcpy(text + text_size, str, size);
+    text_size += size;
+    text[text_size] = 0;
 }
 
 static void alloc_string(const char *str, int size)
 {
-	text = xmalloc(size + 1);
-	memcpy(text, str, size);
-	text[size] = 0;
+    text = xmalloc(size + 1);
+    memcpy(text, str, size);
+    text[size] = 0;
 }
 
 #define INITIAL 0
@@ -928,17 +928,17 @@ static int input (void );
  */
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
-	errno=0; \
-	while ( (result = read( fileno(zconfin), (char *) buf, max_size )) < 0 ) \
-	{ \
-		if( errno != EINTR) \
-		{ \
-			YY_FATAL_ERROR( "input in flex scanner failed" ); \
-			break; \
-		} \
-		errno=0; \
-		clearerr(zconfin); \
-	}\
+    errno=0; \
+    while ( (result = read( fileno(zconfin), (char *) buf, max_size )) < 0 ) \
+    { \
+        if( errno != EINTR) \
+        { \
+            YY_FATAL_ERROR( "input in flex scanner failed" ); \
+            break; \
+        } \
+        errno=0; \
+        clearerr(zconfin); \
+    }\
 \
 
 #endif
@@ -987,207 +987,207 @@ extern int zconflex (void);
 #endif
 
 #define YY_RULE_SETUP \
-	YY_USER_ACTION
+    YY_USER_ACTION
 
 /** The main scanner function which does all the work.
  */
 YY_DECL
 {
-	register yy_state_type yy_current_state;
-	register char *yy_cp, *yy_bp;
-	register int yy_act;
+    register yy_state_type yy_current_state;
+    register char *yy_cp, *yy_bp;
+    register int yy_act;
     
-	int str = 0;
-	int ts, i;
+    int str = 0;
+    int ts, i;
 
-	if ( !(yy_init) )
-		{
-		(yy_init) = 1;
+    if ( !(yy_init) )
+        {
+        (yy_init) = 1;
 
 #ifdef YY_USER_INIT
-		YY_USER_INIT;
+        YY_USER_INIT;
 #endif
 
-		if ( ! (yy_start) )
-			(yy_start) = 1;	/* first start state */
+        if ( ! (yy_start) )
+            (yy_start) = 1;    /* first start state */
 
-		if ( ! zconfin )
-			zconfin = stdin;
+        if ( ! zconfin )
+            zconfin = stdin;
 
-		if ( ! zconfout )
-			zconfout = stdout;
+        if ( ! zconfout )
+            zconfout = stdout;
 
-		if ( ! YY_CURRENT_BUFFER ) {
-			zconfensure_buffer_stack ();
-			YY_CURRENT_BUFFER_LVALUE =
-				zconf_create_buffer(zconfin,YY_BUF_SIZE );
-		}
+        if ( ! YY_CURRENT_BUFFER ) {
+            zconfensure_buffer_stack ();
+            YY_CURRENT_BUFFER_LVALUE =
+                zconf_create_buffer(zconfin,YY_BUF_SIZE );
+        }
 
-		zconf_load_buffer_state( );
-		}
+        zconf_load_buffer_state( );
+        }
 
-	while ( 1 )		/* loops until end-of-file is reached */
-		{
-		yy_cp = (yy_c_buf_p);
+    while ( 1 )        /* loops until end-of-file is reached */
+        {
+        yy_cp = (yy_c_buf_p);
 
-		/* Support of zconftext. */
-		*yy_cp = (yy_hold_char);
+        /* Support of zconftext. */
+        *yy_cp = (yy_hold_char);
 
-		/* yy_bp points to the position in yy_ch_buf of the start of
-		 * the current run.
-		 */
-		yy_bp = yy_cp;
+        /* yy_bp points to the position in yy_ch_buf of the start of
+         * the current run.
+         */
+        yy_bp = yy_cp;
 
-		yy_current_state = (yy_start);
+        yy_current_state = (yy_start);
 yy_match:
-		while ( (yy_current_state = yy_nxt[yy_current_state][ yy_ec[YY_SC_TO_UI(*yy_cp)]  ]) > 0 )
-			++yy_cp;
+        while ( (yy_current_state = yy_nxt[yy_current_state][ yy_ec[YY_SC_TO_UI(*yy_cp)]  ]) > 0 )
+            ++yy_cp;
 
-		yy_current_state = -yy_current_state;
+        yy_current_state = -yy_current_state;
 
 yy_find_action:
-		yy_act = yy_accept[yy_current_state];
+        yy_act = yy_accept[yy_current_state];
 
-		YY_DO_BEFORE_ACTION;
+        YY_DO_BEFORE_ACTION;
 
-do_action:	/* This label is used only to access EOF actions. */
+do_action:    /* This label is used only to access EOF actions. */
 
-		switch ( yy_act )
-	{ /* beginning of action switch */
+        switch ( yy_act )
+    { /* beginning of action switch */
 case 1:
 /* rule 1 can match eol */
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 {
-	current_file->lineno++;
-	return T_EOL;
+    current_file->lineno++;
+    return T_EOL;
 }
-	YY_BREAK
+    YY_BREAK
 case 3:
 YY_RULE_SETUP
 
-	YY_BREAK
+    YY_BREAK
 case 4:
 YY_RULE_SETUP
 {
-	BEGIN(COMMAND);
+    BEGIN(COMMAND);
 }
-	YY_BREAK
+    YY_BREAK
 case 5:
 YY_RULE_SETUP
 {
-	unput(zconftext[0]);
-	BEGIN(COMMAND);
+    unput(zconftext[0]);
+    BEGIN(COMMAND);
 }
-	YY_BREAK
+    YY_BREAK
 
 case 6:
 YY_RULE_SETUP
 {
-		const struct kconf_id *id = kconf_id_lookup(zconftext, zconfleng);
-		BEGIN(PARAM);
-		current_pos.file = current_file;
-		current_pos.lineno = current_file->lineno;
-		if (id && id->flags & TF_COMMAND) {
-			zconflval.id = id;
-			return id->token;
-		}
-		alloc_string(zconftext, zconfleng);
-		zconflval.string = text;
-		return T_WORD;
-	}
-	YY_BREAK
+        const struct kconf_id *id = kconf_id_lookup(zconftext, zconfleng);
+        BEGIN(PARAM);
+        current_pos.file = current_file;
+        current_pos.lineno = current_file->lineno;
+        if (id && id->flags & TF_COMMAND) {
+            zconflval.id = id;
+            return id->token;
+        }
+        alloc_string(zconftext, zconfleng);
+        zconflval.string = text;
+        return T_WORD;
+    }
+    YY_BREAK
 case 7:
 YY_RULE_SETUP
 
-	YY_BREAK
+    YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
 {
-		BEGIN(INITIAL);
-		current_file->lineno++;
-		return T_EOL;
-	}
-	YY_BREAK
+        BEGIN(INITIAL);
+        current_file->lineno++;
+        return T_EOL;
+    }
+    YY_BREAK
 
 case 9:
 YY_RULE_SETUP
 return T_AND;
-	YY_BREAK
+    YY_BREAK
 case 10:
 YY_RULE_SETUP
 return T_OR;
-	YY_BREAK
+    YY_BREAK
 case 11:
 YY_RULE_SETUP
 return T_OPEN_PAREN;
-	YY_BREAK
+    YY_BREAK
 case 12:
 YY_RULE_SETUP
 return T_CLOSE_PAREN;
-	YY_BREAK
+    YY_BREAK
 case 13:
 YY_RULE_SETUP
 return T_NOT;
-	YY_BREAK
+    YY_BREAK
 case 14:
 YY_RULE_SETUP
 return T_EQUAL;
-	YY_BREAK
+    YY_BREAK
 case 15:
 YY_RULE_SETUP
 return T_UNEQUAL;
-	YY_BREAK
+    YY_BREAK
 case 16:
 YY_RULE_SETUP
 {
-		str = zconftext[0];
-		new_string();
-		BEGIN(STRING);
-	}
-	YY_BREAK
+        str = zconftext[0];
+        new_string();
+        BEGIN(STRING);
+    }
+    YY_BREAK
 case 17:
 /* rule 17 can match eol */
 YY_RULE_SETUP
 BEGIN(INITIAL); current_file->lineno++; return T_EOL;
-	YY_BREAK
+    YY_BREAK
 case 18:
 YY_RULE_SETUP
 /* ignore */
-	YY_BREAK
+    YY_BREAK
 case 19:
 YY_RULE_SETUP
 {
-		const struct kconf_id *id = kconf_id_lookup(zconftext, zconfleng);
-		if (id && id->flags & TF_PARAM) {
-			zconflval.id = id;
-			return id->token;
-		}
-		alloc_string(zconftext, zconfleng);
-		zconflval.string = text;
-		return T_WORD;
-	}
-	YY_BREAK
+        const struct kconf_id *id = kconf_id_lookup(zconftext, zconfleng);
+        if (id && id->flags & TF_PARAM) {
+            zconflval.id = id;
+            return id->token;
+        }
+        alloc_string(zconftext, zconfleng);
+        zconflval.string = text;
+        return T_WORD;
+    }
+    YY_BREAK
 case 20:
 YY_RULE_SETUP
 /* comment */
-	YY_BREAK
+    YY_BREAK
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
 current_file->lineno++;
-	YY_BREAK
+    YY_BREAK
 case 22:
 YY_RULE_SETUP
 
-	YY_BREAK
+    YY_BREAK
 case YY_STATE_EOF(PARAM):
 {
-		BEGIN(INITIAL);
-	}
-	YY_BREAK
+        BEGIN(INITIAL);
+    }
+    YY_BREAK
 
 case 23:
 /* rule 23 can match eol */
@@ -1196,17 +1196,17 @@ case 23:
 YY_DO_BEFORE_ACTION; /* set up zconftext again */
 YY_RULE_SETUP
 {
-		append_string(zconftext, zconfleng);
-		zconflval.string = text;
-		return T_WORD_QUOTE;
-	}
-	YY_BREAK
+        append_string(zconftext, zconfleng);
+        zconflval.string = text;
+        return T_WORD_QUOTE;
+    }
+    YY_BREAK
 case 24:
 YY_RULE_SETUP
 {
-		append_string(zconftext, zconfleng);
-	}
-	YY_BREAK
+        append_string(zconftext, zconfleng);
+    }
+    YY_BREAK
 case 25:
 /* rule 25 can match eol */
 *yy_cp = (yy_hold_char); /* undo effects of setting up zconftext */
@@ -1214,69 +1214,69 @@ case 25:
 YY_DO_BEFORE_ACTION; /* set up zconftext again */
 YY_RULE_SETUP
 {
-		append_string(zconftext + 1, zconfleng - 1);
-		zconflval.string = text;
-		return T_WORD_QUOTE;
-	}
-	YY_BREAK
+        append_string(zconftext + 1, zconfleng - 1);
+        zconflval.string = text;
+        return T_WORD_QUOTE;
+    }
+    YY_BREAK
 case 26:
 YY_RULE_SETUP
 {
-		append_string(zconftext + 1, zconfleng - 1);
-	}
-	YY_BREAK
+        append_string(zconftext + 1, zconfleng - 1);
+    }
+    YY_BREAK
 case 27:
 YY_RULE_SETUP
 {
-		if (str == zconftext[0]) {
-			BEGIN(PARAM);
-			zconflval.string = text;
-			return T_WORD_QUOTE;
-		} else
-			append_string(zconftext, 1);
-	}
-	YY_BREAK
+        if (str == zconftext[0]) {
+            BEGIN(PARAM);
+            zconflval.string = text;
+            return T_WORD_QUOTE;
+        } else
+            append_string(zconftext, 1);
+    }
+    YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
 {
-		printf("%s:%d:warning: multi-line strings not supported\n", zconf_curname(), zconf_lineno());
-		current_file->lineno++;
-		BEGIN(INITIAL);
-		return T_EOL;
-	}
-	YY_BREAK
+        printf("%s:%d:warning: multi-line strings not supported\n", zconf_curname(), zconf_lineno());
+        current_file->lineno++;
+        BEGIN(INITIAL);
+        return T_EOL;
+    }
+    YY_BREAK
 case YY_STATE_EOF(STRING):
 {
-		BEGIN(INITIAL);
-	}
-	YY_BREAK
+        BEGIN(INITIAL);
+    }
+    YY_BREAK
 
 case 29:
 YY_RULE_SETUP
 {
-		ts = 0;
-		for (i = 0; i < zconfleng; i++) {
-			if (zconftext[i] == '\t')
-				ts = (ts & ~7) + 8;
-			else
-				ts++;
-		}
-		last_ts = ts;
-		if (first_ts) {
-			if (ts < first_ts) {
-				zconf_endhelp();
-				return T_HELPTEXT;
-			}
-			ts -= first_ts;
-			while (ts > 8) {
-				append_string("        ", 8);
-				ts -= 8;
-			}
-			append_string("        ", ts);
-		}
-	}
-	YY_BREAK
+        ts = 0;
+        for (i = 0; i < zconfleng; i++) {
+            if (zconftext[i] == '\t')
+                ts = (ts & ~7) + 8;
+            else
+                ts++;
+        }
+        last_ts = ts;
+        if (first_ts) {
+            if (ts < first_ts) {
+                zconf_endhelp();
+                return T_HELPTEXT;
+            }
+            ts -= first_ts;
+            while (ts > 8) {
+                append_string("        ", 8);
+                ts -= 8;
+            }
+            append_string("        ", ts);
+        }
+    }
+    YY_BREAK
 case 30:
 /* rule 30 can match eol */
 *yy_cp = (yy_hold_char); /* undo effects of setting up zconftext */
@@ -1284,390 +1284,390 @@ case 30:
 YY_DO_BEFORE_ACTION; /* set up zconftext again */
 YY_RULE_SETUP
 {
-		current_file->lineno++;
-		zconf_endhelp();
-		return T_HELPTEXT;
-	}
-	YY_BREAK
+        current_file->lineno++;
+        zconf_endhelp();
+        return T_HELPTEXT;
+    }
+    YY_BREAK
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
 {
-		current_file->lineno++;
-		append_string("\n", 1);
-	}
-	YY_BREAK
+        current_file->lineno++;
+        append_string("\n", 1);
+    }
+    YY_BREAK
 case 32:
 YY_RULE_SETUP
 {
-		while (zconfleng) {
-			if ((zconftext[zconfleng-1] != ' ') && (zconftext[zconfleng-1] != '\t'))
-				break;
-			zconfleng--;
-		}
-		append_string(zconftext, zconfleng);
-		if (!first_ts)
-			first_ts = last_ts;
-	}
-	YY_BREAK
+        while (zconfleng) {
+            if ((zconftext[zconfleng-1] != ' ') && (zconftext[zconfleng-1] != '\t'))
+                break;
+            zconfleng--;
+        }
+        append_string(zconftext, zconfleng);
+        if (!first_ts)
+            first_ts = last_ts;
+    }
+    YY_BREAK
 case YY_STATE_EOF(HELP):
 {
-		zconf_endhelp();
-		return T_HELPTEXT;
-	}
-	YY_BREAK
+        zconf_endhelp();
+        return T_HELPTEXT;
+    }
+    YY_BREAK
 
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMAND):
 {
-	if (current_file) {
-		zconf_endfile();
-		return T_EOL;
-	}
-	fclose(zconfin);
-	yyterminate();
+    if (current_file) {
+        zconf_endfile();
+        return T_EOL;
+    }
+    fclose(zconfin);
+    yyterminate();
 }
-	YY_BREAK
+    YY_BREAK
 case 33:
 YY_RULE_SETUP
 YY_FATAL_ERROR( "flex scanner jammed" );
-	YY_BREAK
+    YY_BREAK
 
-	case YY_END_OF_BUFFER:
-		{
-		/* Amount of text matched not including the EOB char. */
-		int yy_amount_of_matched_text = (int) (yy_cp - (yytext_ptr)) - 1;
+    case YY_END_OF_BUFFER:
+        {
+        /* Amount of text matched not including the EOB char. */
+        int yy_amount_of_matched_text = (int) (yy_cp - (yytext_ptr)) - 1;
 
-		/* Undo the effects of YY_DO_BEFORE_ACTION. */
-		*yy_cp = (yy_hold_char);
-		YY_RESTORE_YY_MORE_OFFSET
+        /* Undo the effects of YY_DO_BEFORE_ACTION. */
+        *yy_cp = (yy_hold_char);
+        YY_RESTORE_YY_MORE_OFFSET
 
-		if ( YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_NEW )
-			{
-			/* We're scanning a new file or input source.  It's
-			 * possible that this happened because the user
-			 * just pointed zconfin at a new source and called
-			 * zconflex().  If so, then we have to assure
-			 * consistency between YY_CURRENT_BUFFER and our
-			 * globals.  Here is the right place to do so, because
-			 * this is the first action (other than possibly a
-			 * back-up) that will match for the new input source.
-			 */
-			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = zconfin;
-			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
-			}
+        if ( YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_NEW )
+            {
+            /* We're scanning a new file or input source.  It's
+             * possible that this happened because the user
+             * just pointed zconfin at a new source and called
+             * zconflex().  If so, then we have to assure
+             * consistency between YY_CURRENT_BUFFER and our
+             * globals.  Here is the right place to do so, because
+             * this is the first action (other than possibly a
+             * back-up) that will match for the new input source.
+             */
+            (yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
+            YY_CURRENT_BUFFER_LVALUE->yy_input_file = zconfin;
+            YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
+            }
 
-		/* Note that here we test for yy_c_buf_p "<=" to the position
-		 * of the first EOB in the buffer, since yy_c_buf_p will
-		 * already have been incremented past the NUL character
-		 * (since all states make transitions on EOB to the
-		 * end-of-buffer state).  Contrast this with the test
-		 * in input().
-		 */
-		if ( (yy_c_buf_p) <= &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)] )
-			{ /* This was really a NUL. */
-			yy_state_type yy_next_state;
+        /* Note that here we test for yy_c_buf_p "<=" to the position
+         * of the first EOB in the buffer, since yy_c_buf_p will
+         * already have been incremented past the NUL character
+         * (since all states make transitions on EOB to the
+         * end-of-buffer state).  Contrast this with the test
+         * in input().
+         */
+        if ( (yy_c_buf_p) <= &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)] )
+            { /* This was really a NUL. */
+            yy_state_type yy_next_state;
 
-			(yy_c_buf_p) = (yytext_ptr) + yy_amount_of_matched_text;
+            (yy_c_buf_p) = (yytext_ptr) + yy_amount_of_matched_text;
 
-			yy_current_state = yy_get_previous_state(  );
+            yy_current_state = yy_get_previous_state(  );
 
-			/* Okay, we're now positioned to make the NUL
-			 * transition.  We couldn't have
-			 * yy_get_previous_state() go ahead and do it
-			 * for us because it doesn't know how to deal
-			 * with the possibility of jamming (and we don't
-			 * want to build jamming into it because then it
-			 * will run more slowly).
-			 */
+            /* Okay, we're now positioned to make the NUL
+             * transition.  We couldn't have
+             * yy_get_previous_state() go ahead and do it
+             * for us because it doesn't know how to deal
+             * with the possibility of jamming (and we don't
+             * want to build jamming into it because then it
+             * will run more slowly).
+             */
 
-			yy_next_state = yy_try_NUL_trans( yy_current_state );
+            yy_next_state = yy_try_NUL_trans( yy_current_state );
 
-			yy_bp = (yytext_ptr) + YY_MORE_ADJ;
+            yy_bp = (yytext_ptr) + YY_MORE_ADJ;
 
-			if ( yy_next_state )
-				{
-				/* Consume the NUL. */
-				yy_cp = ++(yy_c_buf_p);
-				yy_current_state = yy_next_state;
-				goto yy_match;
-				}
+            if ( yy_next_state )
+                {
+                /* Consume the NUL. */
+                yy_cp = ++(yy_c_buf_p);
+                yy_current_state = yy_next_state;
+                goto yy_match;
+                }
 
-			else
-				{
-				yy_cp = (yy_c_buf_p);
-				goto yy_find_action;
-				}
-			}
+            else
+                {
+                yy_cp = (yy_c_buf_p);
+                goto yy_find_action;
+                }
+            }
 
-		else switch ( yy_get_next_buffer(  ) )
-			{
-			case EOB_ACT_END_OF_FILE:
-				{
-				(yy_did_buffer_switch_on_eof) = 0;
+        else switch ( yy_get_next_buffer(  ) )
+            {
+            case EOB_ACT_END_OF_FILE:
+                {
+                (yy_did_buffer_switch_on_eof) = 0;
 
-				if ( zconfwrap( ) )
-					{
-					/* Note: because we've taken care in
-					 * yy_get_next_buffer() to have set up
-					 * zconftext, we can now set up
-					 * yy_c_buf_p so that if some total
-					 * hoser (like flex itself) wants to
-					 * call the scanner after we return the
-					 * YY_NULL, it'll still work - another
-					 * YY_NULL will get returned.
-					 */
-					(yy_c_buf_p) = (yytext_ptr) + YY_MORE_ADJ;
+                if ( zconfwrap( ) )
+                    {
+                    /* Note: because we've taken care in
+                     * yy_get_next_buffer() to have set up
+                     * zconftext, we can now set up
+                     * yy_c_buf_p so that if some total
+                     * hoser (like flex itself) wants to
+                     * call the scanner after we return the
+                     * YY_NULL, it'll still work - another
+                     * YY_NULL will get returned.
+                     */
+                    (yy_c_buf_p) = (yytext_ptr) + YY_MORE_ADJ;
 
-					yy_act = YY_STATE_EOF(YY_START);
-					goto do_action;
-					}
+                    yy_act = YY_STATE_EOF(YY_START);
+                    goto do_action;
+                    }
 
-				else
-					{
-					if ( ! (yy_did_buffer_switch_on_eof) )
-						YY_NEW_FILE;
-					}
-				break;
-				}
+                else
+                    {
+                    if ( ! (yy_did_buffer_switch_on_eof) )
+                        YY_NEW_FILE;
+                    }
+                break;
+                }
 
-			case EOB_ACT_CONTINUE_SCAN:
-				(yy_c_buf_p) =
-					(yytext_ptr) + yy_amount_of_matched_text;
+            case EOB_ACT_CONTINUE_SCAN:
+                (yy_c_buf_p) =
+                    (yytext_ptr) + yy_amount_of_matched_text;
 
-				yy_current_state = yy_get_previous_state(  );
+                yy_current_state = yy_get_previous_state(  );
 
-				yy_cp = (yy_c_buf_p);
-				yy_bp = (yytext_ptr) + YY_MORE_ADJ;
-				goto yy_match;
+                yy_cp = (yy_c_buf_p);
+                yy_bp = (yytext_ptr) + YY_MORE_ADJ;
+                goto yy_match;
 
-			case EOB_ACT_LAST_MATCH:
-				(yy_c_buf_p) =
-				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)];
+            case EOB_ACT_LAST_MATCH:
+                (yy_c_buf_p) =
+                &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)];
 
-				yy_current_state = yy_get_previous_state(  );
+                yy_current_state = yy_get_previous_state(  );
 
-				yy_cp = (yy_c_buf_p);
-				yy_bp = (yytext_ptr) + YY_MORE_ADJ;
-				goto yy_find_action;
-			}
-		break;
-		}
+                yy_cp = (yy_c_buf_p);
+                yy_bp = (yytext_ptr) + YY_MORE_ADJ;
+                goto yy_find_action;
+            }
+        break;
+        }
 
-	default:
-		YY_FATAL_ERROR(
-			"fatal flex scanner internal error--no action found" );
-	} /* end of action switch */
-		} /* end of scanning one token */
+    default:
+        YY_FATAL_ERROR(
+            "fatal flex scanner internal error--no action found" );
+    } /* end of action switch */
+        } /* end of scanning one token */
 } /* end of zconflex */
 
 /* yy_get_next_buffer - try to read in a new buffer
  *
  * Returns a code representing an action:
- *	EOB_ACT_LAST_MATCH -
- *	EOB_ACT_CONTINUE_SCAN - continue scanning from current position
- *	EOB_ACT_END_OF_FILE - end of file
+ *    EOB_ACT_LAST_MATCH -
+ *    EOB_ACT_CONTINUE_SCAN - continue scanning from current position
+ *    EOB_ACT_END_OF_FILE - end of file
  */
 static int yy_get_next_buffer (void)
 {
-    	register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
-	register char *source = (yytext_ptr);
-	register int number_to_move, i;
-	int ret_val;
+        register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
+    register char *source = (yytext_ptr);
+    register int number_to_move, i;
+    int ret_val;
 
-	if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
-		YY_FATAL_ERROR(
-		"fatal flex scanner internal error--end of buffer missed" );
+    if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
+        YY_FATAL_ERROR(
+        "fatal flex scanner internal error--end of buffer missed" );
 
-	if ( YY_CURRENT_BUFFER_LVALUE->yy_fill_buffer == 0 )
-		{ /* Don't try to fill the buffer, so this is an EOF. */
-		if ( (yy_c_buf_p) - (yytext_ptr) - YY_MORE_ADJ == 1 )
-			{
-			/* We matched a single character, the EOB, so
-			 * treat this as a final EOF.
-			 */
-			return EOB_ACT_END_OF_FILE;
-			}
+    if ( YY_CURRENT_BUFFER_LVALUE->yy_fill_buffer == 0 )
+        { /* Don't try to fill the buffer, so this is an EOF. */
+        if ( (yy_c_buf_p) - (yytext_ptr) - YY_MORE_ADJ == 1 )
+            {
+            /* We matched a single character, the EOB, so
+             * treat this as a final EOF.
+             */
+            return EOB_ACT_END_OF_FILE;
+            }
 
-		else
-			{
-			/* We matched some text prior to the EOB, first
-			 * process it.
-			 */
-			return EOB_ACT_LAST_MATCH;
-			}
-		}
+        else
+            {
+            /* We matched some text prior to the EOB, first
+             * process it.
+             */
+            return EOB_ACT_LAST_MATCH;
+            }
+        }
 
-	/* Try to read more data. */
+    /* Try to read more data. */
 
-	/* First move last chars to start of buffer. */
-	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr)) - 1;
+    /* First move last chars to start of buffer. */
+    number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr)) - 1;
 
-	for ( i = 0; i < number_to_move; ++i )
-		*(dest++) = *(source++);
+    for ( i = 0; i < number_to_move; ++i )
+        *(dest++) = *(source++);
 
-	if ( YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_EOF_PENDING )
-		/* don't do the read, it's not guaranteed to return an EOF,
-		 * just force an EOF
-		 */
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars) = 0;
+    if ( YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_EOF_PENDING )
+        /* don't do the read, it's not guaranteed to return an EOF,
+         * just force an EOF
+         */
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars) = 0;
 
-	else
-		{
-			int num_to_read =
-			YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
+    else
+        {
+            int num_to_read =
+            YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
 
-		while ( num_to_read <= 0 )
-			{ /* Not enough room in the buffer - grow it. */
+        while ( num_to_read <= 0 )
+            { /* Not enough room in the buffer - grow it. */
 
-			/* just a shorter name for the current buffer */
-			YY_BUFFER_STATE b = YY_CURRENT_BUFFER;
+            /* just a shorter name for the current buffer */
+            YY_BUFFER_STATE b = YY_CURRENT_BUFFER;
 
-			int yy_c_buf_p_offset =
-				(int) ((yy_c_buf_p) - b->yy_ch_buf);
+            int yy_c_buf_p_offset =
+                (int) ((yy_c_buf_p) - b->yy_ch_buf);
 
-			if ( b->yy_is_our_buffer )
-				{
-				int new_size = b->yy_buf_size * 2;
+            if ( b->yy_is_our_buffer )
+                {
+                int new_size = b->yy_buf_size * 2;
 
-				if ( new_size <= 0 )
-					b->yy_buf_size += b->yy_buf_size / 8;
-				else
-					b->yy_buf_size *= 2;
+                if ( new_size <= 0 )
+                    b->yy_buf_size += b->yy_buf_size / 8;
+                else
+                    b->yy_buf_size *= 2;
 
-				b->yy_ch_buf = (char *)
-					/* Include room in for 2 EOB chars. */
-					zconfrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
-				}
-			else
-				/* Can't grow it, we don't own it. */
-				b->yy_ch_buf = 0;
+                b->yy_ch_buf = (char *)
+                    /* Include room in for 2 EOB chars. */
+                    zconfrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
+                }
+            else
+                /* Can't grow it, we don't own it. */
+                b->yy_ch_buf = 0;
 
-			if ( ! b->yy_ch_buf )
-				YY_FATAL_ERROR(
-				"fatal error - scanner input buffer overflow" );
+            if ( ! b->yy_ch_buf )
+                YY_FATAL_ERROR(
+                "fatal error - scanner input buffer overflow" );
 
-			(yy_c_buf_p) = &b->yy_ch_buf[yy_c_buf_p_offset];
+            (yy_c_buf_p) = &b->yy_ch_buf[yy_c_buf_p_offset];
 
-			num_to_read = YY_CURRENT_BUFFER_LVALUE->yy_buf_size -
-						number_to_move - 1;
+            num_to_read = YY_CURRENT_BUFFER_LVALUE->yy_buf_size -
+                        number_to_move - 1;
 
-			}
+            }
 
-		if ( num_to_read > YY_READ_BUF_SIZE )
-			num_to_read = YY_READ_BUF_SIZE;
+        if ( num_to_read > YY_READ_BUF_SIZE )
+            num_to_read = YY_READ_BUF_SIZE;
 
-		/* Read in more data. */
-		YY_INPUT( (&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move]),
-			(yy_n_chars), (size_t) num_to_read );
+        /* Read in more data. */
+        YY_INPUT( (&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move]),
+            (yy_n_chars), (size_t) num_to_read );
 
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars);
-		}
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars);
+        }
 
-	if ( (yy_n_chars) == 0 )
-		{
-		if ( number_to_move == YY_MORE_ADJ )
-			{
-			ret_val = EOB_ACT_END_OF_FILE;
-			zconfrestart(zconfin  );
-			}
+    if ( (yy_n_chars) == 0 )
+        {
+        if ( number_to_move == YY_MORE_ADJ )
+            {
+            ret_val = EOB_ACT_END_OF_FILE;
+            zconfrestart(zconfin  );
+            }
 
-		else
-			{
-			ret_val = EOB_ACT_LAST_MATCH;
-			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status =
-				YY_BUFFER_EOF_PENDING;
-			}
-		}
+        else
+            {
+            ret_val = EOB_ACT_LAST_MATCH;
+            YY_CURRENT_BUFFER_LVALUE->yy_buffer_status =
+                YY_BUFFER_EOF_PENDING;
+            }
+        }
 
-	else
-		ret_val = EOB_ACT_CONTINUE_SCAN;
+    else
+        ret_val = EOB_ACT_CONTINUE_SCAN;
 
-	if ((yy_size_t) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
-		/* Extend the array by 50%, plus the number we really need. */
-		yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
-		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) zconfrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
-		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
-			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
-	}
+    if ((yy_size_t) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+        /* Extend the array by 50%, plus the number we really need. */
+        yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
+        YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) zconfrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
+        if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
+            YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
+    }
 
-	(yy_n_chars) += number_to_move;
-	YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)] = YY_END_OF_BUFFER_CHAR;
-	YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] = YY_END_OF_BUFFER_CHAR;
+    (yy_n_chars) += number_to_move;
+    YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)] = YY_END_OF_BUFFER_CHAR;
+    YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] = YY_END_OF_BUFFER_CHAR;
 
-	(yytext_ptr) = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[0];
+    (yytext_ptr) = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[0];
 
-	return ret_val;
+    return ret_val;
 }
 
 /* yy_get_previous_state - get the state just before the EOB char was reached */
 
     static yy_state_type yy_get_previous_state (void)
 {
-	register yy_state_type yy_current_state;
-	register char *yy_cp;
+    register yy_state_type yy_current_state;
+    register char *yy_cp;
     
-	yy_current_state = (yy_start);
+    yy_current_state = (yy_start);
 
-	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
-		{
-		yy_current_state = yy_nxt[yy_current_state][(*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1)];
-		}
+    for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
+        {
+        yy_current_state = yy_nxt[yy_current_state][(*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1)];
+        }
 
-	return yy_current_state;
+    return yy_current_state;
 }
 
 /* yy_try_NUL_trans - try to make a transition on the NUL character
  *
  * synopsis
- *	next_state = yy_try_NUL_trans( current_state );
+ *    next_state = yy_try_NUL_trans( current_state );
  */
     static yy_state_type yy_try_NUL_trans  (yy_state_type yy_current_state )
 {
-	register int yy_is_jam;
+    register int yy_is_jam;
     
-	yy_current_state = yy_nxt[yy_current_state][1];
-	yy_is_jam = (yy_current_state <= 0);
+    yy_current_state = yy_nxt[yy_current_state][1];
+    yy_is_jam = (yy_current_state <= 0);
 
-	return yy_is_jam ? 0 : yy_current_state;
+    return yy_is_jam ? 0 : yy_current_state;
 }
 
     static void yyunput (int c, register char * yy_bp )
 {
-	register char *yy_cp;
+    register char *yy_cp;
     
     yy_cp = (yy_c_buf_p);
 
-	/* undo effects of setting up zconftext */
-	*yy_cp = (yy_hold_char);
+    /* undo effects of setting up zconftext */
+    *yy_cp = (yy_hold_char);
 
-	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
-		{ /* need to shift things up to make room */
-		/* +2 for EOB chars. */
-		register int number_to_move = (yy_n_chars) + 2;
-		register char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
-					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
-		register char *source =
-				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
+    if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
+        { /* need to shift things up to make room */
+        /* +2 for EOB chars. */
+        register int number_to_move = (yy_n_chars) + 2;
+        register char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
+                    YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
+        register char *source =
+                &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
 
-		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
-			*--dest = *--source;
+        while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
+            *--dest = *--source;
 
-		yy_cp += (int) (dest - source);
-		yy_bp += (int) (dest - source);
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars =
-			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
+        yy_cp += (int) (dest - source);
+        yy_bp += (int) (dest - source);
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars =
+            (yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
 
-		if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
-			YY_FATAL_ERROR( "flex scanner push-back overflow" );
-		}
+        if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
+            YY_FATAL_ERROR( "flex scanner push-back overflow" );
+        }
 
-	*--yy_cp = (char) c;
+    *--yy_cp = (char) c;
 
-	(yytext_ptr) = yy_bp;
-	(yy_hold_char) = *yy_cp;
-	(yy_c_buf_p) = yy_cp;
+    (yytext_ptr) = yy_bp;
+    (yy_hold_char) = *yy_cp;
+    (yy_c_buf_p) = yy_cp;
 }
 
 #ifndef YY_NO_INPUT
@@ -1678,71 +1678,71 @@ static int yy_get_next_buffer (void)
 #endif
 
 {
-	int c;
+    int c;
     
-	*(yy_c_buf_p) = (yy_hold_char);
+    *(yy_c_buf_p) = (yy_hold_char);
 
-	if ( *(yy_c_buf_p) == YY_END_OF_BUFFER_CHAR )
-		{
-		/* yy_c_buf_p now points to the character we want to return.
-		 * If this occurs *before* the EOB characters, then it's a
-		 * valid NUL; if not, then we've hit the end of the buffer.
-		 */
-		if ( (yy_c_buf_p) < &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)] )
-			/* This was really a NUL. */
-			*(yy_c_buf_p) = '\0';
+    if ( *(yy_c_buf_p) == YY_END_OF_BUFFER_CHAR )
+        {
+        /* yy_c_buf_p now points to the character we want to return.
+         * If this occurs *before* the EOB characters, then it's a
+         * valid NUL; if not, then we've hit the end of the buffer.
+         */
+        if ( (yy_c_buf_p) < &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars)] )
+            /* This was really a NUL. */
+            *(yy_c_buf_p) = '\0';
 
-		else
-			{ /* need more input */
-			int offset = (yy_c_buf_p) - (yytext_ptr);
-			++(yy_c_buf_p);
+        else
+            { /* need more input */
+            int offset = (yy_c_buf_p) - (yytext_ptr);
+            ++(yy_c_buf_p);
 
-			switch ( yy_get_next_buffer(  ) )
-				{
-				case EOB_ACT_LAST_MATCH:
-					/* This happens because yy_g_n_b()
-					 * sees that we've accumulated a
-					 * token and flags that we need to
-					 * try matching the token before
-					 * proceeding.  But for input(),
-					 * there's no matching to consider.
-					 * So convert the EOB_ACT_LAST_MATCH
-					 * to EOB_ACT_END_OF_FILE.
-					 */
+            switch ( yy_get_next_buffer(  ) )
+                {
+                case EOB_ACT_LAST_MATCH:
+                    /* This happens because yy_g_n_b()
+                     * sees that we've accumulated a
+                     * token and flags that we need to
+                     * try matching the token before
+                     * proceeding.  But for input(),
+                     * there's no matching to consider.
+                     * So convert the EOB_ACT_LAST_MATCH
+                     * to EOB_ACT_END_OF_FILE.
+                     */
 
-					/* Reset buffer status. */
-					zconfrestart(zconfin );
+                    /* Reset buffer status. */
+                    zconfrestart(zconfin );
 
-					/*FALLTHROUGH*/
+                    /*FALLTHROUGH*/
 
-				case EOB_ACT_END_OF_FILE:
-					{
-					if ( zconfwrap( ) )
-						return EOF;
+                case EOB_ACT_END_OF_FILE:
+                    {
+                    if ( zconfwrap( ) )
+                        return EOF;
 
-					if ( ! (yy_did_buffer_switch_on_eof) )
-						YY_NEW_FILE;
+                    if ( ! (yy_did_buffer_switch_on_eof) )
+                        YY_NEW_FILE;
 #ifdef __cplusplus
-					return yyinput();
+                    return yyinput();
 #else
-					return input();
+                    return input();
 #endif
-					}
+                    }
 
-				case EOB_ACT_CONTINUE_SCAN:
-					(yy_c_buf_p) = (yytext_ptr) + offset;
-					break;
-				}
-			}
-		}
+                case EOB_ACT_CONTINUE_SCAN:
+                    (yy_c_buf_p) = (yytext_ptr) + offset;
+                    break;
+                }
+            }
+        }
 
-	c = *(unsigned char *) (yy_c_buf_p);	/* cast for 8-bit char's */
-	*(yy_c_buf_p) = '\0';	/* preserve zconftext */
-	(yy_hold_char) = *++(yy_c_buf_p);
+    c = *(unsigned char *) (yy_c_buf_p);    /* cast for 8-bit char's */
+    *(yy_c_buf_p) = '\0';    /* preserve zconftext */
+    (yy_hold_char) = *++(yy_c_buf_p);
 
-	return c;
+    return c;
 }
-#endif	/* ifndef YY_NO_INPUT */
+#endif    /* ifndef YY_NO_INPUT */
 
 /** Immediately switch to a different input stream.
  * @param input_file A readable stream.
@@ -1752,14 +1752,14 @@ static int yy_get_next_buffer (void)
     void zconfrestart  (FILE * input_file )
 {
     
-	if ( ! YY_CURRENT_BUFFER ){
+    if ( ! YY_CURRENT_BUFFER ){
         zconfensure_buffer_stack ();
-		YY_CURRENT_BUFFER_LVALUE =
+        YY_CURRENT_BUFFER_LVALUE =
             zconf_create_buffer(zconfin,YY_BUF_SIZE );
-	}
+    }
 
-	zconf_init_buffer(YY_CURRENT_BUFFER,input_file );
-	zconf_load_buffer_state( );
+    zconf_init_buffer(YY_CURRENT_BUFFER,input_file );
+    zconf_load_buffer_state( );
 }
 
 /** Switch to a different input buffer.
@@ -1769,40 +1769,40 @@ static int yy_get_next_buffer (void)
     void zconf_switch_to_buffer  (YY_BUFFER_STATE  new_buffer )
 {
     
-	/* TODO. We should be able to replace this entire function body
-	 * with
-	 *		zconfpop_buffer_state();
-	 *		zconfpush_buffer_state(new_buffer);
+    /* TODO. We should be able to replace this entire function body
+     * with
+     *        zconfpop_buffer_state();
+     *        zconfpush_buffer_state(new_buffer);
      */
-	zconfensure_buffer_stack ();
-	if ( YY_CURRENT_BUFFER == new_buffer )
-		return;
+    zconfensure_buffer_stack ();
+    if ( YY_CURRENT_BUFFER == new_buffer )
+        return;
 
-	if ( YY_CURRENT_BUFFER )
-		{
-		/* Flush out information for old buffer. */
-		*(yy_c_buf_p) = (yy_hold_char);
-		YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = (yy_c_buf_p);
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars);
-		}
+    if ( YY_CURRENT_BUFFER )
+        {
+        /* Flush out information for old buffer. */
+        *(yy_c_buf_p) = (yy_hold_char);
+        YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = (yy_c_buf_p);
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars);
+        }
 
-	YY_CURRENT_BUFFER_LVALUE = new_buffer;
-	zconf_load_buffer_state( );
+    YY_CURRENT_BUFFER_LVALUE = new_buffer;
+    zconf_load_buffer_state( );
 
-	/* We don't actually know whether we did this switch during
-	 * EOF (zconfwrap()) processing, but the only time this flag
-	 * is looked at is after zconfwrap() is called, so it's safe
-	 * to go ahead and always set it.
-	 */
-	(yy_did_buffer_switch_on_eof) = 1;
+    /* We don't actually know whether we did this switch during
+     * EOF (zconfwrap()) processing, but the only time this flag
+     * is looked at is after zconfwrap() is called, so it's safe
+     * to go ahead and always set it.
+     */
+    (yy_did_buffer_switch_on_eof) = 1;
 }
 
 static void zconf_load_buffer_state  (void)
 {
-    	(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-	(yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-	zconfin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
-	(yy_hold_char) = *(yy_c_buf_p);
+        (yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
+    (yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
+    zconfin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
+    (yy_hold_char) = *(yy_c_buf_p);
 }
 
 /** Allocate and initialize an input buffer state.
@@ -1813,26 +1813,26 @@ static void zconf_load_buffer_state  (void)
  */
     YY_BUFFER_STATE zconf_create_buffer  (FILE * file, int  size )
 {
-	YY_BUFFER_STATE b;
+    YY_BUFFER_STATE b;
     
-	b = (YY_BUFFER_STATE) zconfalloc(sizeof( struct yy_buffer_state )  );
-	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in zconf_create_buffer()" );
+    b = (YY_BUFFER_STATE) zconfalloc(sizeof( struct yy_buffer_state )  );
+    if ( ! b )
+        YY_FATAL_ERROR( "out of dynamic memory in zconf_create_buffer()" );
 
-	b->yy_buf_size = size;
+    b->yy_buf_size = size;
 
-	/* yy_ch_buf has to be 2 characters longer than the size given because
-	 * we need to put in 2 end-of-buffer characters.
-	 */
-	b->yy_ch_buf = (char *) zconfalloc(b->yy_buf_size + 2  );
-	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in zconf_create_buffer()" );
+    /* yy_ch_buf has to be 2 characters longer than the size given because
+     * we need to put in 2 end-of-buffer characters.
+     */
+    b->yy_ch_buf = (char *) zconfalloc(b->yy_buf_size + 2  );
+    if ( ! b->yy_ch_buf )
+        YY_FATAL_ERROR( "out of dynamic memory in zconf_create_buffer()" );
 
-	b->yy_is_our_buffer = 1;
+    b->yy_is_our_buffer = 1;
 
-	zconf_init_buffer(b,file );
+    zconf_init_buffer(b,file );
 
-	return b;
+    return b;
 }
 
 /** Destroy the buffer.
@@ -1842,16 +1842,16 @@ static void zconf_load_buffer_state  (void)
     void zconf_delete_buffer (YY_BUFFER_STATE  b )
 {
     
-	if ( ! b )
-		return;
+    if ( ! b )
+        return;
 
-	if ( b == YY_CURRENT_BUFFER ) /* Not sure if we should pop here. */
-		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
+    if ( b == YY_CURRENT_BUFFER ) /* Not sure if we should pop here. */
+        YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
-	if ( b->yy_is_our_buffer )
-		zconffree((void *) b->yy_ch_buf  );
+    if ( b->yy_is_our_buffer )
+        zconffree((void *) b->yy_ch_buf  );
 
-	zconffree((void *) b  );
+    zconffree((void *) b  );
 }
 
 /* Initializes or reinitializes a buffer.
@@ -1861,12 +1861,12 @@ static void zconf_load_buffer_state  (void)
     static void zconf_init_buffer  (YY_BUFFER_STATE  b, FILE * file )
 
 {
-	int oerrno = errno;
+    int oerrno = errno;
     
-	zconf_flush_buffer(b );
+    zconf_flush_buffer(b );
 
-	b->yy_input_file = file;
-	b->yy_fill_buffer = 1;
+    b->yy_input_file = file;
+    b->yy_fill_buffer = 1;
 
     /* If b is the current buffer, then zconf_init_buffer was _probably_
      * called from zconfrestart() or through yy_get_next_buffer.
@@ -1879,7 +1879,7 @@ static void zconf_load_buffer_state  (void)
 
         b->yy_is_interactive = 0;
     
-	errno = oerrno;
+    errno = oerrno;
 }
 
 /** Discard all buffered characters. On the next scan, YY_INPUT will be called.
@@ -1888,25 +1888,25 @@ static void zconf_load_buffer_state  (void)
  */
     void zconf_flush_buffer (YY_BUFFER_STATE  b )
 {
-    	if ( ! b )
-		return;
+        if ( ! b )
+        return;
 
-	b->yy_n_chars = 0;
+    b->yy_n_chars = 0;
 
-	/* We always need two end-of-buffer characters.  The first causes
-	 * a transition to the end-of-buffer state.  The second causes
-	 * a jam in that state.
-	 */
-	b->yy_ch_buf[0] = YY_END_OF_BUFFER_CHAR;
-	b->yy_ch_buf[1] = YY_END_OF_BUFFER_CHAR;
+    /* We always need two end-of-buffer characters.  The first causes
+     * a transition to the end-of-buffer state.  The second causes
+     * a jam in that state.
+     */
+    b->yy_ch_buf[0] = YY_END_OF_BUFFER_CHAR;
+    b->yy_ch_buf[1] = YY_END_OF_BUFFER_CHAR;
 
-	b->yy_buf_pos = &b->yy_ch_buf[0];
+    b->yy_buf_pos = &b->yy_ch_buf[0];
 
-	b->yy_at_bol = 1;
-	b->yy_buffer_status = YY_BUFFER_NEW;
+    b->yy_at_bol = 1;
+    b->yy_buffer_status = YY_BUFFER_NEW;
 
-	if ( b == YY_CURRENT_BUFFER )
-		zconf_load_buffer_state( );
+    if ( b == YY_CURRENT_BUFFER )
+        zconf_load_buffer_state( );
 }
 
 /** Pushes the new state onto the stack. The new state becomes
@@ -1917,28 +1917,28 @@ static void zconf_load_buffer_state  (void)
  */
 void zconfpush_buffer_state (YY_BUFFER_STATE new_buffer )
 {
-    	if (new_buffer == NULL)
-		return;
+        if (new_buffer == NULL)
+        return;
 
-	zconfensure_buffer_stack();
+    zconfensure_buffer_stack();
 
-	/* This block is copied from zconf_switch_to_buffer. */
-	if ( YY_CURRENT_BUFFER )
-		{
-		/* Flush out information for old buffer. */
-		*(yy_c_buf_p) = (yy_hold_char);
-		YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = (yy_c_buf_p);
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars);
-		}
+    /* This block is copied from zconf_switch_to_buffer. */
+    if ( YY_CURRENT_BUFFER )
+        {
+        /* Flush out information for old buffer. */
+        *(yy_c_buf_p) = (yy_hold_char);
+        YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = (yy_c_buf_p);
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = (yy_n_chars);
+        }
 
-	/* Only push if top exists. Otherwise, replace top. */
-	if (YY_CURRENT_BUFFER)
-		(yy_buffer_stack_top)++;
-	YY_CURRENT_BUFFER_LVALUE = new_buffer;
+    /* Only push if top exists. Otherwise, replace top. */
+    if (YY_CURRENT_BUFFER)
+        (yy_buffer_stack_top)++;
+    YY_CURRENT_BUFFER_LVALUE = new_buffer;
 
-	/* copied from zconf_switch_to_buffer. */
-	zconf_load_buffer_state( );
-	(yy_did_buffer_switch_on_eof) = 1;
+    /* copied from zconf_switch_to_buffer. */
+    zconf_load_buffer_state( );
+    (yy_did_buffer_switch_on_eof) = 1;
 }
 
 /** Removes and deletes the top of the stack, if present.
@@ -1947,18 +1947,18 @@ void zconfpush_buffer_state (YY_BUFFER_STATE new_buffer )
  */
 void zconfpop_buffer_state (void)
 {
-    	if (!YY_CURRENT_BUFFER)
-		return;
+        if (!YY_CURRENT_BUFFER)
+        return;
 
-	zconf_delete_buffer(YY_CURRENT_BUFFER );
-	YY_CURRENT_BUFFER_LVALUE = NULL;
-	if ((yy_buffer_stack_top) > 0)
-		--(yy_buffer_stack_top);
+    zconf_delete_buffer(YY_CURRENT_BUFFER );
+    YY_CURRENT_BUFFER_LVALUE = NULL;
+    if ((yy_buffer_stack_top) > 0)
+        --(yy_buffer_stack_top);
 
-	if (YY_CURRENT_BUFFER) {
-		zconf_load_buffer_state( );
-		(yy_did_buffer_switch_on_eof) = 1;
-	}
+    if (YY_CURRENT_BUFFER) {
+        zconf_load_buffer_state( );
+        (yy_did_buffer_switch_on_eof) = 1;
+    }
 }
 
 /* Allocates the stack if it does not exist.
@@ -1966,45 +1966,45 @@ void zconfpop_buffer_state (void)
  */
 static void zconfensure_buffer_stack (void)
 {
-	int num_to_alloc;
+    int num_to_alloc;
     
-	if (!(yy_buffer_stack)) {
+    if (!(yy_buffer_stack)) {
 
-		/* First allocation is just for 2 elements, since we don't know if this
-		 * scanner will even need a stack. We use 2 instead of 1 to avoid an
-		 * immediate realloc on the next call.
+        /* First allocation is just for 2 elements, since we don't know if this
+         * scanner will even need a stack. We use 2 instead of 1 to avoid an
+         * immediate realloc on the next call.
          */
-		num_to_alloc = 1;
-		(yy_buffer_stack) = (struct yy_buffer_state**)zconfalloc
-								(num_to_alloc * sizeof(struct yy_buffer_state*)
-								);
-		if ( ! (yy_buffer_stack) )
-			YY_FATAL_ERROR( "out of dynamic memory in zconfensure_buffer_stack()" );
-								  
-		memset((yy_buffer_stack), 0, num_to_alloc * sizeof(struct yy_buffer_state*));
-				
-		(yy_buffer_stack_max) = num_to_alloc;
-		(yy_buffer_stack_top) = 0;
-		return;
-	}
+        num_to_alloc = 1;
+        (yy_buffer_stack) = (struct yy_buffer_state**)zconfalloc
+                                (num_to_alloc * sizeof(struct yy_buffer_state*)
+                                );
+        if ( ! (yy_buffer_stack) )
+            YY_FATAL_ERROR( "out of dynamic memory in zconfensure_buffer_stack()" );
+                                  
+        memset((yy_buffer_stack), 0, num_to_alloc * sizeof(struct yy_buffer_state*));
+                
+        (yy_buffer_stack_max) = num_to_alloc;
+        (yy_buffer_stack_top) = 0;
+        return;
+    }
 
-	if ((yy_buffer_stack_top) >= ((yy_buffer_stack_max)) - 1){
+    if ((yy_buffer_stack_top) >= ((yy_buffer_stack_max)) - 1){
 
-		/* Increase the buffer to prepare for a possible push. */
-		int grow_size = 8 /* arbitrary grow size */;
+        /* Increase the buffer to prepare for a possible push. */
+        int grow_size = 8 /* arbitrary grow size */;
 
-		num_to_alloc = (yy_buffer_stack_max) + grow_size;
-		(yy_buffer_stack) = (struct yy_buffer_state**)zconfrealloc
-								((yy_buffer_stack),
-								num_to_alloc * sizeof(struct yy_buffer_state*)
-								);
-		if ( ! (yy_buffer_stack) )
-			YY_FATAL_ERROR( "out of dynamic memory in zconfensure_buffer_stack()" );
+        num_to_alloc = (yy_buffer_stack_max) + grow_size;
+        (yy_buffer_stack) = (struct yy_buffer_state**)zconfrealloc
+                                ((yy_buffer_stack),
+                                num_to_alloc * sizeof(struct yy_buffer_state*)
+                                );
+        if ( ! (yy_buffer_stack) )
+            YY_FATAL_ERROR( "out of dynamic memory in zconfensure_buffer_stack()" );
 
-		/* zero only the new slots.*/
-		memset((yy_buffer_stack) + (yy_buffer_stack_max), 0, grow_size * sizeof(struct yy_buffer_state*));
-		(yy_buffer_stack_max) = num_to_alloc;
-	}
+        /* zero only the new slots.*/
+        memset((yy_buffer_stack) + (yy_buffer_stack_max), 0, grow_size * sizeof(struct yy_buffer_state*));
+        (yy_buffer_stack_max) = num_to_alloc;
+    }
 }
 
 /** Setup the input buffer state to scan directly from a user-specified character buffer.
@@ -2015,31 +2015,31 @@ static void zconfensure_buffer_stack (void)
  */
 YY_BUFFER_STATE zconf_scan_buffer  (char * base, yy_size_t  size )
 {
-	YY_BUFFER_STATE b;
+    YY_BUFFER_STATE b;
     
-	if ( size < 2 ||
-	     base[size-2] != YY_END_OF_BUFFER_CHAR ||
-	     base[size-1] != YY_END_OF_BUFFER_CHAR )
-		/* They forgot to leave room for the EOB's. */
-		return 0;
+    if ( size < 2 ||
+         base[size-2] != YY_END_OF_BUFFER_CHAR ||
+         base[size-1] != YY_END_OF_BUFFER_CHAR )
+        /* They forgot to leave room for the EOB's. */
+        return 0;
 
-	b = (YY_BUFFER_STATE) zconfalloc(sizeof( struct yy_buffer_state )  );
-	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in zconf_scan_buffer()" );
+    b = (YY_BUFFER_STATE) zconfalloc(sizeof( struct yy_buffer_state )  );
+    if ( ! b )
+        YY_FATAL_ERROR( "out of dynamic memory in zconf_scan_buffer()" );
 
-	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
-	b->yy_buf_pos = b->yy_ch_buf = base;
-	b->yy_is_our_buffer = 0;
-	b->yy_input_file = 0;
-	b->yy_n_chars = b->yy_buf_size;
-	b->yy_is_interactive = 0;
-	b->yy_at_bol = 1;
-	b->yy_fill_buffer = 0;
-	b->yy_buffer_status = YY_BUFFER_NEW;
+    b->yy_buf_size = size - 2;    /* "- 2" to take care of EOB's */
+    b->yy_buf_pos = b->yy_ch_buf = base;
+    b->yy_is_our_buffer = 0;
+    b->yy_input_file = 0;
+    b->yy_n_chars = b->yy_buf_size;
+    b->yy_is_interactive = 0;
+    b->yy_at_bol = 1;
+    b->yy_fill_buffer = 0;
+    b->yy_buffer_status = YY_BUFFER_NEW;
 
-	zconf_switch_to_buffer(b  );
+    zconf_switch_to_buffer(b  );
 
-	return b;
+    return b;
 }
 
 /** Setup the input buffer state to scan a string. The next call to zconflex() will
@@ -2053,7 +2053,7 @@ YY_BUFFER_STATE zconf_scan_buffer  (char * base, yy_size_t  size )
 YY_BUFFER_STATE zconf_scan_string (yyconst char * yystr )
 {
     
-	return zconf_scan_bytes(yystr,strlen(yystr) );
+    return zconf_scan_bytes(yystr,strlen(yystr) );
 }
 
 /** Setup the input buffer state to scan the given bytes. The next call to zconflex() will
@@ -2065,32 +2065,32 @@ YY_BUFFER_STATE zconf_scan_string (yyconst char * yystr )
  */
 YY_BUFFER_STATE zconf_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
 {
-	YY_BUFFER_STATE b;
-	char *buf;
-	yy_size_t n;
-	int i;
+    YY_BUFFER_STATE b;
+    char *buf;
+    yy_size_t n;
+    int i;
     
-	/* Get memory for full buffer, including space for trailing EOB's. */
-	n = _yybytes_len + 2;
-	buf = (char *) zconfalloc(n  );
-	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in zconf_scan_bytes()" );
+    /* Get memory for full buffer, including space for trailing EOB's. */
+    n = _yybytes_len + 2;
+    buf = (char *) zconfalloc(n  );
+    if ( ! buf )
+        YY_FATAL_ERROR( "out of dynamic memory in zconf_scan_bytes()" );
 
-	for ( i = 0; i < _yybytes_len; ++i )
-		buf[i] = yybytes[i];
+    for ( i = 0; i < _yybytes_len; ++i )
+        buf[i] = yybytes[i];
 
-	buf[_yybytes_len] = buf[_yybytes_len+1] = YY_END_OF_BUFFER_CHAR;
+    buf[_yybytes_len] = buf[_yybytes_len+1] = YY_END_OF_BUFFER_CHAR;
 
-	b = zconf_scan_buffer(buf,n );
-	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in zconf_scan_bytes()" );
+    b = zconf_scan_buffer(buf,n );
+    if ( ! b )
+        YY_FATAL_ERROR( "bad buffer in zconf_scan_bytes()" );
 
-	/* It's okay to grow etc. this buffer, and we should throw it
-	 * away when we're done.
-	 */
-	b->yy_is_our_buffer = 1;
+    /* It's okay to grow etc. this buffer, and we should throw it
+     * away when we're done.
+     */
+    b->yy_is_our_buffer = 1;
 
-	return b;
+    return b;
 }
 
 #ifndef YY_EXIT_FAILURE
@@ -2099,26 +2099,26 @@ YY_BUFFER_STATE zconf_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
 
 static void yy_fatal_error (yyconst char* msg )
 {
-    	(void) fprintf( stderr, "%s\n", msg );
-	exit( YY_EXIT_FAILURE );
+        (void) fprintf( stderr, "%s\n", msg );
+    exit( YY_EXIT_FAILURE );
 }
 
 /* Redefine yyless() so it works in section 3 code. */
 
 #undef yyless
 #define yyless(n) \
-	do \
-		{ \
-		/* Undo effects of setting up zconftext. */ \
+    do \
+        { \
+        /* Undo effects of setting up zconftext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		zconftext[zconfleng] = (yy_hold_char); \
-		(yy_c_buf_p) = zconftext + yyless_macro_arg; \
-		(yy_hold_char) = *(yy_c_buf_p); \
-		*(yy_c_buf_p) = '\0'; \
-		zconfleng = yyless_macro_arg; \
-		} \
-	while ( 0 )
+        zconftext[zconfleng] = (yy_hold_char); \
+        (yy_c_buf_p) = zconftext + yyless_macro_arg; \
+        (yy_hold_char) = *(yy_c_buf_p); \
+        *(yy_c_buf_p) = '\0'; \
+        zconfleng = yyless_macro_arg; \
+        } \
+    while ( 0 )
 
 /* Accessor  methods (get/set functions) to struct members. */
 
@@ -2233,15 +2233,15 @@ int zconflex_destroy  (void)
 {
     
     /* Pop the buffer stack, destroying each element. */
-	while(YY_CURRENT_BUFFER){
-		zconf_delete_buffer(YY_CURRENT_BUFFER  );
-		YY_CURRENT_BUFFER_LVALUE = NULL;
-		zconfpop_buffer_state();
-	}
+    while(YY_CURRENT_BUFFER){
+        zconf_delete_buffer(YY_CURRENT_BUFFER  );
+        YY_CURRENT_BUFFER_LVALUE = NULL;
+        zconfpop_buffer_state();
+    }
 
-	/* Destroy the stack itself. */
-	zconffree((yy_buffer_stack) );
-	(yy_buffer_stack) = NULL;
+    /* Destroy the stack itself. */
+    zconffree((yy_buffer_stack) );
+    (yy_buffer_stack) = NULL;
 
     /* Reset the globals. This is important in a non-reentrant scanner so the next time
      * zconflex() is called, initialization will occur. */
@@ -2257,58 +2257,58 @@ int zconflex_destroy  (void)
 #ifndef yytext_ptr
 static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 {
-	register int i;
-	for ( i = 0; i < n; ++i )
-		s1[i] = s2[i];
+    register int i;
+    for ( i = 0; i < n; ++i )
+        s1[i] = s2[i];
 }
 #endif
 
 #ifdef YY_NEED_STRLEN
 static int yy_flex_strlen (yyconst char * s )
 {
-	register int n;
-	for ( n = 0; s[n]; ++n )
-		;
+    register int n;
+    for ( n = 0; s[n]; ++n )
+        ;
 
-	return n;
+    return n;
 }
 #endif
 
 void *zconfalloc (yy_size_t  size )
 {
-	return (void *) malloc( size );
+    return (void *) malloc( size );
 }
 
 void *zconfrealloc  (void * ptr, yy_size_t  size )
 {
-	/* The cast to (char *) in the following accommodates both
-	 * implementations that use char* generic pointers, and those
-	 * that use void* generic pointers.  It works with the latter
-	 * because both ANSI C and C++ allow castless assignment from
-	 * any pointer type to void*, and deal with argument conversions
-	 * as though doing an assignment.
-	 */
-	return (void *) realloc( (char *) ptr, size );
+    /* The cast to (char *) in the following accommodates both
+     * implementations that use char* generic pointers, and those
+     * that use void* generic pointers.  It works with the latter
+     * because both ANSI C and C++ allow castless assignment from
+     * any pointer type to void*, and deal with argument conversions
+     * as though doing an assignment.
+     */
+    return (void *) realloc( (char *) ptr, size );
 }
 
 void zconffree (void * ptr )
 {
-	free( (char *) ptr );	/* see zconfrealloc() for (char *) cast */
+    free( (char *) ptr );    /* see zconfrealloc() for (char *) cast */
 }
 
 #define YYTABLES_NAME "yytables"
 
 void zconf_starthelp(void)
 {
-	new_string();
-	last_ts = first_ts = 0;
-	BEGIN(HELP);
+    new_string();
+    last_ts = first_ts = 0;
+    BEGIN(HELP);
 }
 
 static void zconf_endhelp(void)
 {
-	zconflval.string = text;
-	BEGIN(INITIAL);
+    zconflval.string = text;
+    BEGIN(INITIAL);
 }
 
 /*
@@ -2321,100 +2321,100 @@ static void zconf_endhelp(void)
  */
 FILE *zconf_fopen(const char *name)
 {
-	char *env, fullname[PATH_MAX+1];
-	FILE *f;
+    char *env, fullname[PATH_MAX+1];
+    FILE *f;
 
-	f = fopen(name, "r");
-	if (!f && name != NULL && name[0] != '/') {
-		env = getenv(SRCTREE);
-		if (env) {
-			sprintf(fullname, "%s/%s", env, name);
-			f = fopen(fullname, "r");
-		}
-	}
-	return f;
+    f = fopen(name, "r");
+    if (!f && name != NULL && name[0] != '/') {
+        env = getenv(SRCTREE);
+        if (env) {
+            sprintf(fullname, "%s/%s", env, name);
+            f = fopen(fullname, "r");
+        }
+    }
+    return f;
 }
 
 void zconf_initscan(const char *name)
 {
-	zconfin = zconf_fopen(name);
-	if (!zconfin) {
-		printf("can't find file %s\n", name);
-		exit(1);
-	}
+    zconfin = zconf_fopen(name);
+    if (!zconfin) {
+        printf("can't find file %s\n", name);
+        exit(1);
+    }
 
-	current_buf = xmalloc(sizeof(*current_buf));
-	memset(current_buf, 0, sizeof(*current_buf));
+    current_buf = xmalloc(sizeof(*current_buf));
+    memset(current_buf, 0, sizeof(*current_buf));
 
-	current_file = file_lookup(name);
-	current_file->lineno = 1;
+    current_file = file_lookup(name);
+    current_file->lineno = 1;
 }
 
 void zconf_nextfile(const char *name)
 {
-	struct file *iter;
-	struct file *file = file_lookup(name);
-	struct buffer *buf = xmalloc(sizeof(*buf));
-	memset(buf, 0, sizeof(*buf));
+    struct file *iter;
+    struct file *file = file_lookup(name);
+    struct buffer *buf = xmalloc(sizeof(*buf));
+    memset(buf, 0, sizeof(*buf));
 
-	current_buf->state = YY_CURRENT_BUFFER;
-	zconfin = zconf_fopen(file->name);
-	if (!zconfin) {
-		printf("%s:%d: can't open file \"%s\"\n",
-		    zconf_curname(), zconf_lineno(), file->name);
-		exit(1);
-	}
-	zconf_switch_to_buffer(zconf_create_buffer(zconfin,YY_BUF_SIZE));
-	buf->parent = current_buf;
-	current_buf = buf;
+    current_buf->state = YY_CURRENT_BUFFER;
+    zconfin = zconf_fopen(file->name);
+    if (!zconfin) {
+        printf("%s:%d: can't open file \"%s\"\n",
+            zconf_curname(), zconf_lineno(), file->name);
+        exit(1);
+    }
+    zconf_switch_to_buffer(zconf_create_buffer(zconfin,YY_BUF_SIZE));
+    buf->parent = current_buf;
+    current_buf = buf;
 
-	for (iter = current_file->parent; iter; iter = iter->parent ) {
-		if (!strcmp(current_file->name,iter->name) ) {
-			printf("%s:%d: recursive inclusion detected. "
-			       "Inclusion path:\n  current file : '%s'\n",
-			       zconf_curname(), zconf_lineno(),
-			       zconf_curname());
-			iter = current_file->parent;
-			while (iter && \
-			       strcmp(iter->name,current_file->name)) {
-				printf("  included from: '%s:%d'\n",
-				       iter->name, iter->lineno-1);
-				iter = iter->parent;
-			}
-			if (iter)
-				printf("  included from: '%s:%d'\n",
-				       iter->name, iter->lineno+1);
-			exit(1);
-		}
-	}
-	file->lineno = 1;
-	file->parent = current_file;
-	current_file = file;
+    for (iter = current_file->parent; iter; iter = iter->parent ) {
+        if (!strcmp(current_file->name,iter->name) ) {
+            printf("%s:%d: recursive inclusion detected. "
+                   "Inclusion path:\n  current file : '%s'\n",
+                   zconf_curname(), zconf_lineno(),
+                   zconf_curname());
+            iter = current_file->parent;
+            while (iter && \
+                   strcmp(iter->name,current_file->name)) {
+                printf("  included from: '%s:%d'\n",
+                       iter->name, iter->lineno-1);
+                iter = iter->parent;
+            }
+            if (iter)
+                printf("  included from: '%s:%d'\n",
+                       iter->name, iter->lineno+1);
+            exit(1);
+        }
+    }
+    file->lineno = 1;
+    file->parent = current_file;
+    current_file = file;
 }
 
 static void zconf_endfile(void)
 {
-	struct buffer *parent;
+    struct buffer *parent;
 
-	current_file = current_file->parent;
+    current_file = current_file->parent;
 
-	parent = current_buf->parent;
-	if (parent) {
-		fclose(zconfin);
-		zconf_delete_buffer(YY_CURRENT_BUFFER);
-		zconf_switch_to_buffer(parent->state);
-	}
-	free(current_buf);
-	current_buf = parent;
+    parent = current_buf->parent;
+    if (parent) {
+        fclose(zconfin);
+        zconf_delete_buffer(YY_CURRENT_BUFFER);
+        zconf_switch_to_buffer(parent->state);
+    }
+    free(current_buf);
+    current_buf = parent;
 }
 
 int zconf_lineno(void)
 {
-	return current_pos.lineno;
+    return current_pos.lineno;
 }
 
 const char *zconf_curname(void)
 {
-	return current_pos.file ? current_pos.file->name : "<none>";
+    return current_pos.file ? current_pos.file->name : "<none>";
 }
 
