@@ -1,10 +1,10 @@
-English Readme | [中文说明](https://github.com/IOsetting/wm-sdk-w806/blob/main/README.cn.md)
+**English Readme** | **[中文说明](https://github.com/IOsetting/wm-sdk-w806/blob/main/README.cn.md)**
 
 # About 
 
-A SDK for WinnerMicro MCU W806, it's migrated from W800 SDK.
+A SDK for WinnerMicro MCU W806.
 
-## SDK File Structure
+# SDK File Structure
 
 ```
 WM_SDK 
@@ -21,7 +21,7 @@ WM_SDK
 └─tools            # Compilation scripts, utilities for CDS IDE project、CDK project and IMAGE generation
 ```
 
-# How To
+# Quick Start In Linux
 
 ## Install Toolchain
 
@@ -33,7 +33,7 @@ WM_SDK
 
 ### Install
 
-Be careful that the tar ball file use `./` as top level path, move it to a seperate folder or specify a target folder for the uncompression
+Be careful that the tar ball file use `./` as top level path, move it to a seperate folder or specify a target folder for the uncompressing.
 ```bash
 mkdir csky-elfabiv2-tools-x86_64-minilibc-20210423
 tar xvf csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz  -C csky-elfabiv2-tools-x86_64-minilibc-20210423/
@@ -55,7 +55,7 @@ git clone https://github.com/IOsetting/wm-sdk-w806.git
 
 Run menuconfig, set the toolchains path
 ```bash
-cd w806_makefile
+cd wm-sdk-w806
 make menuconfig
 ```
 
@@ -76,7 +76,7 @@ After connecting the development board to your PC, check the USB port name using
 
 Then run menuconfig to set the download port
 ```bash
-cd w806_makefile
+cd wm-sdk-w806
 make menuconfig
 ```
 In menuconfig, navigate to Download Configuration -> download port, input the USB port name you just got, e.g. `ttyUSB0`, then save and exit menuconfig
@@ -102,4 +102,88 @@ please manually reset the device.
 ```
 You need to press `Reset` key again to make it run, or it will stay in download mode (keep bumping CCCCCC).
 
+<br>
 
+# Quick Start In Windows
+
+## Download 
+
+* Download MSYS2 from [https://www.msys2.org/](https://www.msys2.org/)
+* Download toolchains: [https://occ.t-head.cn/community/download](https://occ.t-head.cn/community/download)
+   * 导航 -> 工具 -> 工具链-800系列 -> (Currently it is V3.10.29)
+   * Download csky-elfabiv2-tools-mingw-minilibc-yyyymmdd.tar.gz for Windows
+
+## Install
+
+* Run msys2-x86_64-yyyymmdd.exe to install MSYS2
+* Install necessary tools in MSYS2 console
+
+```bash
+# Update all packages
+pacman -Syu
+# Install make
+pacman -S msys/make
+# Install automake
+pacman -S msys/automake
+# Install autoconf
+pacman -S msys/autoconf
+# Install gcc
+pacman -S msys/gcc
+# Install git
+pacman -S msys/git
+# Install dependencies
+pacman -S msys/ncurses-devel
+pacman -S msys/gettext-devel
+```
+
+Extract toolchains to specified folder
+```
+mkdir csky-elfabiv2-tools-mingw-minilibc-20210423
+tar xvf csky-elfabiv2-tools-mingw-minilibc-20210423.tar.gz -C csky-elfabiv2-tools-mingw-minilibc-20210423/
+```
+Write down the full path to toolchain executables, e.g. `/d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/`.
+
+## Compilation
+
+Check out this SDK
+```bash
+git clone https://github.com/IOsetting/wm-sdk-w806.git
+```
+
+Configurate toolchains path in menuconfig
+```bash
+cd wm-sdk-w806
+make menuconfig
+```
+
+In menuconfig, navigate to Toolchain Configuration -> toolchain path, input the toolchain path you just got(including the tail slash '/'), e.g.
+```
+/d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/
+```
+Leave other settings unchanged, save and exit menuconfig.
+
+Then compile the project
+```bash
+make
+```
+The result bin is under bin/W806.
+
+## Flash
+
+* Connect the development board to your PC
+* Run flash tool Upgrade_Tools_V1.4.8.exe
+* Select the correct COM port, and use the default baud rate 115200, Click `打开串口`
+* Select bin file 'W806.fls' from bin/W806
+* Click `下载` to start download
+* Press `Reset` key to reset board, then the tool will start downloading.
+* When download is finished, press `Reset` key again to make it run.
+
+# Problems
+
+If you change the code, but nothing is changed after compilation, you need to clean the workspace with
+```bash
+# Clean previouse files
+make distclean
+# Recompile
+make
+```

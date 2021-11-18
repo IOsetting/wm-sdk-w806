@@ -21,7 +21,7 @@ WM_SDK
 └─tools            # 编译脚本和工具
 ```
 
-# 使用
+# Linux下的环境说明
 
 ## 安装编译工具
 
@@ -54,7 +54,7 @@ git clone https://github.com/IOsetting/wm-sdk-w806.git
 ```
 运行menuconfig, 配置工具路径
 ```bash
-cd w806_makefile
+cd wm-sdk-w806
 make menuconfig
 ```
 在menuconfig界面中, Toolchain Configuration -> 第二个toolchain path, 将刚才的路径填进去, 需要完整路径, 带最后的斜杆, 例如
@@ -74,7 +74,7 @@ make
 
 运行menuconfig, 配置端口名称
 ```bash
-cd w806_makefile
+cd wm-sdk-w806
 make menuconfig
 ```
 在menuconfig界面中, Download Configuration -> download port, 填入开发板在你的系统中对应的USB端口, 例如`ttyUSB0`, 注意这里只需要填纯端口名, 不需要用完整的路径. 其他不用动, Save后退出menuconfig
@@ -101,6 +101,89 @@ please manually reset the device.
 ```
 下载完成后, 需要再按一次`Reset`让程序运行, 否则开发板会一直处在下载状态(不断输出 CCCCCC).
 
-# 问题
+## 问题
 
 如果出现`can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`错误, 检查一下是否有其他串口软件占用了这个端口, 如果有需要先关闭
+
+<br>
+
+# Windows下的环境说明
+
+## 下载相关软件
+
+* 下载MSYS2 [https://www.msys2.org/](https://www.msys2.org/), 下载MSYS2安装文件, 当前是 msys2-x86_64-20210725.exe
+* 下载工具链 [https://occ.t-head.cn/community/download](https://occ.t-head.cn/community/download)
+   * 导航 -> 工具 -> 工具链-800系列 -> (当前是V3.10.29)
+   * 下载对应版本, 对于Win10, 下载 csky-elfabiv2-tools-mingw-minilibc-20210423.tar.gz
+
+## 安装和配置
+
+* 在本机运行MSYS2的安装文件安装MSYS2
+* 在MSYS2命令行下, 参考下面的命令安装必要的软件
+
+```bash
+# 更新软件包
+pacman -Syu
+# 安装 make
+pacman -S msys/make
+# 安装 automake
+pacman -S msys/automake
+# 安装 autoconf
+pacman -S msys/autoconf
+# 安装 gcc
+pacman -S msys/gcc
+# 安装 git
+pacman -S msys/git
+# 安装编译时需要的依赖库
+pacman -S msys/ncurses-devel
+pacman -S msys/gettext-devel
+```
+解压工具链到指定目录, 注意这个tar包没有顶层目录, 建议指定目录解压
+```
+mkdir csky-elfabiv2-tools-mingw-minilibc-20210423
+tar xvf csky-elfabiv2-tools-mingw-minilibc-20210423.tar.gz -C csky-elfabiv2-tools-mingw-minilibc-20210423/
+```
+记下这个目录的路径, 例如 `/d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/` , 待会儿配置menuconfig需要用到
+
+## 编译
+
+导出SDK
+```bash
+git clone https://github.com/IOsetting/wm-sdk-w806.git
+```
+用menuconfig配置工具链路径
+```bash
+cd wm-sdk-w806
+make menuconfig
+```
+在menuconfig界面中, Toolchain Configuration -> 第二个toolchain path, 将刚才的路径填进去, 需要完整路径, 带最后的斜杆, 例如
+```
+/d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/
+```
+其他不用动, Save后退出menuconfig. 如果下面一排菜单高亮显示不出来, 可以使用快捷键`Alt+E`=退出, `Alt+S`=保存
+
+然后执行编译
+```bash
+make
+```
+生成的固件在 bin/W806 目录下
+
+## 烧录
+
+* 连接开发板
+* 运行官方烧录工具 Upgrade_Tools_V1.4.8.exe, 
+* 选择正确的端口, 波特率使用默认的115200, 点击`打开串口`
+* 选择刚才编译好的固件, 文件路径为 bin/W806/W806.fls
+* 点击`下载`
+* 短按开发板的`Reset`键, 等待烧录工具完成烧录
+* 再次短按开发板的`Reset`键, 烧录好的程序会开始执行
+
+## 问题
+
+如果修改代码后编译, 发现固件未更新, 可以执行下面的命令清空旧的编译输出, 然后再次编译
+```bash
+# 清理旧的编译结果和中间结果
+make distclean
+# 重新编译
+make
+```
