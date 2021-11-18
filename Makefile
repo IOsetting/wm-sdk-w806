@@ -13,6 +13,7 @@ ifndef PDIR # {
 ifeq ($(USE_LIB), 0)
 SUBDIRS += \
     $(TOP_DIR)/platform/arch        \
+    $(TOP_DIR)/platform/component       \
     $(TOP_DIR)/platform/drivers    
 endif
 endif
@@ -24,6 +25,7 @@ COMPONENTS_$(TARGET) =    \
 ifeq ($(USE_LIB), 0)
 COMPONENTS_$(TARGET) += \
     $(TOP_DIR)/platform/boot/libwmarch$(LIB_EXT)        \
+    $(TOP_DIR)/platform/component/libwmcomponent$(LIB_EXT)        \
     $(TOP_DIR)/platform/drivers/libdrivers$(LIB_EXT)  
 endif
 
