@@ -232,6 +232,7 @@ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData,
 
 		__HAL_UNLOCK(huart);
 
+		__HAL_UART_CLEAR_FLAG(huart, UART_RX_INT_FLAG);
 		__HAL_UART_ENABLE_IT(huart, UART_RX_INT_FLAG);
 		
 		return HAL_OK;
@@ -413,8 +414,14 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
 	MODIFY_REG(huart->Instance->LC,
              (uint32_t)(UART_LC_RE | UART_LC_TE | UART_LC_PS | UART_LC_PCE | UART_LC_STOP | UART_LC_DATAL),
              (uint32_t)(huart->Init.WordLength | huart->Init.Parity | huart->Init.Mode | huart->Init.StopBits));
+	if (huart->Instance == UART2)
+	{
+		CLEAR_BIT(huart->Instance->LC, (1 << 24));
+	}
 			 
-	MODIFY_REG(huart->Instance->FC, UART_FC_AFCE, huart->Init.HwFlowCtl);
+	MODIFY_REG(huart->Instance->FC, (uint32_t)(UART_FC_RTSL | UART_FC_AFCE), (uint32_t)(UART_FC_RTSL_24 | huart->Init.HwFlowCtl));
+	
+	MODIFY_REG(huart->Instance->DMAC, (uint32_t)(UART_DMAC_RTO | UART_DMAC_RTOE), (uint32_t)((4 << 3) | UART_DMAC_RTOE));
 	
 	MODIFY_REG(huart->Instance->FIFOC, 
 			(uint32_t)(UART_FIFOC_RFL | UART_FIFOC_TFL | UART_FIFOC_RFRST | UART_FIFOC_TFRST), 

@@ -9,8 +9,8 @@ typedef struct
                          * ADC_CHANNEL_1 ~ channel 1
                          * ADC_CHANNEL_2 ~ channel 2
                          * ADC_CHANNEL_3 ~ channel 3
-                         * ADC_CHANNEL_8 ~ channel 0 and channel 1 differential input
-                         * ADC_CHANNEL_9 ~ channel 2 and channel 3 differential input */
+                         * ADC_CHANNEL_0_1 	: channel 0 and channel 1 differential input
+                         * ADC_CHANNEL_2_3 	: channel 2 and channel 3 differential input */
     
     uint32_t freq;        /* 307hz ~ 2khz */
     
@@ -24,12 +24,9 @@ typedef struct
 typedef struct __ADC_HandleTypeDef
 {
     ADC_TypeDef                   *Instance;
-    
     ADC_InitTypeDef               Init;
-    
     HAL_LockTypeDef               Lock;
-    
-    int                                  offset;
+    int                           offset;
     
 }ADC_HandleTypeDef;
 
@@ -40,10 +37,10 @@ typedef struct __ADC_HandleTypeDef
 #define ADC_CHANNEL_1        ADC_ANA_CR_CH_1
 #define ADC_CHANNEL_2        ADC_ANA_CR_CH_2
 #define ADC_CHANNEL_3        ADC_ANA_CR_CH_3
-#define ADC_CHANNEL_8        ADC_ANA_CR_CH_8
-#define ADC_CHANNEL_9        ADC_ANA_CR_CH_9
-#define ADC_CHANNEL_TEMP    ADC_ANA_CR_CH_TEMP
-#define ADC_CHANNEL_OFFSET    ADC_ANA_CR_CH_OFFSET
+#define ADC_CHANNEL_0_1      ADC_ANA_CR_CH_8
+#define ADC_CHANNEL_2_3      ADC_ANA_CR_CH_9
+#define ADC_CHANNEL_TEMP     ADC_ANA_CR_CH_TEMP
+#define ADC_CHANNEL_OFFSET   ADC_ANA_CR_CH_OFFSET
 
 #define ADC_FREQ_MIN        307
 #define ADC_FREQ_MAX        2000
@@ -63,8 +60,8 @@ typedef struct __ADC_HandleTypeDef
                                  ((CHANNEL) == ADC_CHANNEL_1)           || \
                                  ((CHANNEL) == ADC_CHANNEL_2)           || \
                                  ((CHANNEL) == ADC_CHANNEL_3)           || \
-                                 ((CHANNEL) == ADC_CHANNEL_8)           || \
-                                 ((CHANNEL) == ADC_CHANNEL_9)            )
+                                 ((CHANNEL) == ADC_CHANNEL_0_1)           || \
+                                 ((CHANNEL) == ADC_CHANNEL_2_3)            )
                                  
 #define IS_ADC_CMP_POL(POL)        (((POL) == CMP_POL_0) || \
                                  ((POL) == CMP_POL_1))

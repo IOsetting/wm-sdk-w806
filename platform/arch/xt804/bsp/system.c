@@ -36,6 +36,7 @@ void SystemInit(void)
 
 #if defined(CONFIG_SEPARATE_IRQ_SP) && !defined(CONFIG_KERNEL_NONE)
     /* 801 not supported */
+	extern int32_t g_top_irqstack;
     __set_Int_SP((uint32_t)&g_top_irqstack);
     __set_CHR(__get_CHR() | CHR_ISE_Msk);
     VIC->TSPR = 0xFF;

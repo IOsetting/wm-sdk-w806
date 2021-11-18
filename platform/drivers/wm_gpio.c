@@ -179,13 +179,13 @@ void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin)
 		
 		if (iocurrent)
 		{
-			if ((GPIOx->DATA & GPIO_Pin) != GPIO_PIN_RESET)
+			if ((GPIOx->DATA & iocurrent) != GPIO_PIN_RESET)
 			{
-				CLEAR_BIT(GPIOx->DATA, GPIO_Pin);
+				CLEAR_BIT(GPIOx->DATA, iocurrent);
 			}
 			else
 			{
-				SET_BIT(GPIOx->DATA, GPIO_Pin);
+				SET_BIT(GPIOx->DATA, iocurrent);
 			}
 		}
 		

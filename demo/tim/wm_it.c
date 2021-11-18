@@ -8,11 +8,10 @@ extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim5;
 
+#define readl(addr) ({unsigned int __v = (*(volatile unsigned int *) (addr)); __v;})
 __attribute__((isr)) void CORET_IRQHandler(void)
 {
-    uint32_t temp;
-    
-    temp = (*(volatile unsigned int *) (0xE000E010));
+    readl(0xE000E010);
     HAL_IncTick();
 }
 

@@ -16,8 +16,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
         //ADC_CHANNEL_1 : PA4
         //ADC_CHANNEL_2 : PA3
         //ADC_CHANNEL_3 : PA2
-        //ADC_CHANNEL_8 : PA1 and PA4
-        //ADC_CHANNEL_9 : PA3 and PA2
+        //ADC_CHANNEL_0_1 : PA1 and PA4
+        //ADC_CHANNEL_2_3 : PA3 and PA2
         if (hadc->Init.channel == ADC_CHANNEL_0)
         {
             __HAL_AFIO_REMAP_ADC(GPIOA, GPIO_PIN_1);
@@ -34,12 +34,12 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
         {
             __HAL_AFIO_REMAP_ADC(GPIOA, GPIO_PIN_2);
         }
-        else if (hadc->Init.channel == ADC_CHANNEL_8)
+        else if (hadc->Init.channel == ADC_CHANNEL_0_1)
         {
             __HAL_AFIO_REMAP_ADC(GPIOA, GPIO_PIN_1);
             __HAL_AFIO_REMAP_ADC(GPIOA, GPIO_PIN_4);
         }
-        else if (hadc->Init.channel == ADC_CHANNEL_9)
+        else if (hadc->Init.channel == ADC_CHANNEL_2_3)
         {
             __HAL_AFIO_REMAP_ADC(GPIOA, GPIO_PIN_3);
             __HAL_AFIO_REMAP_ADC(GPIOA, GPIO_PIN_2);

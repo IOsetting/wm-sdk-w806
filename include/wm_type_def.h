@@ -45,4 +45,10 @@ typedef enum
 #define HAL_IS_BIT_SET(REG, BIT)         (((REG) & (BIT)) != 0U)
 #define HAL_IS_BIT_CLR(REG, BIT)         (((REG) & (BIT)) == 0U)
 
+#define __HAL_LINKDMA(__HANDLE__, __PPP_DMA_FIELD__, __DMA_HANDLE__)               \
+                        do{                                                      \
+                              (__HANDLE__)->__PPP_DMA_FIELD__ = &(__DMA_HANDLE__); \
+                              (__DMA_HANDLE__).Parent = (__HANDLE__);             \
+                          } while(0U)
+
 #endif

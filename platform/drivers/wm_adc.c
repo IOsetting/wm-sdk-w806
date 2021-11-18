@@ -40,13 +40,13 @@ HAL_StatusTypeDef HAL_ADC_Init(ADC_HandleTypeDef* hadc)
 	MODIFY_REG(RCC->CLK_SEL, RCC_CLK_SEL_ADC_DIV, ((div & 0xFF) << RCC_CLK_SEL_ADC_DIV_Pos));
 	SET_BIT(RCC->CLK_DIV, RCC_CLK_DIV_FREQ_EN);
 	
-	MODIFY_REG(ADC->ADC_CR, ADC_ADC_CR_DMAEN | ADC_ADC_CR_SWITCHTIME | ADC_ADC_CR_INITTIME, 
+	MODIFY_REG(hadc->Instance->ADC_CR, ADC_ADC_CR_DMAEN | ADC_ADC_CR_SWITCHTIME | ADC_ADC_CR_INITTIME, 
 	(0x50 << ADC_ADC_CR_SWITCHTIME_Pos) | (0x50 << ADC_ADC_CR_INITTIME_Pos) | ADC_ADC_CR_ADCIE);
 	
-	MODIFY_REG(ADC->PGA_CR, ADC_PGA_CR_BPREF | ADC_PGA_CR_GAIN | ADC_PGA_CR_BP, ADC_PGA_CR_CHOPEN | ADC_PGA_CR_PGAEN);
+	MODIFY_REG(hadc->Instance->PGA_CR, ADC_PGA_CR_BPREF | ADC_PGA_CR_GAIN | ADC_PGA_CR_BP, ADC_PGA_CR_CHOPEN | ADC_PGA_CR_PGAEN);
 	
 	// 校验计算offset
-	MODIFY_REG(ADC->ANA_CR, ADC_ANA_CR_CH | ADC_ANA_CR_PD, ADC_ANA_CR_RST | ADC_ANA_CR_LDOEN | ADC_ANA_CR_CH_OFFSET);
+	MODIFY_REG(hadc->Instance->ANA_CR, ADC_ANA_CR_CH | ADC_ANA_CR_PD, ADC_ANA_CR_RST | ADC_ANA_CR_LDOEN | ADC_ANA_CR_CH_OFFSET);
 	
 	HAL_ADC_PollForConversion(hadc);
 	hadc->offset = _Get_Result();
@@ -86,6 +86,7 @@ HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef* hadc)
 	assert_param(IS_ADC_ALL_INSTANCE(hadc->Instance));
 	
 	__HAL_LOCK(hadc);
+	MODIFY_REG(hadc->Instance->ANA_CR, ADC_ANA_CR_CH, hadc->Init.channel);
 	__HAL_ADC_CLEAR_FLAG(hadc, ADC_IF_ADC | ADC_IF_CMP);
 	__HAL_ADC_ENABLE(hadc);
 	__HAL_UNLOCK(hadc);
@@ -158,6 +159,7 @@ HAL_StatusTypeDef HAL_ADC_Start_IT(ADC_HandleTypeDef* hadc)
 	assert_param(IS_ADC_ALL_INSTANCE(hadc->Instance));
 	
 	__HAL_LOCK(hadc);
+	MODIFY_REG(hadc->Instance->ANA_CR, ADC_ANA_CR_CH, hadc->Init.channel);
 	__HAL_ADC_CLEAR_FLAG(hadc, ADC_IF_ADC | ADC_IF_CMP);
 	__HAL_ADC_INT_ENABLE(hadc, ADC_ADC_CR_ADCIE);
 	__HAL_ADC_ENABLE(hadc);
@@ -185,6 +187,7 @@ HAL_StatusTypeDef HAL_ADC_Start_Compare_IT(ADC_HandleTypeDef* hadc)
 	
 	__HAL_LOCK(hadc);
 	__HAL_ADC_CLEAR_FLAG(hadc, ADC_IF_ADC | ADC_IF_CMP);
+	MODIFY_REG(hadc->Instance->ANA_CR, ADC_ANA_CR_CH, hadc->Init.channel);
 	MODIFY_REG(hadc->Instance->ADC_CR, ADC_ADC_CR_CMPPOL | ADC_ADC_CR_CMPEN, ((hadc->Init.cmp_pol) | ADC_ADC_CR_CMPEN));
 	WRITE_REG(hadc->Instance->CMP_VAL, ((hadc->Init.cmp_val) & 0x3FFFF));
 	__HAL_ADC_INT_ENABLE(hadc, ADC_ADC_CR_CMPIE);

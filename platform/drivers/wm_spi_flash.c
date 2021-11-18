@@ -1,6 +1,6 @@
 #include "wm_spi_flash.h"
 
-SPI_HandleTypeDef hspi;
+static SPI_HandleTypeDef hspi;
 static uint32_t total_size = 0;
 static uint8_t cache[SECTOR_SIZE];
 

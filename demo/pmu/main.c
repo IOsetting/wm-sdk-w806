@@ -27,7 +27,7 @@ int main(void)
 static void PMU_Init(void)
 {
     hpmu.Instance = PMU;
-    hpmu.ClkSource = PMU_CR_32KRC_CAL_EN;
+    hpmu.ClkSource = PMU_CLKSOURCE_32RC;
     
     HAL_PMU_Init(&hpmu);
 }

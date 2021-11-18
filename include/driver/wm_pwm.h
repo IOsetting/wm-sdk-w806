@@ -8,10 +8,10 @@ typedef struct
     uint32_t Prescaler;            /* Specifies the prescaler value used to divide the PWM clock(40MHz).
                                     This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF */
     
-    uint32_t CounterMode;        /* Specifies the counter mode.
+    uint32_t CounterMode;          /* Specifies the counter mode.
                                     This parameter can be a value of @ref PWM_Counter_Mode */
                                    
-    uint32_t Period;            /* Specifies the period value to be loaded into the PERIOD
+    uint32_t Period;               /* Specifies the period value to be loaded into the PERIOD
                                     Register at the next update event.
                                     This parameter can be a number between Min_Data = 0x00 and Max_Data = 0xFF.  */
                                    
@@ -19,30 +19,28 @@ typedef struct
                                     This parameter can be a number between Min_Data = 0x00 and Max_Data = 0xFF */
                                
     uint32_t AutoReloadPreload;    /* Specifies the auto-reload preload.
-                                   This parameter can be a value of @ref TIM_AutoReloadPreload */
+                                    This parameter can be a value of @ref TIM_AutoReloadPreload */
                                    
-    uint32_t OutMode;            /* Specifies the output mode.
-                                   This parameter can be a value of @ref PWM_Out_Mode*/
+    uint32_t OutMode;              /* Specifies the output mode.
+                                    This parameter can be a value of @ref PWM_Out_Mode*/
     
-    uint32_t OutInverse;        /* Specifies the output polarity.
-                                   This parameter can be a value of @ref PWM_Out_Inverse */
+    uint32_t OutInverse;           /* Specifies the output polarity.
+                                    This parameter can be a value of @ref PWM_Out_Inverse */
     
     uint32_t Dtdiv;                /* Specifies the prescaler value used to divide the dead zone clock(40MHz) when in complementary mode.
-                                   This parameter can be a value of @ref PWM_DT_DIV */
+                                    This parameter can be a value of @ref PWM_DT_DIV */
     
     uint32_t Dtcnt;                /* Specifies the number of dead time clocks when in complementary mode.
-                                   This parameter can be a number between Min_Data = 0x00 and Max_Data = 0xFF */
+                                    This parameter can be a number between Min_Data = 0x00 and Max_Data = 0xFF */
                                    
 } PWM_InitTypeDef;
 
 typedef struct
 {
-    PWM_TypeDef            *Instance;
-    
-    PWM_InitTypeDef        Init;
-    
+    PWM_TypeDef         *Instance;
+    PWM_InitTypeDef     Init;
     uint32_t            Channel; /* This parameter can be a value of @ref PWM_Channel */
-    
+
 } PWM_HandleTypeDef;
 
 #define PWM        ((PWM_TypeDef *)PWM_BASE)
@@ -53,33 +51,33 @@ typedef struct
 #define PWM_CHANNEL_2    0x02
 #define PWM_CHANNEL_3    0x03
 #define PWM_CHANNEL_4    0x04
-#define PWM_CHANNEL_ALL    0x01F
+#define PWM_CHANNEL_ALL  0x01F
 
 // PWM_Counter_Mode
-#define PWM_COUNTERMODE_EDGEALIGNED_UP                    0x0    // edge-aligned up mode for capture
+#define PWM_COUNTERMODE_EDGEALIGNED_UP                  0x0    // edge-aligned up mode for capture
 #define PWM_COUNTERMODE_EDGEALIGNED_DOWN                0x1    // edge-aligned up mode for out
-#define PWM_COUNTERMODE_CENTERALIGNED                    0x2 // center-aligned mode for out
+#define PWM_COUNTERMODE_CENTERALIGNED                   0x2 // center-aligned mode for out
 
 // PWM_AutoReloadPreload
-#define PWM_AUTORELOAD_PRELOAD_DISABLE                    0x00               // TIMx_ARR register is not buffered
-#define PWM_AUTORELOAD_PRELOAD_ENABLE                     0x01              // TIMx_ARR register is buffered
+#define PWM_AUTORELOAD_PRELOAD_DISABLE                  0x00               // TIMx_ARR register is not buffered
+#define PWM_AUTORELOAD_PRELOAD_ENABLE                   0x01              // TIMx_ARR register is buffered
 
 // PWM_Out_Mode
 #define PWM_OUT_MODE_INDEPENDENT                        0x00
-#define PWM_OUT_MODE_2SYNC                                0x01
-#define PWM_OUT_MODE_2COMPLEMENTARY                        0x02
-#define PWM_OUT_MODE_5SYNC                                0x03
-#define PWM_OUT_MODE_BREAK                                0x04
+#define PWM_OUT_MODE_2SYNC                              0x01
+#define PWM_OUT_MODE_2COMPLEMENTARY                     0x02
+#define PWM_OUT_MODE_5SYNC                              0x03
+#define PWM_OUT_MODE_BREAK                              0x04
 
 // PWM_Out_Inverse
-#define PWM_OUT_INVERSE_DISABLE                            0x00
-#define PWM_OUT_INVERSE_ENABLE                            0x01
+#define PWM_OUT_INVERSE_DISABLE                         0x00
+#define PWM_OUT_INVERSE_ENABLE                          0x01
 
 // PWM_DT_DIV
-#define PWM_DTDIV_NONE                                    PWM_DTCR_DTDIV_1
-#define PWM_DTDIV_2                                        PWM_DTCR_DTDIV_2
-#define PWM_DTDIV_4                                        PWM_DTCR_DTDIV_4
-#define PWM_DTDIV_8                                        PWM_DTCR_DTDIV_8
+#define PWM_DTDIV_NONE                                  PWM_DTCR_DTDIV_1
+#define PWM_DTDIV_2                                     PWM_DTCR_DTDIV_2
+#define PWM_DTDIV_4                                     PWM_DTCR_DTDIV_4
+#define PWM_DTDIV_8                                     PWM_DTCR_DTDIV_8
 
 
 
@@ -126,8 +124,8 @@ typedef struct
 
 HAL_StatusTypeDef    HAL_PWM_Init(PWM_HandleTypeDef *hpwm);
 HAL_StatusTypeDef    HAL_PWM_DeInit(PWM_HandleTypeDef *hpwm);
-void                HAL_PWM_MspInit(PWM_HandleTypeDef *hpwm);
-void                HAL_PWM_MspDeInit(PWM_HandleTypeDef *hpwm);
+void                 HAL_PWM_MspInit(PWM_HandleTypeDef *hpwm);
+void                 HAL_PWM_MspDeInit(PWM_HandleTypeDef *hpwm);
 
 HAL_StatusTypeDef    HAL_PWM_Start(PWM_HandleTypeDef *hpwm);
 HAL_StatusTypeDef    HAL_PWM_Stop(PWM_HandleTypeDef *hpwm);

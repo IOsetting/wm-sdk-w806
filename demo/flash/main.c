@@ -4,9 +4,9 @@
 
 void Error_Handler(void);
 
-/******************************0x81FFFFF
+/******************************0x80FFFFF
  *            USER PARAM
- * ****************************0x8XXXXXX
+ * ****************************0x80XXXXX
  *            RUN IMAGE
  * ****************************0x8010400
  *            RUN IMAGE HEADER
@@ -19,7 +19,7 @@ void Error_Handler(void);
  * ****************************0x8000000*/
 
 #define LEN 5000
-#define TEST_ADDR 0x100000
+#define TEST_ADDR 0x80000
 uint8_t test_buf[LEN]={0};
 
 int main(void)

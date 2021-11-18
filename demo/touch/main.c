@@ -16,7 +16,7 @@ int main(void)
     Touch_init();
     
     while(1)
-    {    
+    {
         HAL_Delay(1000);
     }
     
@@ -39,7 +39,7 @@ static void Touch_init(void)
     htouch.Init.Threshold[13] = 120;
     htouch.Init.Threshold[14] = 120;
     
-    htouch.Init.Irq_en = 1 << 0 | 1 << 8 | 1 << 9 | 1 << 11 | 1 << 12 | 1 << 13 | 1 << 14;    // bit0 ~ bit 2
+    htouch.Init.Irq_en = 1 << 0 | 1 << 8 | 1 << 9 | 1 << 11 | 1 << 12 | 1 << 13 | 1 << 14;
     
     HAL_TOUCH_Init(&htouch);
 }

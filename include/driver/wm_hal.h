@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: RCSN
- * @Date: 2021-09-17 18:03:28
- * @LastEditors: fy-tech
- * @LastEditTime: 2021-09-30 16:29:07
- */
 #ifndef __WM_HAL_H__
 #define __WM_HAL_H__
 
@@ -29,8 +21,10 @@
 #include "wm_spi_flash.h"
 #include "wm_i2c.h"
 #include "wm_touch.h"
+#include "wm_i2s.h"
+#include "wm_dma.h"
 
-#define VER "0.3.0"
+#define VER "0.5.0"
 
 #define __HAL_LOCK(__HANDLE__)                                           \
                                 do{                                        \
@@ -48,7 +42,7 @@
                                   do{                                       \
                                       (__HANDLE__)->Lock = HAL_UNLOCKED;    \
                                     }while (0)
-                                        
+										
 
 HAL_StatusTypeDef HAL_Init(void);
 HAL_StatusTypeDef HAL_DeInit(void);

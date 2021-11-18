@@ -70,8 +70,8 @@ static void RTC_Alarm_Demo(void)
 
 static void RTC_Init(void)
 {
-    hpmu.Instance = PMU;
-    hpmu.ClkSource = PMU_CR_32KRC_CAL_EN;
+	hpmu.Instance = PMU;
+    hpmu.ClkSource = PMU_CLKSOURCE_32RC;
     HAL_PMU_Init(&hpmu);
 }
 

@@ -24,7 +24,7 @@ typedef struct
                                      @note The communication clock is derived from the master
                                      clock. The slave clock does not need to be set. */
                                      
-    uint32_t FirstByte;              /* Specifies whether data transfers start from high byte or low byte.
+    uint32_t FirstByte;           /* Specifies whether data transfers start from high byte or low byte.
                                      This parameter can be a value of @ref SPI_HBYTE_LBYTE_transmission */
                                      
 
@@ -50,15 +50,15 @@ typedef struct __SPI_HandleTypeDef
 
     uint8_t                    *pTxBuffPtr;    /*!< Pointer to SPI Tx transfer Buffer        */
 
-    uint16_t                   TxXferSize;     /*!< SPI Tx Transfer size                     */
+    uint32_t                   TxXferSize;     /*!< SPI Tx Transfer size                     */
 
-    __IO uint16_t              TxXferCount;    /*!< SPI Tx Transfer Counter                  */
+    __IO uint32_t              TxXferCount;    /*!< SPI Tx Transfer Counter                  */
 
     uint8_t                    *pRxBuffPtr;    /*!< Pointer to SPI Rx transfer Buffer        */
 
-    uint16_t                   RxXferSize;     /*!< SPI Rx Transfer size                     */
+    uint32_t                   RxXferSize;     /*!< SPI Rx Transfer size                     */
 
-    __IO uint16_t              RxXferCount;    /*!< SPI Rx Transfer Counter                  */
+    __IO uint32_t              RxXferCount;    /*!< SPI Rx Transfer Counter                  */
 
     HAL_LockTypeDef            Lock;           /*!< Locking object                           */
 
@@ -86,12 +86,12 @@ typedef struct __SPI_HandleTypeDef
 #define SPI_PHASE_2EDGE                 SPI_SPI_CFG_CPHA
 
 // SPI_Slave_Select_management
-#define SPI_NSS_HARD                     (0x00000000U)
+#define SPI_NSS_HARD                    (0x00000000U)
 #define SPI_NSS_SOFT                    SPI_CH_CFG_CSSEL
 
 // SPI_HBYTE_LBYTE_transmission
 #define SPI_LITTLEENDIAN                (0x00000000U)
-#define SPI_BIGENDIAN                    SPI_SPI_CFG_BIGENDIAN
+#define SPI_BIGENDIAN                   SPI_SPI_CFG_BIGENDIAN
 
 // fclk = 40MHz / (2 * (div + 1))
 #define SPI_BAUDRATEPRESCALER_2         (0x00000000U)    // 40M / 2 = 20M

@@ -249,7 +249,7 @@ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint3
 					{
 						break;
 					}
-					hspi->pRxBuffPtr[i] = (data >> ((3 - i) * 8)) & 0xFF;
+					hspi->pRxBuffPtr[i] = (data >> (i * 8)) & 0xFF;
 				}
 				hspi->pRxBuffPtr += sizeof(uint8_t) * i;
 				hspi->RxXferCount -= i;
@@ -361,7 +361,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
 					{
 						break;
 					}
-					data |= (hspi->pTxBuffPtr[i] << ((3 - i) * 8));
+					data |= (hspi->pTxBuffPtr[i] << (i * 8));
 				}
 				hspi->pTxBuffPtr += sizeof(uint8_t) * i;
 				hspi->TxXferCount -= i;
@@ -382,7 +382,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
 					{
 						break;
 					}
-					hspi->pRxBuffPtr[i] = (data >> ((3 - i) * 8)) & 0xFF;
+					hspi->pRxBuffPtr[i] = (data >> (i * 8)) & 0xFF;
 				}
 				hspi->pRxBuffPtr += sizeof(uint8_t) * i;
 				hspi->RxXferCount -= i;

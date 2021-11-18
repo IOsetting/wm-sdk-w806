@@ -6,9 +6,9 @@
 typedef struct
 {
 	GPIO_TypeDef *SCL_Port;
-	uint16_t SCL_Pin;
+	uint32_t SCL_Pin;
 	GPIO_TypeDef *SDA_Port;
-	uint16_t SDA_Pin;
+	uint32_t SDA_Pin;
 } I2C_HandleTypeDef;
 
 #define I2C_SDA_H(HANDLE)	HAL_GPIO_WritePin(HANDLE->SDA_Port, HANDLE->SDA_Pin, GPIO_PIN_SET)
