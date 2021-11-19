@@ -4,10 +4,10 @@
 
 联盛德MCU W806 开发套件
 
-## SDK 文件结构
+## 文件结构
 
 ```
-WM_SDK 
+wm-sdk-w806
 ├─app              # 用户应用代码
 ├─bin              # 编译中间及结果产物
 ├─demo             # 功能演示代码
@@ -21,17 +21,16 @@ WM_SDK
 └─tools            # 编译脚本和工具
 ```
 
-# Linux下的环境说明
+# Linux环境说明
 
-## 安装编译工具
+## 下载
 
-### 编译工具下载
-
-* https://occ.t-head.cn/community/download
+* https://occ.t-head.cn/community/download 下载编译工具
 * 导航->工具->工具链-800系列->(当前是V3.10.29)
 * 根据自己的操作系统, 下载对应版本, 对于Ubuntu20.04, 下载 csky-elfabiv2-tools-x86_64-minilibc-yyyymmdd.tar
+* 如果上面的链接有问题或者无法注册, 可以通过百度盘下载 https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
 
-### 编译工具安装
+## 安装
 
 上面下载的tar.gz文件外层路径用的是`./`目录, 建议放到一个单独的目录中解压, 或者指定解压目录解压目录, 参考命令如下
 ```bash
@@ -68,7 +67,7 @@ make menuconfig
 make
 ```
 
-## 烧录
+## 写入开发板
 
 首先通过`dmesg`,`lsusb`, `ls /dev/tty*`等命令确定自己开发板在系统中对应的USB端口, 例如`ttyUSB0`.  
 
@@ -89,8 +88,8 @@ enerate compressed image completed.
 build finished!
 connecting serial...
 serial connected.
-wait serial sync.........         
-please manually reset the device. <----- 这里按下reset
+wait serial sync.........         <----- 这里按下reset
+please manually reset the device. <----- 或者这里
 ....
 serial sync sucess.
 mac CC-CC-CC-CC-CC-CC.
@@ -107,7 +106,7 @@ please manually reset the device.
 
 <br>
 
-# Windows下的环境说明
+# Windows环境说明
 
 ## 下载相关软件
 
@@ -115,6 +114,9 @@ please manually reset the device.
 * 下载工具链 [https://occ.t-head.cn/community/download](https://occ.t-head.cn/community/download)
    * 导航 -> 工具 -> 工具链-800系列 -> (当前是V3.10.29)
    * 下载对应版本, 对于Win10, 下载 csky-elfabiv2-tools-mingw-minilibc-20210423.tar.gz
+   * 如果无法下载或无法注册, 请通过百度盘下载 https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+* 下载烧录工具 [https://h.hlktech.com/Mobile/download/fdetail/143.html](https://h.hlktech.com/Mobile/download/fdetail/143.html)
+   * 点击 'W800串口烧录工具_V1.4.8(.rar)' 右侧的下载链接下载
 
 ## 安装和配置
 
@@ -138,6 +140,7 @@ pacman -S msys/git
 pacman -S msys/ncurses-devel
 pacman -S msys/gettext-devel
 ```
+
 解压工具链到指定目录, 注意这个tar包没有顶层目录, 建议指定目录解压
 ```
 mkdir csky-elfabiv2-tools-mingw-minilibc-20210423
