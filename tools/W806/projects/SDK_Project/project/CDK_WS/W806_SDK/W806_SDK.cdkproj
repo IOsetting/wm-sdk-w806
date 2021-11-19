@@ -72,6 +72,115 @@
       <File Name="../../../../../../../platform/drivers/wm_touch.c">
         <FileOption/>
       </File>
+      <File Name="../../../../../../../platform/drivers/wm_dma.c">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../platform/drivers/wm_i2s.c">
+        <FileOption/>
+      </File>
+    </VirtualDirectory>
+    <VirtualDirectory Name="component" ExcludeProjConfig="">
+      <VirtualDirectory Name="FreeRTOS">
+        <VirtualDirectory Name="src">
+          <File Name="../../../../../../../platform/component/FreeRTOS/croutine.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/event_groups.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/list.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/queue.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/stream_buffer.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/tasks.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/timers.c">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+        <VirtualDirectory Name="portable">
+          <File Name="../../../../../../../platform/component/FreeRTOS/portable/xt804/cpu_task_sw.S">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/portable/xt804/port.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/portable/MemMang/heap_5.c">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+        <VirtualDirectory Name="include">
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/atomic.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/croutine.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/deprecated_definitions.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/event_groups.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/FreeRTOS.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/list.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/message_buffer.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/mpu_prototypes.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/mpu_wrappers.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/portable.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/projdefs.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/queue.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/semphr.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/stack_macros.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/StackMacros.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/stdint.readme">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/stream_buffer.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/task.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/timers.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/include/FreeRTOSConfig.h">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../../../platform/component/FreeRTOS/portable/xt804/portmacro.h">
+            <FileOption/>
+          </File>
+        </VirtualDirectory>
+      </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="ld">
@@ -172,6 +281,12 @@
       <File Name="../../../../../../../include/driver/wm_touch.h">
         <FileOption/>
       </File>
+      <File Name="../../../../../../../include/driver/wm_dma.h">
+        <FileOption/>
+      </File>
+      <File Name="../../../../../../../include/driver/wm_i2s.h">
+        <FileOption/>
+      </File>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="app">
@@ -194,16 +309,6 @@
     <FlashOperate>84</FlashOperate>
     <DebugLaunch>41</DebugLaunch>
   </MonitorProgress>
-  <DebugSessions>
-    <watchExpressions/>
-    <memoryExpressions>;;;</memoryExpressions>
-    <statistics>;;MHZ;</statistics>
-    <peripheralTabs/>
-    <WatchDisplayFormat>1</WatchDisplayFormat>
-    <LocalDisplayFormat>1</LocalDisplayFormat>
-    <debugLayout/>
-    <memoryTabColSizeExpressions>100:8;100:8;100:8;100:8;</memoryTabColSizeExpressions>
-  </DebugSessions>
   <BuildConfigs>
     <BuildConfig Name="BuildSet">
       <Target>
@@ -303,7 +408,7 @@
         <Undefine/>
         <Optim>Optimize more (-O2)</Optim>
         <DebugLevel>Maximum (-g3)</DebugLevel>
-        <IncludePath>$(CDKPath)/CSKY/MinGW/csky-abiv2-elf-toolchain/csky-elfabiv2/include;$(ProjectPath);$(ProjectPath)/../../../../../../../include;$(ProjectPath)/../../../../../../../include/arch/xt804;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_core;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_dsp;$(ProjectPath)/../../../../../../../include/driver;$(ProjectPath)/../../../../../../../app/inc</IncludePath>
+        <IncludePath>$(CDKPath)/CSKY/MinGW/csky-abiv2-elf-toolchain/csky-elfabiv2/include;$(ProjectPath);$(ProjectPath)/../../../../../../../include;$(ProjectPath)/../../../../../../../include/arch/xt804;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_core;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_dsp;$(ProjectPath)/../../../../../../../include/driver;$(ProjectPath)/../../../../../../../app/inc;$(ProjectPath)/../../../../../../../platform/component/FreeRTOS/include;$(ProjectPath)/../../../../../../../platform/component/FreeRTOS/portable/xt804</IncludePath>
         <OtherFlags>-fdata-sections -c</OtherFlags>
         <Verbose>no</Verbose>
         <Ansi>no</Ansi>
@@ -319,7 +424,7 @@
       <Asm>
         <Define/>
         <Undefine/>
-        <IncludePath>$(CDKPath)/CSKY/csi/csi_core/csi_cdk/;$(CDKPath)/CSKY/csi/csi_core/include/;$(CDKPath)/CSKY/csi/csi_driver/include/;$(ProjectPath);$(ProjectPath)/../../../../../../../include;$(ProjectPath)/../../../../../../../include/arch/xt804;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_core;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_dsp;$(ProjectPath)/../../../../../../../include/os;$(ProjectPath)/../../../../../../../include/platform;$(ProjectPath)/../../../../../../../src/app/fatfs;$(ProjectPath)/../../../../../../../src/os/rtos/include</IncludePath>
+        <IncludePath>$(CDKPath)/CSKY/csi/csi_core/csi_cdk/;$(CDKPath)/CSKY/csi/csi_core/include/;$(CDKPath)/CSKY/csi/csi_driver/include/;$(ProjectPath);$(ProjectPath)/../../../../../../../include;$(ProjectPath)/../../../../../../../include/arch/xt804;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_core;$(ProjectPath)/../../../../../../../include/arch/xt804/csi_dsp;$(ProjectPath)/../../../../../../../platform/component/FreeRTOS/include</IncludePath>
         <OtherFlags/>
         <DebugLevel>gdwarf2</DebugLevel>
       </Asm>
@@ -327,7 +432,7 @@
         <Garbage>yes</Garbage>
         <Garbage2>yes</Garbage2>
         <LDFile>$(ProjectPath)..\..\..\..\..\..\..\ld\W806\gcc_csky.ld</LDFile>
-        <LibName>dsp</LibName>
+        <LibName>dsp m</LibName>
         <LibPath>..\..\..\..\..\..\..\lib\W806</LibPath>
         <OtherFlags>-Wl,-zmax-page-size=1024 -mhard-float</OtherFlags>
         <AutoLDFile>no</AutoLDFile>
@@ -396,4 +501,14 @@
       </Flash>
     </BuildConfig>
   </BuildConfigs>
+  <DebugSessions>
+    <watchExpressions/>
+    <memoryExpressions>;;;</memoryExpressions>
+    <statistics>;;MHZ;</statistics>
+    <peripheralTabs/>
+    <WatchDisplayFormat>1</WatchDisplayFormat>
+    <LocalDisplayFormat>1</LocalDisplayFormat>
+    <debugLayout/>
+    <memoryTabColSizeExpressions>100:8;100:8;100:8;100:8;</memoryTabColSizeExpressions>
+  </DebugSessions>
 </Project>

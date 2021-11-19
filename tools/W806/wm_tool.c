@@ -115,7 +115,7 @@ typedef struct {
     unsigned char  ver[WM_TOOL_IMAGE_VERSION_LEN];
     unsigned int   reserved0;
     unsigned int   reserved1;
-    unsigned int   next_boot;    
+    unsigned int   next_boot;
     unsigned int   hd_checksum;
 } wm_tool_firmware_booter_t;
 

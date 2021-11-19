@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: RCSN
- * @Date: 2021-09-17 18:03:28
- * @LastEditors: fy-tech
- * @LastEditTime: 2021-09-30 17:32:53
- */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -24,7 +16,7 @@ int main(int argc, char *argv[])
 
     if (2 != argc)
     {
-        printf("error: parameters please pass main.c path\r\n");
+        printf("error: parameters please pass wm_main.c path\r\n");
         return -1;
     }
 
