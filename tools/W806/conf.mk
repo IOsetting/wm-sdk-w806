@@ -67,7 +67,7 @@ ifeq ($(VERBOSE),YES)
     AR = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-ar
     ASM = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-gcc
     CC = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-gcc
-    CPP = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-g++
+    CXX = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-g++
     LINK = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-gcc
     OBJCOPY = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-objcopy
     OBJDUMP = $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-objdump
@@ -75,7 +75,7 @@ else
     AR      = @echo "AR       $(notdir $@)" 2>/dev/null; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-ar
     ASM     = @echo "ASM      $<"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-gcc
     CC      = @echo "CC       $<"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-gcc
-    CPP     = @echo "CPP      $<"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-g++
+    CXX     = @echo "CXX      $<"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-g++
     LINK    = @echo "LINK     $(notdir $(IMAGEODIR)/$(TARGET).elf)"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-gcc
     OBJCOPY = @echo "OBJCOPY  $(notdir $(FIRMWAREDIR)/$(TARGET)/$(TARGET).bin)"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-objcopy
     OBJDUMP = @echo "OBJDUMP  $<"; $(TOOL_CHAIN_PATH)$(TOOL_CHAIN_PREFIX)-objdump
@@ -92,6 +92,18 @@ CCFLAGS := -Wall \
     -mcpu=ck804ef \
     $(optimization) \
     -std=gnu99 \
+    -c  \
+    -mhard-float  \
+    -Wall  \
+    -fdata-sections  \
+    -ffunction-sections
+
+CCXXFLAGS := -Wall \
+    -DTLS_CONFIG_CPU_XT804=1 \
+    -DGCC_COMPILE=1 \
+    -mcpu=ck804ef \
+    $(optimization) \
+    -std=gnu++11 \
     -c  \
     -mhard-float  \
     -Wall  \

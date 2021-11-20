@@ -13,6 +13,7 @@ endif
 endif
 
 CSRCS ?= $(wildcard *.c)
+CPPSRCS ?= $(wildcard *.cpp)
 ASRCS ?= $(wildcard *.S)
 
 subdir_path := $(subst $(abspath $(TOP_DIR))/,,$(shell pwd))
@@ -20,6 +21,7 @@ subdir_path := $(subst $(abspath $(TOP_DIR))/,,$(shell pwd))
 SUBDIRS ?= $(patsubst %/,%,$(dir $(wildcard */Makefile)))
 
 OBJS := $(CSRCS:%.c=$(OBJODIR)/$(subdir_path)/%.o) \
+        $(CPPSRCS:%.cpp=$(OBJODIR)/$(subdir_path)/%.o) \
         $(ASRCS:%.S=$(OBJODIR)/$(subdir_path)/%.o)
 
 OBJS-DEPS := $(patsubst %.c, $(OBJODIR)/$(subdir_path)/%.o.d, $(CSRCS))
@@ -31,6 +33,8 @@ OIMAGES := $(GEN_IMAGES:%=$(IMAGEODIR)/%)
 OBINS := $(GEN_BINS:%=$(BINODIR)/%)
 
 CFLAGS = $(CCFLAGS) $(DEFINES) $(EXTRA_CCFLAGS) $(INCLUDES)
+
+CXXFLAGS = $(CCXXFLAGS) $(DEFINES) $(EXTRA_CCXXFLAGS) $(INCLUDES)
 
 define ShortcutRule
 $(1): .subdirs $(2)/$(1)
@@ -180,6 +184,10 @@ endif
 $(OBJODIR)/$(subdir_path)/%.o: %.c
 	@mkdir -p $(OBJODIR)/$(subdir_path)
 	$(CC) $(if $(findstring $<,$(DSRCS)),$(DFLAGS),$(CFLAGS)) $(COPTS_$(*F)) $(INCLUDES) $(CMACRO) -c "$<" -o "$@" -MMD -MD -MF "$(@:$(OBJODIR)/$(subdir_path)/%.o=$(OBJODIR)/$(subdir_path)/%.o.d)" -MT "$(@)"
+
+$(OBJODIR)/$(subdir_path)/%.o: %.cpp
+	@mkdir -p $(OBJODIR)/$(subdir_path)
+	$(CXX) $(if $(findstring $<,$(DSRCS)),$(DFLAGS),$(CXXFLAGS)) $(COPTS_$(*F)) $(INCLUDES) $(CMACRO) -c "$<" -o "$@" -MMD -MD -MF "$(@:$(OBJODIR)/$(subdir_path)/%.o=$(OBJODIR)/$(subdir_path)/%.o.d)" -MT "$(@)"
 
 $(OBJODIR)/$(subdir_path)/%.o: %.S
 	@mkdir -p $(OBJODIR)/$(subdir_path)
