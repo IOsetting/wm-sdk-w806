@@ -3,15 +3,21 @@
  * \file        main.c
  * \author      IOsetting | iosetting@outlook.com
  * \date        
- * \brief       Demo code of PWM in synchronized mode
- * \note        This will drive 3 on-board LEDs to show fade effect
+ * \brief       Demo code of PWM in 5-sync mode
+ * \note        This will drive 5 LEDs (3 onboard and 2 external) to show 5-sync mode
  * \version     v0.1
  * \ingroup     demo
  * \remarks     test-board: HLK-W806-KIT-V1.0
  *              PWM Frequency = 40MHz / Prescaler / (Period + 1)；
-                Duty Cycle(Edge Aligned)   = (Pulse + 1) / (Period + 1)
-                Duty Cycle(Center Aligned) = (2 * Pulse + 1) / (2 * (Period + 1))
+ *              Duty Cycle(Edge Aligned)   = (Pulse + 1) / (Period + 1)
+ *              Duty Cycle(Center Aligned) = (2 * Pulse + 1) / (2 * (Period + 1))
  *
+ *              Connect PB3 and PB16 to an external LEDs for PWM3 and PWM4 output
+ *              PB3   -> ext LED1(-)
+ *              3V3   -> ext LED1(+)(with 1KR resistor)
+ *              PB16  -> ext LED2(-)
+ *              3V3   -> ext LED2(+)(with 1KR resistor)
+ *              
 ******************************************************************************/
 
 #include <stdio.h>
