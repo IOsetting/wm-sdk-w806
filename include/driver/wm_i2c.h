@@ -25,10 +25,16 @@ typedef struct
 
 #define I2C_SDA_GET(HANDLE)	HAL_GPIO_ReadPin(HANDLE->SDA_Port, HANDLE->SDA_Pin)
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_I2C_Init(I2C_HandleTypeDef *hi2c);
 HAL_StatusTypeDef HAL_I2C_DeInit(I2C_HandleTypeDef *hi2c);
 
 HAL_StatusTypeDef HAL_I2C_Write(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, uint8_t MemAddress, uint8_t *pData, uint16_t Size);
 HAL_StatusTypeDef HAL_I2C_Read(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, uint8_t MemAddress, uint8_t *pData, uint16_t Size);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

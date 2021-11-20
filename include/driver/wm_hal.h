@@ -44,6 +44,9 @@
                                     }while (0)
 										
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_Init(void);
 HAL_StatusTypeDef HAL_DeInit(void);
 void HAL_MspInit(void);
@@ -54,6 +57,10 @@ void HAL_MspDeInit(void);
 void assert_failed(uint8_t* file, uint32_t line);
 #else
 #define assert_param(expr) ((void)0U)
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif

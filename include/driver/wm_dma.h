@@ -238,6 +238,9 @@ typedef struct __DMA_HandleTypeDef
 
 #define __HAL_DMA_CLEAR_FLAG(__HANDLE__, __FLAG__)    (SET_BIT((__HANDLE__)->DmaBaseAddress->IF, (__FLAG__)))
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma);
 HAL_StatusTypeDef HAL_DMA_DeInit (DMA_HandleTypeDef *hdma);
 HAL_StatusTypeDef HAL_DMA_Start (DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint16_t DataLength);
@@ -249,5 +252,8 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma);
 
 HAL_DMA_StateTypeDef HAL_DMA_GetState(DMA_HandleTypeDef *hdma);
 uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -55,6 +55,9 @@ typedef enum
 } HAL_TickFreqTypeDef;
 
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void SystemClock_Config(uint32_t clk);
 void SystemClock_Get(wm_sys_clk *sysclk);
 
@@ -66,5 +69,8 @@ void HAL_Delay(uint32_t Delay);
 void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t Priority);
 void HAL_NVIC_EnableIRQ(IRQn_Type IRQn);
 void HAL_NVIC_DisableIRQ(IRQn_Type IRQn);
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* WM_CPU_H */

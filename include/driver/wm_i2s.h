@@ -207,6 +207,9 @@ typedef struct
 
 #define __HAL_I2S_CLEAR_IT(__HANDLE__, __FLAG__)    ((__HANDLE__)->Instance->IF |= (__FLAG__))
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_I2S_Init(I2S_HandleTypeDef *hi2s);
 HAL_StatusTypeDef HAL_I2S_DeInit(I2S_HandleTypeDef *hi2s);
 
@@ -246,5 +249,8 @@ void HAL_I2S_TxRxCpltCallback(I2S_HandleTypeDef *hi2s);
 
 HAL_I2S_StateTypeDef HAL_I2S_GetState(I2S_HandleTypeDef *hi2s);
 uint32_t HAL_I2S_GetError(I2S_HandleTypeDef *hi2s);
+#ifdef __cplusplus
+}
+#endif
 
 #endif
