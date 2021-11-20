@@ -7,4 +7,3 @@ __attribute__((isr)) void CORET_IRQHandler(void)
     readl(0xE000E010);
     HAL_IncTick();
 }
-

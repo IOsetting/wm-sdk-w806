@@ -1,21 +1,27 @@
-/**
-    PWM Frequency： f = 40MHz / Prescaler / (Period + 1)；
-                        `````40MHz is fixed, change CPU clock won't affect this
-    Duty Cycle：
-        Edge Aligned: (Pulse + 1) / (Period + 1)
-                Pulse >= Period：PWM alway output high
-                Pulse < Period ：PWM High = (Pulse + 1), Low = (Period - Pulse)
-                Pulse = 0      ：PWM High = 1, Low = Period
+/******************************************************************************
+** 
+ * \file        main.c
+ * \author      IOsetting | iosetting@outlook.com
+ * \date        
+ * \brief       Demo code of PWM in synchronized mode
+ * \note        This will drive 3 on-board LEDs to show fade effect
+ * \version     v0.1
+ * \ingroup     demo
+ * \remarks     test-board: HLK-W806-KIT-V1.0
+ *              PWM Frequency = 40MHz / Prescaler / (Period + 1)；
+                Duty Cycle(Edge Aligned)   = (Pulse + 1) / (Period + 1)
+                Duty Cycle(Center Aligned) = (2 * Pulse + 1) / (2 * (Period + 1))
+ *
+******************************************************************************/
 
-        Center Aligned: (2 * Pulse + 1) / (2 * (Period + 1))
-                Pulse > Period ：PWM alway output high
-                Pulse <= Period：PWM High = (2 * Pulse + 1), Low = (2 * (Period - Pulse) + 1)
-                Pulse = 0      ：PWM High = 1, Low = (2 * Period + 1)
-  */
 #include <stdio.h>
 #include "wm_hal.h"
 
+#define DUTY_MAX 100
+#define DUTY_MIN 50
+
 PWM_HandleTypeDef hpwm;
+int i, j, m, d;
 
 static void PWM_Init(uint32_t channel);
 void Error_Handler(void);
@@ -34,16 +40,23 @@ int main(void)
     
     while (1)
     {
-        for (i = 0; i < 100; i++)
+        if (m == 0) // Increasing
         {
-            HAL_PWM_Duty_Set(&hpwm, i);
-            HAL_Delay(20);
+            HAL_PWM_Duty_Set(&hpwm, d++);
+            if (d == DUTY_MAX)
+            {
+                m = 1;
+            }
         }
-        for (i = 99; i >= 0; i--)
+        else // Decreasing
         {
-            HAL_PWM_Duty_Set(&hpwm, i);
-            HAL_Delay(20);
+            HAL_PWM_Duty_Set(&hpwm, d--);
+            if (d == DUTY_MIN)
+            {
+                m = 0;
+            }
         }
+        HAL_Delay(20);
     }
 }
 
@@ -54,8 +67,8 @@ static void PWM_Init(uint32_t channel)
     hpwm.Init.CounterMode = PWM_COUNTERMODE_EDGEALIGNED_DOWN;
     hpwm.Init.Prescaler = 4;
     hpwm.Init.Period = 99;    // Frequency = 40,000,000 / 4 / (99 + 1) = 100,000 = 100KHz
-    hpwm.Init.Pulse = 19;    // Duty Cycle = (19 + 1) / (99 + 1) = 20%
-    hpwm.Init.OutMode = PWM_OUT_MODE_5SYNC; // All 5 channels output the same
+    hpwm.Init.Pulse = 19;     // Duty Cycle = (19 + 1) / (99 + 1) = 20%
+    hpwm.Init.OutMode = PWM_OUT_MODE_5SYNC; // Make 5 channels output the same
     hpwm.Channel = channel;
     
     HAL_PWM_Init(&hpwm);
