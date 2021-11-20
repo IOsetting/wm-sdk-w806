@@ -60,9 +60,9 @@ typedef struct
 
 #define __HAL_TIM_ENABLE(__HANDLE__)                (TIM->CR |= TIM_CR_TIM_EN((__HANDLE__)->Instance - TIM0))
 
-#define __HAL_TIM_DISABLE(__HANDLE__)                (TIM->CR &= ~(TIM_CR_TIM_EN((__HANDLE__)->Instance - TIM0)))
+#define __HAL_TIM_DISABLE(__HANDLE__)               (TIM->CR &= ~(TIM_CR_TIM_EN((__HANDLE__)->Instance - TIM0)))
 
-#define __HAL_TIM_ENABLE_IT(__HANDLE__)                (TIM->CR |= TIM_CR_TIM_TIE((__HANDLE__)->Instance - TIM0))
+#define __HAL_TIM_ENABLE_IT(__HANDLE__)             (TIM->CR |= TIM_CR_TIM_TIE((__HANDLE__)->Instance - TIM0))
 
 #define __HAL_TIM_DISABLE_IT(__HANDLE__)            (TIM->CR &= ~(TIM_CR_TIM_TIE((__HANDLE__)->Instance - TIM0)))
 

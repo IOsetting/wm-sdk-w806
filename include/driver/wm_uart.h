@@ -120,10 +120,10 @@ typedef enum
 #define UART_PARITY_EVEN                    ((uint32_t)UART_LC_PCE)
 #define UART_PARITY_ODD                     ((uint32_t)(UART_LC_PCE | UART_LC_PS))
 
-#define UART_HWCONTROL_NONE                  0x00000000U
-#define UART_HWCONTROL_RTS                   ((uint32_t)UART_FC_AFCE)
-#define UART_HWCONTROL_CTS                   ((uint32_t)UART_FC_AFCE)
-#define UART_HWCONTROL_RTS_CTS               ((uint32_t)UART_FC_AFCE)
+#define UART_HWCONTROL_NONE                 0x00000000U
+#define UART_HWCONTROL_RTS                  ((uint32_t)UART_FC_AFCE)
+#define UART_HWCONTROL_CTS                  ((uint32_t)UART_FC_AFCE)
+#define UART_HWCONTROL_RTS_CTS              ((uint32_t)UART_FC_AFCE)
 
 #define UART_MODE_RX                        ((uint32_t)UART_LC_RE)
 #define UART_MODE_TX                        ((uint32_t)UART_LC_TE)
@@ -144,8 +144,8 @@ typedef enum
 #define IS_UART_INSTANCE(INSTANCE) (((INSTANCE) == UART0) || \
                                     ((INSTANCE) == UART1) || \
                                     ((INSTANCE) == UART2) || \
-                                    ((INSTANCE) == UART3)  || \
-                                    ((INSTANCE) == UART4)  || \
+                                    ((INSTANCE) == UART3) || \
+                                    ((INSTANCE) == UART4) || \
                                     ((INSTANCE) == UART5))
                                     
 #define IS_UART_WORD_LENGTH(LENGTH) (((LENGTH) == UART_WORDLENGTH_5B) || \
@@ -158,17 +158,17 @@ typedef enum
                                     ((BAUDRATE) == 1250000) || \
                                     ((BAUDRATE) == 1000000) || \
                                     ((BAUDRATE) == 921600)  || \
-                                    ((BAUDRATE) == 460800) || \
-                                    ((BAUDRATE) == 230400) || \
-                                    ((BAUDRATE) == 115200) || \
-                                    ((BAUDRATE) == 57600) || \
-                                    ((BAUDRATE) == 38400)  || \
-                                    ((BAUDRATE) == 19200) || \
-                                    ((BAUDRATE) == 9600) || \
-                                    ((BAUDRATE) == 4800) || \
-                                    ((BAUDRATE) == 2400) || \
-                                    ((BAUDRATE) == 1800)  || \
-                                    ((BAUDRATE) == 1200)  || \
+                                    ((BAUDRATE) == 460800)  || \
+                                    ((BAUDRATE) == 230400)  || \
+                                    ((BAUDRATE) == 115200)  || \
+                                    ((BAUDRATE) == 57600)   || \
+                                    ((BAUDRATE) == 38400)   || \
+                                    ((BAUDRATE) == 19200)   || \
+                                    ((BAUDRATE) == 9600)    || \
+                                    ((BAUDRATE) == 4800)    || \
+                                    ((BAUDRATE) == 2400)    || \
+                                    ((BAUDRATE) == 1800)    || \
+                                    ((BAUDRATE) == 1200)    || \
                                     ((BAUDRATE) == 600))
                                     
 #define IS_UART_STOPBITS(STOPBITS) (((STOPBITS) == UART_STOPBITS_1) || \
@@ -184,8 +184,8 @@ typedef enum
 
 #define IS_UART_HARDWARE_FLOW_CONTROL(CONTROL)\
                               (((CONTROL) == UART_HWCONTROL_NONE) || \
-                               ((CONTROL) == UART_HWCONTROL_RTS) || \
-                               ((CONTROL) == UART_HWCONTROL_CTS) || \
+                               ((CONTROL) == UART_HWCONTROL_RTS)  || \
+                               ((CONTROL) == UART_HWCONTROL_CTS)  || \
                                ((CONTROL) == UART_HWCONTROL_RTS_CTS))
                                             
                                

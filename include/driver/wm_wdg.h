@@ -22,7 +22,7 @@ typedef struct
 
 #define IS_WDG_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == WDG)
 
-#define IS_WDG_RELOAD(__RELOAD__)            ((__RELOAD__) <= WDG_LD)
+#define IS_WDG_RELOAD(__RELOAD__)      ((__RELOAD__) <= WDG_LD)
 
 #define __HAL_WDG_CLEAR_FLAG(__HANDLE__, __FLAG__)         ((__HANDLE__)->Instance->CLR = __FLAG__)
 

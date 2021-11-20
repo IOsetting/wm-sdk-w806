@@ -12,13 +12,13 @@ typedef struct
                          * ADC_CHANNEL_0_1 	: channel 0 and channel 1 differential input
                          * ADC_CHANNEL_2_3 	: channel 2 and channel 3 differential input */
     
-    uint32_t freq;        /* 307hz ~ 2khz */
+    uint32_t freq;       /* 307hz ~ 2khz */
     
     uint32_t cmp_val;    /* compare value */
     
     uint32_t cmp_pol;    /* CMP_POL_0 :  when adc_result >= cmp_val interrupt
                          * CMP_POL_1 :  whrn adc_result < cmp_val interrtup */
-    
+
 }ADC_InitTypeDef;
 
 typedef struct __ADC_HandleTypeDef
@@ -60,10 +60,10 @@ typedef struct __ADC_HandleTypeDef
                                  ((CHANNEL) == ADC_CHANNEL_1)           || \
                                  ((CHANNEL) == ADC_CHANNEL_2)           || \
                                  ((CHANNEL) == ADC_CHANNEL_3)           || \
-                                 ((CHANNEL) == ADC_CHANNEL_0_1)           || \
+                                 ((CHANNEL) == ADC_CHANNEL_0_1)         || \
                                  ((CHANNEL) == ADC_CHANNEL_2_3)            )
                                  
-#define IS_ADC_CMP_POL(POL)        (((POL) == CMP_POL_0) || \
+#define IS_ADC_CMP_POL(POL)      (((POL) == CMP_POL_0) || \
                                  ((POL) == CMP_POL_1))
                                  
 #define IS_ADC_FREQUENCY(FREQ)  (((FREQ) >= ADC_FREQ_MIN) && ((FREQ) <= ADC_FREQ_MAX))
@@ -98,8 +98,8 @@ void                    HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc);
 // AD转换功能以查询方式实现所对应的开始、停止、查询是否转换完成、获取转换结果
 HAL_StatusTypeDef       HAL_ADC_Start(ADC_HandleTypeDef* hadc);
 HAL_StatusTypeDef       HAL_ADC_Stop(ADC_HandleTypeDef* hadc);
-HAL_StatusTypeDef         HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc);
-int                        HAL_ADC_GetValue(ADC_HandleTypeDef* hadc);
+HAL_StatusTypeDef       HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc);
+int                     HAL_ADC_GetValue(ADC_HandleTypeDef* hadc);
 
 // 该接口调用了以上接口，实现了一个完整的查询转换过程，并返回结果，可以直接调用该接口获取转换结果，返回值单位mv
 int                     HAL_ADC_GET_INPUT_VOLTAGE(ADC_HandleTypeDef* hadc);
@@ -110,7 +110,7 @@ HAL_StatusTypeDef       HAL_ADC_Stop_IT(ADC_HandleTypeDef* hadc);
 void                    HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
 
 // AD比较功能以中断方式实现所对应的开始、停止、中断回调函数
-HAL_StatusTypeDef        HAL_ADC_Start_Compare_IT(ADC_HandleTypeDef* hadc);
+HAL_StatusTypeDef       HAL_ADC_Start_Compare_IT(ADC_HandleTypeDef* hadc);
 HAL_StatusTypeDef       HAL_ADC_Stop_Compare_IT(ADC_HandleTypeDef* hadc);
 void                    HAL_ADC_CompareCallback(ADC_HandleTypeDef* hadc);
 

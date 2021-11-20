@@ -59,15 +59,15 @@ typedef struct __TOUCH_HandleTypeDef
 
 #define IS_TOUCH_INSTANCE(INSTANCE)    (((INSTANCE) == TOUCH))
 #define IS_TOUCH_CHANNELS(__CHANNEL__)      (((__CHANNEL__) == TOUCH_CH_0) || \
-                                            ((__CHANNEL__) == TOUCH_CH_1) || \
-                                            ((__CHANNEL__) == TOUCH_CH_2) || \
-                                            ((__CHANNEL__) == TOUCH_CH_3) || \
-                                            ((__CHANNEL__) == TOUCH_CH_4) || \
-                                            ((__CHANNEL__) == TOUCH_CH_5) || \
-                                            ((__CHANNEL__) == TOUCH_CH_6) || \
-                                            ((__CHANNEL__) == TOUCH_CH_7) || \
-                                            ((__CHANNEL__) == TOUCH_CH_8) || \
-                                            ((__CHANNEL__) == TOUCH_CH_9) || \
+                                            ((__CHANNEL__) == TOUCH_CH_1)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_2)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_3)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_4)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_5)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_6)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_7)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_8)  || \
+                                            ((__CHANNEL__) == TOUCH_CH_9)  || \
                                             ((__CHANNEL__) == TOUCH_CH_10) || \
                                             ((__CHANNEL__) == TOUCH_CH_11) || \
                                             ((__CHANNEL__) == TOUCH_CH_12) || \
