@@ -56,11 +56,11 @@ typedef struct
 // PWM_Counter_Mode
 #define PWM_COUNTERMODE_EDGEALIGNED_UP                  0x0    // edge-aligned up mode for capture
 #define PWM_COUNTERMODE_EDGEALIGNED_DOWN                0x1    // edge-aligned up mode for out
-#define PWM_COUNTERMODE_CENTERALIGNED                   0x2 // center-aligned mode for out
+#define PWM_COUNTERMODE_CENTERALIGNED                   0x2    // center-aligned mode for out
 
 // PWM_AutoReloadPreload
-#define PWM_AUTORELOAD_PRELOAD_DISABLE                  0x00               // TIMx_ARR register is not buffered
-#define PWM_AUTORELOAD_PRELOAD_ENABLE                   0x01              // TIMx_ARR register is buffered
+#define PWM_AUTORELOAD_PRELOAD_DISABLE                  0x00   // TIMx_ARR register is not buffered
+#define PWM_AUTORELOAD_PRELOAD_ENABLE                   0x01   // TIMx_ARR register is buffered
 
 // PWM_Out_Mode
 #define PWM_OUT_MODE_INDEPENDENT                        0x00
