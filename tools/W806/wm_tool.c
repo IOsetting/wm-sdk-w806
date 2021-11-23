@@ -216,6 +216,7 @@ const static unsigned char wm_tool_chip_cmd_b1000000[] = {0x21, 0x0a, 0x00, 0x5e
 const static unsigned char wm_tool_chip_cmd_b2000000[] = {0x21, 0x0a, 0x00, 0xef, 0x2a, 0x31, 0x00, 0x00, 0x00, 0x80, 0x84, 0x1e, 0x00};
 
 const static unsigned char wm_tool_chip_cmd_get_mac[]  = {0x21, 0x06, 0x00, 0xea, 0x2d, 0x38, 0x00, 0x00, 0x00};
+const static unsigned char wm_tool_chip_cmd_reset[]    = {0x21, 0x06, 0x00, 0xc7, 0x7c, 0x3f, 0x00, 0x00, 0x00};
 
 static const unsigned int wm_tool_crc32_tab[] = {0x00000000L, 0x77073096L, 0xee0e612cL,
         0x990951baL, 0x076dc419L, 0x706af48fL, 0xe963a535L, 0x9e6495a3L,
@@ -4783,6 +4784,7 @@ static int wm_tool_download_firmware(void)
         wm_tool_delay_ms(1 * 1000);
         wm_tool_set_wifi_chip_speed(WM_TOOL_DEFAULT_BAUD_RATE);
         wm_tool_delay_ms(1 * 1000);
+        wm_tool_uart_set_speed(WM_TOOL_DEFAULT_BAUD_RATE);
     }
 
     if (!ret)
@@ -4798,6 +4800,17 @@ static int wm_tool_download_firmware(void)
                 wm_tool_uart_set_rts(0);
                 wm_tool_delay_ms(50);
                 wm_tool_uart_set_dtr(0);
+            }
+            else if(WM_TOOL_DL_ACTION_AT == wm_tool_dl_action)
+            {
+                ret = wm_tool_uart_write(wm_tool_chip_cmd_reset, sizeof(wm_tool_chip_cmd_reset));
+                wm_tool_send_esc2uart(30);
+                if(ret > 0){
+                    wm_tool_printf("send reset command OK.\r\n");
+                }else{
+                    wm_tool_printf("send reset command error.\r\n");
+                }
+                ret = 0;
             }
             else
             {
