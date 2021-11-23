@@ -37,8 +37,14 @@ static void uart0Init (int bandrate)
 {
 	unsigned int bd;
 
+#if USE_UART0_AUTO_DL
+	WRITE_REG(UART0->INTM, ~UART_INTM_RL);
+	NVIC_ClearPendingIRQ(UART0_IRQn);
+	NVIC_EnableIRQ(UART0_IRQn);
+#else
 	NVIC_DisableIRQ(UART0_IRQn);
 	NVIC_ClearPendingIRQ(UART0_IRQn);
+#endif
 
 	bd = (APB_CLK/(16*bandrate) - 1)|(((APB_CLK%(bandrate*16))*16/(bandrate*16))<<16);
 	WRITE_REG(UART0->BAUDR, bd);
@@ -95,7 +101,7 @@ static void uart1Init (int bandrate)
 void board_init(void)
 {
 
-#if USE_UART0_PRINT
+#if USE_UART0_PRINT || USE_UART0_AUTO_DL
     /* use uart0 as log output io */
     uart0Init(115200);
 #else
