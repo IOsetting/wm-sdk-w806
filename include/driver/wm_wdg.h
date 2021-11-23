@@ -26,6 +26,9 @@ typedef struct
 
 #define __HAL_WDG_CLEAR_FLAG(__HANDLE__, __FLAG__)         ((__HANDLE__)->Instance->CLR = __FLAG__)
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef     HAL_WDG_Init(WDG_HandleTypeDef *hwdg);
 
 void HAL_WDG_MspInit(WDG_HandleTypeDef* hwdg);
@@ -33,5 +36,8 @@ void HAL_WDG_MspInit(WDG_HandleTypeDef* hwdg);
 HAL_StatusTypeDef HAL_WDG_DeInit(WDG_HandleTypeDef *hwdg);
 
 void HAL_WDG_IRQHandler(WDG_HandleTypeDef *hwdg);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

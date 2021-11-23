@@ -87,6 +87,9 @@ typedef struct __TOUCH_HandleTypeDef
 
 #define __HAL_TOUCH_CLEAR_IT(__HANDLE__, __FLAG__)        (WRITE_REG((__HANDLE__)->Instance->IE_IF, __FLAG__))
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef   HAL_TOUCH_Init(TOUCH_HandleTypeDef *htouch);
 HAL_StatusTypeDef   HAL_TOUCH_DeInit(TOUCH_HandleTypeDef *htouch);
 void HAL_TOUCH_MspInit(TOUCH_HandleTypeDef *htouch);
@@ -99,5 +102,8 @@ void HAL_TOUCH_IRQHandler(TOUCH_HandleTypeDef *htouch);
  * and the MSB corresponds to channel 15 
  */
 void HAL_TOUCH_Callback(TOUCH_HandleTypeDef *htouch, uint16_t Flag);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -89,6 +89,9 @@ typedef struct __ADC_HandleTypeDef
   
 
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef       HAL_ADC_Init(ADC_HandleTypeDef* hadc);
 HAL_StatusTypeDef       HAL_ADC_DeInit(ADC_HandleTypeDef *hadc);
 void                    HAL_ADC_MspInit(ADC_HandleTypeDef* hadc);
@@ -121,5 +124,8 @@ void                    HAL_ADC_IRQHandler(ADC_HandleTypeDef* hadc);
 int adc_get_inputvolt(uint8_t channel);
 
 uint32_t adc_get_offset(void);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

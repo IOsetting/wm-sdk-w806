@@ -46,6 +46,9 @@ typedef struct
 #define IS_RTC_DATE(DATE)             (((DATE) >= 1U) && ((DATE) <= 31U))
 
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_PMU_Init(PMU_HandleTypeDef *hpmu);
 
 HAL_StatusTypeDef HAL_PMU_DeInit(PMU_HandleTypeDef *hpmu);
@@ -79,5 +82,8 @@ void HAL_PMU_IO_Callback(PMU_HandleTypeDef *hpmu);
 void HAL_PMU_RTC_Callback(PMU_HandleTypeDef *hpmu);
 
 void HAL_PMU_IRQHandler(PMU_HandleTypeDef *hpmu);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

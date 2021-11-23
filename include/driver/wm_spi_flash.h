@@ -20,6 +20,9 @@
 
 #define swap32(a) (((a & 0xFF) << 24) | ((a & 0xFF00) << 8) | ((a & 0xFF0000) >> 8) | (a >> 24))
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 int SPIFLS_Init(void);
 
 int SPIFLS_Read_ID(uint8_t *id);
@@ -31,5 +34,8 @@ int SPIFLS_Write(uint32_t addr, uint8_t *buf, uint32_t len);
 int SPIFLS_Erase(uint32_t sector);
 
 int SPIFLS_Chip_Erase(void);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

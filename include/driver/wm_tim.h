@@ -71,6 +71,9 @@ typedef struct
 
 #define __HAL_TIM_CLEAR_IT(__HANDLE__)              (TIM->CR |= TIM_CR_TIM_TIF((__HANDLE__)->Instance - TIM0))
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim);
 HAL_StatusTypeDef HAL_TIM_Base_DeInit(TIM_HandleTypeDef *htim);
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim);
@@ -87,5 +90,8 @@ HAL_TIM_StateTypeDef HAL_TIM_Base_GetState(TIM_HandleTypeDef *htim);
 void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim);
 
 void HAL_TIM_Callback(TIM_HandleTypeDef *htim);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

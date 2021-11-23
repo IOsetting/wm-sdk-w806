@@ -204,6 +204,9 @@ typedef enum
 #define __HAL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__) ((__HANDLE__)->Instance->INTS |= __FLAG__)
 
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart);
 
 HAL_StatusTypeDef HAL_UART_DeInit(UART_HandleTypeDef *huart);
@@ -228,5 +231,8 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart);
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart);
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+#ifdef __cplusplus
+}
+#endif
                                                            
 #endif

@@ -122,6 +122,9 @@ typedef struct
 
 
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 HAL_StatusTypeDef    HAL_PWM_Init(PWM_HandleTypeDef *hpwm);
 HAL_StatusTypeDef    HAL_PWM_DeInit(PWM_HandleTypeDef *hpwm);
 void                 HAL_PWM_MspInit(PWM_HandleTypeDef *hpwm);
@@ -131,4 +134,8 @@ HAL_StatusTypeDef    HAL_PWM_Start(PWM_HandleTypeDef *hpwm);
 HAL_StatusTypeDef    HAL_PWM_Stop(PWM_HandleTypeDef *hpwm);
 HAL_StatusTypeDef    HAL_PWM_Duty_Set(PWM_HandleTypeDef *hpwm, uint32_t Duty);
 HAL_StatusTypeDef    HAL_PWM_Freq_Set(PWM_HandleTypeDef *hpwm, uint32_t Prescaler, uint32_t Period);
+#ifdef __cplusplus
+}
+#endif
+
 #endif

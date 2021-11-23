@@ -99,6 +99,9 @@ typedef union {
 #define CMD_START_Pos                 8U                                          /*!< CMD start position */
 #define CMD_START_Msk                 (1UL << CMD_START_Pos)                         /*!< CMD start Mask */
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 /**
  * @brief          This function is used to unlock flash protect area [0x0~0x2000].
  *
@@ -151,5 +154,8 @@ HAL_StatusTypeDef HAL_FLASH_Read(uint32_t addr, uint8_t *buf, uint32_t len);
  * @note           None
  */
 HAL_StatusTypeDef HAL_FLASH_Write(uint32_t addr, uint8_t *buf, uint32_t len);
+#ifdef __cplusplus
+}
+#endif
 
 #endif
