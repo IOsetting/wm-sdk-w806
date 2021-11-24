@@ -22,7 +22,7 @@ uint32_t last = 0;
 
 void Reset_to_ROM()
 {
-    RCC->RST = 0;  // reset all peripheral
+    CLEAR_REG(RCC->RST);  // reset all peripheral
     uint32_t rv = *(uint32_t*)(0x00000000U); // get reset vector
     ((void (*)())(rv))(); // go to ROM
 }
@@ -44,7 +44,7 @@ void Auto_DL_Handler()
         }
         last = HAL_GetTick();
         do{
-            ch = (uint8_t)UART0->RDW;
+            ch = (uint8_t)READ_REG(UART0->RDW);
             if(*p++ == ch){
                 if(p >= atz + strlen(atz)){
                     Reset_to_ROM();
@@ -55,7 +55,7 @@ void Auto_DL_Handler()
             }
             USER_UART0_RX(ch);
         }while(RX_COUNT);
-        UART0->INTS = UART_INTS_RL;
+        SET_BIT(UART0->INTS, UART_INTS_RL); // clear interrupt flag
     }
 }
 
