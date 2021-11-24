@@ -7,9 +7,11 @@
 #define CONFIG_ARCH_INTERRUPTSTACK 4096
 #define CONFIG_IRQ_VECTOR_SIZE   256
 #define USE_UART0_PRINT            1
+#define USE_UART0_AUTO_DL          1
 
 #ifdef CONFIG_KERNEL_NONE
 #define CONFIG_SYSTEM_SECURE  1
 #endif
+
 
 #endif
