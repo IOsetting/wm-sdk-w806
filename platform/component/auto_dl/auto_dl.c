@@ -44,6 +44,7 @@ void Auto_DL_Handler()
         }
         last = HAL_GetTick();
         do{
+            SET_BIT(UART0->INTS, UART_INTS_RL); // clear interrupt flag
             ch = (uint8_t)READ_REG(UART0->RDW);
             if(*p++ == ch){
                 if(p >= atz + strlen(atz)){
@@ -55,7 +56,6 @@ void Auto_DL_Handler()
             }
             USER_UART0_RX(ch);
         }while(RX_COUNT);
-        SET_BIT(UART0->INTS, UART_INTS_RL); // clear interrupt flag
     }
 }
 
