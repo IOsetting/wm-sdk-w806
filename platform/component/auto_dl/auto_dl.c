@@ -27,20 +27,23 @@ void Reset_to_ROM()
     ((void (*)())(rv))(); // go to ROM
 }
 
-__attribute__((weak)) void USER_UART0_RX(void)
+__attribute__((weak)) void USER_UART0_RX(uint8_t ch)
 {
     UNUSED(UART0);
+    UNUSED(ch);
 }
 
 void Auto_DL_Handler()
 {
+    uint8_t ch;
     if(UART0->FIFOS & 0xFC0){
         if(last > HAL_GetTick() + timeout){
             p = atz; // timeout
         }
         last = HAL_GetTick();
         do{
-            if(*p++ == (uint8_t)UART0->RDW){
+            ch = (uint8_t)UART0->RDW;
+            if(*p++ == ch){
                 if(p == &atz[6]){
                     Reset_to_ROM();
                     p = atz;  // reset faild
@@ -48,7 +51,7 @@ void Auto_DL_Handler()
             }else{
                 p = atz;  // not match
             }
-            USER_UART0_RX();
+            USER_UART0_RX(ch);
         }while(UART0->FIFOS & 0xFC0);
     }
 }
