@@ -82,7 +82,7 @@ make menuconfig
 ```bash
 make flash
 ```
-根据输出的提示, 按一下reset键, 就会开始下载了. 
+程序里默认开启自动下载，如果是第一次下载，则需要手动按reset键开始下载.
 ```
 enerate compressed image completed.
 build finished!
@@ -96,9 +96,9 @@ mac CC-CC-CC-CC-CC-CC.
 start download.
 0% [###] 100%
 download completed.
-please manually reset the device.
+send reset command OK.
 ```
-下载完成后, 需要再按一次`Reset`让程序运行, 否则开发板会一直处在下载状态(不断输出 CCCCCC).
+下载完成后, 自动发送复位指令.
 
 ## 问题
 

@@ -86,7 +86,8 @@ Then download the hex file to development board
 ```bash
 make flash
 ```
-Press the `Reset` key to start the downloading
+Auto download is enable by default in the program. If it is first download, 
+you need to manually press the `Reset` key to start downloading.
 ```
 build finished!
 connecting serial...
@@ -99,9 +100,9 @@ mac CC-CC-CC-CC-CC-CC.
 start download.
 0% [###] 100%
 download completed.
-please manually reset the device.
+send reset command OK.
 ```
-Once downloading finishes, You need to press `Reset` key again to make it run, or it will stay in download mode (keep bumping CCCCCC).
+after downloading, auto send reset command.
 
 <br>
 
