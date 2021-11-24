@@ -11,9 +11,9 @@
  *
 ******************************************************************************/
 
-#if USE_UART0_AUTO_DL
-
 #include "wm_hal.h"
+
+#if USE_UART0_AUTO_DL
 
 const uint32_t timeout = 5;
 const uint8_t atz[] = "AT+Z\r\n";
