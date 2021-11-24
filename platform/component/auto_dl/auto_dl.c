@@ -33,10 +33,12 @@ __attribute__((weak)) void USER_UART0_RX(uint8_t ch)
     UNUSED(ch);
 }
 
+#define RX_COUNT ((UART0->FIFOS & UART_FIFOS_RFC_Msk) >> UART_FIFOS_RFC_Pos)
+
 void Auto_DL_Handler()
 {
     uint8_t ch;
-    if(UART0->FIFOS & 0xFC0){
+    if(RX_COUNT){
         if(last > HAL_GetTick() + timeout){
             p = atz; // timeout
         }
@@ -44,7 +46,7 @@ void Auto_DL_Handler()
         do{
             ch = (uint8_t)UART0->RDW;
             if(*p++ == ch){
-                if(p == &atz[6]){
+                if(p >= atz + strlen(atz)){
                     Reset_to_ROM();
                     p = atz;  // reset faild
                 }
@@ -52,7 +54,7 @@ void Auto_DL_Handler()
                 p = atz;  // not match
             }
             USER_UART0_RX(ch);
-        }while(UART0->FIFOS & 0xFC0);
+        }while(RX_COUNT);
         UART0->INTS = UART_INTS_RL;
     }
 }
