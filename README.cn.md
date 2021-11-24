@@ -82,7 +82,7 @@ make menuconfig
 ```bash
 make flash
 ```
-程序里默认开启自动下载，如果是第一次下载，则需要手动按reset键开始下载.
+根据输出的提示, 按一下reset键, 就会开始下载.
 ```
 enerate compressed image completed.
 build finished!
@@ -96,13 +96,25 @@ mac CC-CC-CC-CC-CC-CC.
 start download.
 0% [###] 100%
 download completed.
-send reset command OK.
+reset command has been sent.
 ```
-下载完成后, 自动发送复位指令.
+下载完成后, 下载工具会发送复位指令, 复位成功后程序会自动开始执行.
+
+## 选项
+
+* 串口0打印`printf()`输出
+  在 /include/arch/xt804/csi_config.h 中通过`USE_UART0_PRINT`控制是否使用串口0打印`printf()`输出, 默认开启. 注意: 此功能会占用串口0, 如果需要使用串口0与其他设备通信, 请关闭此选项
+
+* 免按键自动下载
+  在 /include/arch/xt804/csi_config.h 中通过`USE_UART0_AUTO_DL`控制是否开启免按键自动下载, 默认关闭. 需要先开启`USE_UART0_PRINT`才能开启此选项, 如果关闭`USE_UART0_PRINT`则此选项关闭. 
 
 ## 问题
 
+### 1. 下载失败
 如果出现`can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`错误, 检查一下是否有其他串口软件占用了这个端口, 如果有需要先关闭
+
+### 2. 使用FreeRTOS时, 延时无效
+请检查: 在/include/arch/xt804/csi_config.h中, 是否未将`#define CONFIG_KERNEL_NONE 1`宏定义注释掉?
 
 <br>
 

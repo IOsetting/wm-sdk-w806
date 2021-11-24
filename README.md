@@ -100,9 +100,25 @@ mac CC-CC-CC-CC-CC-CC.
 start download.
 0% [###] 100%
 download completed.
-send reset command OK.
+reset command has been sent.
 ```
-after downloading, auto send reset command.
+When downloding finishes, the board will be reset automatically to run the new program. In case the auto-reset fails, you need to press the reset key manually to make it run.
+
+## Options
+
+* UART0 `printf()` output
+  In /include/arch/xt804/csi_config.h, option `USE_UART0_PRINT` controls whether use UART0 to send `printf()` output, it is turned on by default. Note: This feature will occupy UART0, if any other devices are going to communicate with UART0, please turn it off.
+* Hands-free download
+  In /include/arch/xt804/csi_config.h, option `USE_UART0_AUTO_DL` controls enable/disable automatic download, it is turned off by default. When it is enabled, download tool will reset the board automatically before the downloading. Option `USE_UART0_PRINT` should be enabled to make this work.
+
+## Problems
+
+### 1. Download Failed
+When it shows `can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`, check if any other applications are occupying the USB port, if yes, close it and retry.
+
+### 2. Delay function failed in FreeRTOS
+In /include/arch/xt804/csi_config.h, please comment out `#define CONFIG_KERNEL_NONE 1`
+
 
 <br>
 
