@@ -105,8 +105,8 @@ void board_init(void)
     /* use uart0 as log output io */
     uart0Init(115200);
 #else
-    uart1_io_init();
+    //uart1_io_init();
     /* use uart1 as log output io */
-	uart1Init(115200);
+	//uart1Init(115200);
 #endif
 }
