@@ -53,6 +53,7 @@ void Auto_DL_Handler()
             }
             USER_UART0_RX(ch);
         }while(UART0->FIFOS & 0xFC0);
+        UART0->INTS = UART_INTS_RL;
     }
 }
 
