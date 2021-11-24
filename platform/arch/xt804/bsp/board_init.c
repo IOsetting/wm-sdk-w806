@@ -50,10 +50,10 @@ static void uart0Init (int bandrate)
 	WRITE_REG(UART0->BAUDR, bd);
 
 	WRITE_REG(UART0->LC, UART_BITSTOP_VAL | UART_TXEN_BIT | UART_RXEN_BIT);
-	WRITE_REG(UART0->FC, 0x00);   			/* Disable afc */
-	WRITE_REG(UART0->DMAC, 0x00);             		/* Disable DMA */
-	WRITE_REG(UART0->FIFOC, 0x00);             		/* one byte TX/RX */
-//	WRITE_REG(UART0->INTM, 0x00);             		/* Disable INT */
+	WRITE_REG(UART0->FC, 0x00);    /* Disable afc */
+	WRITE_REG(UART0->DMAC, 0x00);  /* Disable DMA */
+	WRITE_REG(UART0->FIFOC, 0x00); /* one byte TX/RX */
+//	WRITE_REG(UART0->INTM, 0x00);  /* Disable INT */
 
 }
 #if 0
@@ -101,7 +101,7 @@ static void uart1Init (int bandrate)
 void board_init(void)
 {
 
-#if USE_UART0_PRINT || USE_UART0_AUTO_DL
+#if USE_UART0_PRINT
     /* use uart0 as log output io */
     uart0Init(115200);
 #else

@@ -4791,7 +4791,7 @@ static int wm_tool_download_firmware(void)
     {
         if (WM_TOOL_DL_TYPE_FLS == wm_tool_dl_type)
         {
-            if (WM_TOOL_DL_ACTION_RTS == wm_tool_dl_action)/* auto reset */
+            if (WM_TOOL_DL_ACTION_RTS == wm_tool_dl_action) // Use UART RTS pin to control the device reset
             {
                 wm_tool_uart_set_dtr(0);
                 wm_tool_uart_set_rts(1);
@@ -4801,14 +4801,15 @@ static int wm_tool_download_firmware(void)
                 wm_tool_delay_ms(50);
                 wm_tool_uart_set_dtr(0);
             }
-            else if(WM_TOOL_DL_ACTION_AT == wm_tool_dl_action)
+            else if(WM_TOOL_DL_ACTION_AT == wm_tool_dl_action) // Use AT command to reset the device
             {
+                wm_tool_delay_ms(500);
                 ret = wm_tool_uart_write(wm_tool_chip_cmd_reset, sizeof(wm_tool_chip_cmd_reset));
                 wm_tool_send_esc2uart(30);
                 if(ret > 0){
-                    wm_tool_printf("send reset command OK.\r\n");
+                    wm_tool_printf("reset command has been sent.\r\n");
                 }else{
-                    wm_tool_printf("send reset command error.\r\n");
+                    wm_tool_printf("reset command sending failed.\r\n");
                 }
                 ret = 0;
             }
