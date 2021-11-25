@@ -22,34 +22,40 @@ uint32_t last = 0;
 
 void Reset_to_ROM()
 {
-    RCC->RST = 0;  // reset all peripheral
+    CLEAR_REG(RCC->RST);  // reset all peripheral
     uint32_t rv = *(uint32_t*)(0x00000000U); // get reset vector
     ((void (*)())(rv))(); // go to ROM
 }
 
-__attribute__((weak)) void USER_UART0_RX(void)
+__attribute__((weak)) void USER_UART0_RX(uint8_t ch)
 {
     UNUSED(UART0);
+    UNUSED(ch);
 }
+
+#define RX_COUNT ((UART0->FIFOS & UART_FIFOS_RFC_Msk) >> UART_FIFOS_RFC_Pos)
 
 void Auto_DL_Handler()
 {
-    if(UART0->FIFOS & 0xFC0){
+    uint8_t ch;
+    if(RX_COUNT){
         if(last > HAL_GetTick() + timeout){
             p = atz; // timeout
         }
         last = HAL_GetTick();
         do{
-            if(*p++ == (uint8_t)UART0->RDW){
-                if(p == &atz[6]){
+            SET_BIT(UART0->INTS, UART_INTS_RL); // clear interrupt flag
+            ch = (uint8_t)READ_REG(UART0->RDW);
+            if(*p++ == ch){
+                if(p >= atz + strlen(atz)){
                     Reset_to_ROM();
                     p = atz;  // reset faild
                 }
             }else{
                 p = atz;  // not match
             }
-            USER_UART0_RX();
-        }while(UART0->FIFOS & 0xFC0);
+            USER_UART0_RX(ch);
+        }while(RX_COUNT);
     }
 }
 
