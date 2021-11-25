@@ -153,6 +153,9 @@ distclean:clean
 run:all
 	@$(WM_TOOL) -c $(DL_PORT) -rs at -ds $(DL_BAUD) -dl $(FIRMWAREDIR)/$(TARGET)/$(TARGET).fls -sl str -ws 115200
 
+monitor:
+	@$(WM_TOOL) -c $(DL_PORT) -sl str -ws 115200
+
 list:
 	@$(WM_TOOL) -l
 

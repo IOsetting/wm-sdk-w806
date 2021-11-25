@@ -100,6 +100,16 @@ reset command has been sent.
 ```
 下载完成后, 下载工具会发送复位指令, 复位成功后程序会自动开始执行.
 
+## 串口监视器
+烧录并打开串口监视器 
+```bash
+make run
+```
+只打开串口监视器 
+```bash
+make monitor
+```
+
 ## 选项
 
 * 串口0打印`printf()`输出
