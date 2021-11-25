@@ -80,7 +80,7 @@ Run menuconfig to set the download port
 cd wm-sdk-w806
 make menuconfig
 ```
-In menuconfig, navigate to Download Configuration -> download port, input the USB port name, e.g. `ttyUSB0`, then save and exit menuconfig
+In menuconfig, navigate to Download Configuration -> download port, input the USB port name, e.g. `ttyUSB0`, you can speed up download by trun up the baud rate, only support `115200`, `460800`, `921600`, `1000000`, `2000000`, then save and exit menuconfig
 
 Then download the hex file to development board
 ```bash

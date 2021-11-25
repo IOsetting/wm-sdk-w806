@@ -76,7 +76,7 @@ make
 cd wm-sdk-w806
 make menuconfig
 ```
-在menuconfig界面中, Download Configuration -> download port, 填入开发板在你的系统中对应的USB端口, 例如`ttyUSB0`, 注意这里只需要填纯端口名, 不需要用完整的路径. 其他不用动, Save后退出menuconfig
+在menuconfig界面中, Download Configuration -> download port, 填入开发板在你的系统中对应的USB端口, 例如`ttyUSB0`, 注意这里只需要填纯端口名, 不需要用完整的路径. 可以调高波特率加快下载，只支持`115200`, `460800`, `921600`, `1000000`, `2000000`, Save后退出menuconfig
 
 执行烧录
 ```bash
