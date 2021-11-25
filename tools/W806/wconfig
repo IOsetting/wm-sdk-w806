@@ -4,7 +4,7 @@ menu "Firmware Configuration"
 
     config W800_TARGET_NAME
         string "target name"
-        default w800
+        default W806
         help
             w800 firmware name.
 
@@ -16,13 +16,13 @@ menu "Firmware Configuration"
 
     config W800_IMAGE_HEADER
         hex "image header address"
-        default 80D0000
+        default 8010000
         help
             w800 image header address.
 
     config W800_RUN_ADDRESS
         hex "image run address"
-        default 80D0400
+        default 8010400
         help
             w800 image run address.
 
@@ -61,7 +61,7 @@ menu "Download Configuration"
 
     config W800_DOWNLOAD_PORT
         string "download port"
-        default COM3
+        default ttyUSB0
         help
             w800 download port.
 
@@ -76,7 +76,7 @@ menu "Compile Configuration"
 
     config W800_USE_LIB
         bool "enable use lib"
-        default y
+        default n
         help
             w800 sdk use lib.
 
