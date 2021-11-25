@@ -2967,7 +2967,7 @@ static void wm_tool_print_usage(const char *name)
                    "  -rs reset_action      , set device reset method, default is manual control\r\n"
                    "                          <none | at | rts>\r\n"
                    "                           none - manual control device reset\r\n"
-                   "                           at   - use the at command to control the device reset\r\n"
+                   "                           at   - use the at command or ROM command to control the device reset\r\n"
                    "                           rts  - use the serial port rts pin to control the device reset\r\n"
                    "  -eo erase_option      , firmware area erase option\r\n"
                    "                          <all>\r\n"
