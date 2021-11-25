@@ -1430,19 +1430,17 @@ static int _vsnprintf(out_fct_type out, char* buffer, const size_t maxlen, const
         break;
     }
   }
-
-  // termination
-  out((char)0, buffer, idx < maxlen ? idx : maxlen - 1U, maxlen);
-
   // return written chars without terminating \0
   return (int)idx;
 }
 
 int wm_vsnprintf(char* buffer, size_t count, const char* format, va_list va)
 {
-  return _vsnprintf(_out_buffer, buffer, count, format, va);
+  size_t idx =_vsnprintf(_out_buffer, buffer, count, format, va);
+  // termination
+  _out_buffer((char)0, buffer, idx < count ? idx : count - 1U, count);
+  return idx;
 }
-
 
 int wm_printf(const char *fmt,...)
 {
