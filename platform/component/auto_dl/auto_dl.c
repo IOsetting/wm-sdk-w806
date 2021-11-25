@@ -25,9 +25,9 @@ uint32_t auto_dl_act_ts = 0;
 
 void AUTO_DL_Reset(void)
 {
-    CLEAR_REG(RCC->RST);  // reset all peripheral
+    CLEAR_REG(RCC->RST);                     // reset all peripherals
     uint32_t rv = *(uint32_t*)(0x00000000U); // get reset vector
-    ((void (*)())(rv))(); // go to ROM
+    ((void (*)())(rv))();                    // go to ROM
 }
 
 __attribute__((weak)) void USER_UART0_RX(uint8_t ch)
