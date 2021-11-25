@@ -4805,7 +4805,7 @@ static int wm_tool_download_firmware(void)
             {
                 wm_tool_delay_ms(500);
                 ret = wm_tool_uart_write(wm_tool_chip_cmd_reset, sizeof(wm_tool_chip_cmd_reset));
-                wm_tool_send_esc2uart(30);
+                wm_tool_delay_ms(30);
                 if(ret > 0){
                     wm_tool_printf("reset command has been sent.\r\n");
                 }else{
