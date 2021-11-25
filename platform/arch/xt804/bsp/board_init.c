@@ -38,7 +38,7 @@ static void uart0Init (int bandrate)
 	unsigned int bd;
 
 #if USE_UART0_AUTO_DL
-	WRITE_REG(UART0->INTM, ~UART_INTM_RL);
+	WRITE_REG(UART0->INTM, ~UART_RX_INT_FLAG);
 	NVIC_ClearPendingIRQ(UART0_IRQn);
 	NVIC_EnableIRQ(UART0_IRQn);
 #else

@@ -15,12 +15,15 @@
 
 #if USE_UART0_AUTO_DL
 
-const uint32_t timeout = 5;
-const uint8_t atz[] = "AT+Z\r\n";
-const uint8_t* p = atz;
-uint32_t last = 0;
+#define __AUTO_DL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__) ((__HANDLE__)->INTS |= __FLAG__)
+#define __AUTO_DL_TIMEOUT 5
+#define __AUTO_DL_BUF_SIZE 32
 
-void Reset_to_ROM()
+const uint8_t auto_dl_cmd[] = "AT+Z\r\n";
+uint8_t auto_dl_buf[__AUTO_DL_BUF_SIZE] = {0}, auto_dl_buf_pt = 0, auto_dl_cmd_pt = 0;
+uint32_t auto_dl_act_ts = 0;
+
+void AUTO_DL_Reset(void)
 {
     CLEAR_REG(RCC->RST);  // reset all peripheral
     uint32_t rv = *(uint32_t*)(0x00000000U); // get reset vector
@@ -29,39 +32,68 @@ void Reset_to_ROM()
 
 __attribute__((weak)) void USER_UART0_RX(uint8_t ch)
 {
-    UNUSED(UART0);
     UNUSED(ch);
 }
 
-#define RX_COUNT ((UART0->FIFOS & UART_FIFOS_RFC_Msk) >> UART_FIFOS_RFC_Pos)
-
-void Auto_DL_Handler()
+void AUTO_DL_UART_IRQHandler(USART_TypeDef* huart)
 {
-    uint8_t ch;
-    if(RX_COUNT){
-        if(last > HAL_GetTick() + timeout){
-            p = atz; // timeout
-        }
-        last = HAL_GetTick();
-        do{
-            SET_BIT(UART0->INTS, UART_INTS_RL); // clear interrupt flag
-            ch = (uint8_t)READ_REG(UART0->RDW);
-            if(*p++ == ch){
-                if(p >= atz + strlen(atz)){
-                    Reset_to_ROM();
-                    p = atz;  // reset faild
+    uint8_t ch, count;
+    uint32_t ts, isrflags = READ_REG(huart->INTS), isrmasks = READ_REG(huart->INTM);
+    // Clear interrupts
+    __AUTO_DL_UART_CLEAR_FLAG(huart, isrflags);
+
+    if (((isrflags & UART_RX_INT_FLAG) != RESET) && ((isrmasks & UART_RX_INT_FLAG) == RESET))
+    {
+        /**
+         *   1) Data always comes in as single bytes, so the count is always 1(or 0);
+         *   2) Each byte will comes in twice, the second time with count=0 will be ignored;
+         */
+        count = ((READ_REG(huart->FIFOS) & UART_FIFOS_RFC) >> UART_FIFOS_RFC_Pos);
+        while (count-- > 0)
+        {
+            ts = HAL_GetTick();
+            if ((ts - auto_dl_act_ts) > __AUTO_DL_TIMEOUT)
+            {
+                // Restart the comparison if timeout
+                auto_dl_cmd_pt = 0;
+            }
+            // auto_dl_act_ts: Record last active timestamp, restart the comparison if timeout.
+            auto_dl_act_ts = ts;
+            ch = (uint8_t)(huart->RDW);
+            auto_dl_buf[auto_dl_buf_pt++] = ch;
+            if (auto_dl_buf_pt == __AUTO_DL_BUF_SIZE) auto_dl_buf_pt = 0;
+            // Compare
+            if (auto_dl_cmd[auto_dl_cmd_pt] == ch)
+            {
+                auto_dl_cmd_pt++;
+                if (auto_dl_cmd_pt == 6)
+                {
+                    AUTO_DL_Reset();
                 }
-            }else{
-                p = atz;  // not match
+            }
+            else
+            {
+                // Restart the comparison
+                auto_dl_cmd_pt = 0;
             }
             USER_UART0_RX(ch);
-        }while(RX_COUNT);
+        }
+    }
+
+    if (((isrflags & UART_INTS_TL) != RESET) && ((isrmasks & UART_INTM_RL) == RESET))
+    {
+        //UART_Transmit_IT(huart);
+    }
+
+    if (((isrflags & UART_INTS_TEMPT) != RESET) && ((isrmasks & UART_INTM_TEMPT) == RESET))
+    {
+        //UART_EndTransmit_IT(huart);
     }
 }
 
 __attribute__((isr)) void UART0_IRQHandler(void)
 {
-    Auto_DL_Handler();
+    AUTO_DL_UART_IRQHandler(UART0);
 }
 
 #endif
