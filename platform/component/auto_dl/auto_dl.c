@@ -16,11 +16,10 @@
 #if USE_UART0_AUTO_DL
 
 #define __AUTO_DL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__) ((__HANDLE__)->INTS |= __FLAG__)
-#define __AUTO_DL_PREFREE 50
 #define __AUTO_DL_TIMEOUT 5
 #define __AUTO_DL_BUF_SIZE 32
 
-const uint8_t auto_dl_cmd[] = "AT+Z\r\n";
+const static uint8_t auto_dl_cmd[] = {'A', 'T', '+', 'Z', '\r', '\n'};
 uint8_t auto_dl_buf[__AUTO_DL_BUF_SIZE] = {0}, auto_dl_buf_pt = 0, auto_dl_cmd_pt = 0;
 uint32_t auto_dl_act_ts = 0;
 
@@ -52,31 +51,40 @@ void AUTO_DL_UART_IRQHandler(USART_TypeDef* huart)
         count = ((READ_REG(huart->FIFOS) & UART_FIFOS_RFC) >> UART_FIFOS_RFC_Pos);
         while (count-- > 0)
         {
+            // Write ch to ring buffer
+            ch = (uint8_t)(huart->RDW);
+            auto_dl_buf[auto_dl_buf_pt++] = ch;
+            if (auto_dl_buf_pt == __AUTO_DL_BUF_SIZE) auto_dl_buf_pt = 0;
+
+            // Command detection
             ts = HAL_GetTick();
             if ((ts - auto_dl_act_ts) > __AUTO_DL_TIMEOUT)
             {
                 // Restart the comparison if timeout
                 auto_dl_cmd_pt = 0;
-            }
-            ch = (uint8_t)(huart->RDW);
-            auto_dl_buf[auto_dl_buf_pt++] = ch;
-            if (auto_dl_buf_pt == __AUTO_DL_BUF_SIZE) auto_dl_buf_pt = 0;
-            // Compare, not first char or enough free time
-            if ((auto_dl_cmd[auto_dl_cmd_pt] == ch) && \
-                ((auto_dl_cmd_pt > 0) || ((ts - auto_dl_act_ts) > __AUTO_DL_PREFREE)))
-            {
-                auto_dl_cmd_pt++;
-                if (auto_dl_cmd_pt == 6)
+                if (auto_dl_cmd[auto_dl_cmd_pt] == ch)
                 {
-                    AUTO_DL_Reset();
+                    auto_dl_cmd_pt++;
                 }
             }
             else
             {
-                // Restart the comparison
-                auto_dl_cmd_pt = 0;
+                // Avoid starting new comparison in the middle of RX
+                if ((auto_dl_cmd[auto_dl_cmd_pt] == ch) && (auto_dl_cmd_pt > 0))
+                {
+                    auto_dl_cmd_pt++;
+                    if (auto_dl_cmd_pt == sizeof(auto_dl_cmd))
+                    {
+                        AUTO_DL_Reset();
+                    }
+                }
+                else
+                {
+                    // Restart the comparison
+                    auto_dl_cmd_pt = 0;
+                }
             }
-            // auto_dl_act_ts: Record last active timestamp, restart the comparison if timeout.
+            // Record last active timestamp
             auto_dl_act_ts = ts;
             USER_UART0_RX(ch);
         }
