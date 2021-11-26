@@ -110,6 +110,10 @@ reset command has been sent.
 
 ### 更多下载选项
 
+显示串口列表
+```bash
+make list
+```
 烧录并打开串口监视器 
 ```bash
 make run

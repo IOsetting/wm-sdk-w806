@@ -114,6 +114,10 @@ When downloding finishes, the board will be reset automatically to run the new p
 
 ### More Download Options
 
+Show serial ports
+```bash
+make list
+```
 Build, download and start serial monitor
 ```bash
 make run
