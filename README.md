@@ -72,9 +72,9 @@ make
 
 ### More Building Options
 
-* UART0 `printf()` output
+* UART0 `printf()` output  
   In /include/arch/xt804/csi_config.h, option `USE_UART0_PRINT` controls whether use UART0 to send `printf()` output, it is turned on by default. Note: This feature will occupy UART0, if any other devices are going to communicate with UART0, please turn it off.
-* Hands-free download
+* Hands-free download  
   In /include/arch/xt804/csi_config.h, option `USE_UART0_AUTO_DL` controls enable/disable automatic download, it is turned off by default. When it is enabled, download tool will reset the board automatically before the downloading. Option `USE_UART0_PRINT` should be enabled to make this work.
 
 ## Download To Development Board
