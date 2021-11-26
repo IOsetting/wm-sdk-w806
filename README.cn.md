@@ -67,6 +67,14 @@ make menuconfig
 make
 ```
 
+### 更多编译选项
+
+* 串口0打印`printf()`输出  
+  在 /include/arch/xt804/csi_config.h 中通过`USE_UART0_PRINT`控制是否使用串口0打印`printf()`输出, 默认开启. 注意: 此功能会占用串口0, 如果需要使用串口0与其他设备通信, 请关闭此选项
+
+* 免按键自动下载  
+  在 /include/arch/xt804/csi_config.h 中通过`USE_UART0_AUTO_DL`控制是否开启免按键自动下载, 默认关闭. 需要先开启`USE_UART0_PRINT`才能开启此选项, 如果关闭`USE_UART0_PRINT`则此选项关闭.
+
 ## 写入开发板
 
 首先通过`dmesg`,`lsusb`, `ls /dev/tty*`等命令确定自己开发板在系统中对应的USB端口, 例如`ttyUSB0`.  
@@ -82,7 +90,7 @@ make menuconfig
 ```bash
 make flash
 ```
-根据输出的提示, 按一下reset键, 就会开始下载.
+根据输出的提示, 按一下reset键就会开始下载. 如果前一次写入的固件已经开启了`USE_UART0_AUTO_DL`则不需要按键, 会自动开始下载
 ```
 enerate compressed image completed.
 build finished!
@@ -100,7 +108,8 @@ reset command has been sent.
 ```
 下载完成后, 下载工具会发送复位指令, 复位成功后程序会自动开始执行.
 
-## 串口监视器
+### 更多下载选项
+
 烧录并打开串口监视器 
 ```bash
 make run
@@ -109,22 +118,6 @@ make run
 ```bash
 make monitor
 ```
-
-## 选项
-
-* 串口0打印`printf()`输出
-  在 /include/arch/xt804/csi_config.h 中通过`USE_UART0_PRINT`控制是否使用串口0打印`printf()`输出, 默认开启. 注意: 此功能会占用串口0, 如果需要使用串口0与其他设备通信, 请关闭此选项
-
-* 免按键自动下载
-  在 /include/arch/xt804/csi_config.h 中通过`USE_UART0_AUTO_DL`控制是否开启免按键自动下载, 默认关闭. 需要先开启`USE_UART0_PRINT`才能开启此选项, 如果关闭`USE_UART0_PRINT`则此选项关闭. 
-
-## 问题
-
-### 1. 下载失败
-如果出现`can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`错误, 检查一下是否有其他串口软件占用了这个端口, 如果有需要先关闭
-
-### 2. 使用FreeRTOS时, 延时无效
-请检查: 在/include/arch/xt804/csi_config.h中, 是否未将`#define CONFIG_KERNEL_NONE 1`宏定义注释掉?
 
 <br>
 
@@ -168,7 +161,7 @@ pacman -S msys/gettext-devel
 mkdir csky-elfabiv2-tools-mingw-minilibc-20210423
 tar xvf csky-elfabiv2-tools-mingw-minilibc-20210423.tar.gz -C csky-elfabiv2-tools-mingw-minilibc-20210423/
 ```
-记下这个目录的路径, 例如 `/d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/` , 待会儿配置menuconfig需要用到
+记下这个目录的路径, 例如 `/d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/` , 下面配置menuconfig需要用到
 
 ## 编译
 
@@ -181,11 +174,11 @@ git clone https://github.com/IOsetting/wm-sdk-w806.git
 cd wm-sdk-w806
 make menuconfig
 ```
-在menuconfig界面中, Toolchain Configuration -> 第二个toolchain path, 将刚才的路径填进去, 需要完整路径, 带最后的斜杆, 例如
+在menuconfig界面中, Toolchain Configuration -> 第二个toolchain path, 将刚才的路径填入, 需要包含最后的`/`, 例如
 ```
 /d/w806/csky-elfabiv2-tools-mingw-minilibc-20210423/bin/
 ```
-其他不用动, Save后退出menuconfig. 如果下面一排菜单高亮显示不出来, 可以使用快捷键`Alt+E`=退出, `Alt+S`=保存
+其他使用默认设置, Save后退出menuconfig. 如果下面一排菜单高亮不显示, 可以使用快捷键`Alt+E`=退出, `Alt+S`=保存
 
 然后执行编译
 ```bash
@@ -193,7 +186,9 @@ make
 ```
 生成的固件在 bin/W806 目录下
 
-## 烧录
+## 写入开发板
+
+### 选项一: 使用 Upgrade_Tools
 
 * 连接开发板
 * 运行官方烧录工具 Upgrade_Tools_V1.4.8.exe, 
@@ -203,8 +198,27 @@ make
 * 短按开发板的`Reset`键, 等待烧录工具完成烧录
 * 再次短按开发板的`Reset`键, 烧录好的程序会开始执行
 
+### 选项二: 使用 wm_tool
+
+首先通过Windows设备管理器确定自己开发板在系统中对应的USB端口, 例如`COM5`.  
+
+运行menuconfig, 配置端口名称
+```bash
+cd wm-sdk-w806
+make menuconfig
+```
+在menuconfig界面中, Download Configuration -> download port, 填入开发板在你的系统中对应的USB端口, 例如`COM5`, 注意这里只需要填纯端口名, 不需要用完整的路径. 
+可以调高波特率加快下载，只支持`115200`, `460800`, `921600`, `1000000`, `2000000`, Save后退出menuconfig
+
+其余烧录和选项与Linux环境相同, 请参考Linux相应说明.
+
 ## 问题
 
+1. 下载失败
+如果出现`can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`错误, 检查一下是否有其他串口软件占用了这个端口, 如果有需要先关闭
+2. 使用FreeRTOS时, 延时无效
+请检查: 在/include/arch/xt804/csi_config.h中, 是否未将`#define CONFIG_KERNEL_NONE 1`宏定义注释掉?
+3. 编译结果未更新
 如果修改代码后编译, 发现固件未更新, 可以执行下面的命令清空旧的编译输出, 然后再次编译
 ```bash
 # 清理旧的编译结果和中间结果
@@ -212,3 +226,5 @@ make distclean
 # 重新编译
 make
 ```
+4. 自动复位失败
+在个别情况下, 自动复位会失败, 这时候需要按开发板的 Reset 键进行手工复位

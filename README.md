@@ -59,7 +59,7 @@ cd wm-sdk-w806
 make menuconfig
 ```
 
-In menuconfig, navigate to Toolchain Configuration, In the second line "the toolchain path", input the absolute path of the toolchains executables, e.g.
+In menuconfig, navigate to `Toolchain Configuration`, In the second line "the toolchain path", input the absolute path of the toolchains executables, e.g.
 ```
 /opt/toolchains/csky-elfabiv2-tools-x86_64-minilibc-20210423/bin/
 ```
@@ -70,6 +70,12 @@ Then build the project
 make
 ```
 
+### More Building Options
+
+* UART0 `printf()` output
+  In /include/arch/xt804/csi_config.h, option `USE_UART0_PRINT` controls whether use UART0 to send `printf()` output, it is turned on by default. Note: This feature will occupy UART0, if any other devices are going to communicate with UART0, please turn it off.
+* Hands-free download
+  In /include/arch/xt804/csi_config.h, option `USE_UART0_AUTO_DL` controls enable/disable automatic download, it is turned off by default. When it is enabled, download tool will reset the board automatically before the downloading. Option `USE_UART0_PRINT` should be enabled to make this work.
 
 ## Download To Development Board
 
@@ -80,14 +86,16 @@ Run menuconfig to set the download port
 cd wm-sdk-w806
 make menuconfig
 ```
-In menuconfig, navigate to Download Configuration -> download port, input the USB port name, e.g. `ttyUSB0`, you can speed up download by trun up the baud rate, only support `115200`, `460800`, `921600`, `1000000`, `2000000`, then save and exit menuconfig
+In menuconfig, navigate to `Download Configuration`
+* Download port: Input the USB port name, e.g. `ttyUSB0`;
+* Down rate: Input the UART baud rate, the higher rate the higher download speed. The availabe options are `115200`, `460800`, `921600`, `1000000` and `2000000`.
 
-Then download the hex file to development board
+Then save and exit menuconfig, download the hex file to development board
 ```bash
 make flash
 ```
-Auto download is enable by default in the program. If it is first download, 
-you need to manually press the `Reset` key to start downloading.
+
+Press the `Reset` key to start the downloading. If previously downloaded hex was built with `USE_UART0_AUTO_DL` enabled, the board will start downloading automatically.
 ```
 build finished!
 connecting serial...
@@ -104,31 +112,16 @@ reset command has been sent.
 ```
 When downloding finishes, the board will be reset automatically to run the new program. In case the auto-reset fails, you need to press the reset key manually to make it run.
 
-## Serial Monitor
-Download and open serial monitor.
+### More Download Options
+
+Build, download and start serial monitor
 ```bash
 make run
 ```
-Only open serial monitor.
+Start serial monitor only
 ```bash
 make monitor
 ```
-
-## Options
-
-* UART0 `printf()` output
-  In /include/arch/xt804/csi_config.h, option `USE_UART0_PRINT` controls whether use UART0 to send `printf()` output, it is turned on by default. Note: This feature will occupy UART0, if any other devices are going to communicate with UART0, please turn it off.
-* Hands-free download
-  In /include/arch/xt804/csi_config.h, option `USE_UART0_AUTO_DL` controls enable/disable automatic download, it is turned off by default. When it is enabled, download tool will reset the board automatically before the downloading. Option `USE_UART0_PRINT` should be enabled to make this work.
-
-## Problems
-
-### 1. Download Failed
-When it shows `can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`, check if any other applications are occupying the USB port, if yes, close it and retry.
-
-### 2. Delay function failed in FreeRTOS
-In /include/arch/xt804/csi_config.h, please comment out `#define CONFIG_KERNEL_NONE 1`
-
 
 <br>
 
@@ -201,6 +194,8 @@ The result files are under bin/W806.
 
 ## Download To Development Board
 
+### Option 1: Upgrade_Tools
+
 * Connect the development board to your PC
 * Run flash tool Upgrade_Tools_V1.4.8.exe
 * Select the correct COM port, and use the default baud rate 115200, Click `打开串口`
@@ -209,12 +204,28 @@ The result files are under bin/W806.
 * Press `Reset` key to reset board, then it will start downloading.
 * When downloading finishes, press `Reset` key again to make it run.
 
+### Option 2: wm_tool
+
+Find the port name of connected board in Device Manager,  e.g. `COM5`.  
+
+Run menuconfig to set the download port
+```bash
+cd wm-sdk-w806
+make menuconfig
+```
+In menuconfig, navigate to `Download Configuration`
+* Download port: Input the USB port name, e.g. `COM5`;
+* Down rate: The higher rate the higher download speed, the availabe options are `115200`, `460800`, `921600`, `1000000` and `2000000`.
+
+The rest are the same as operations in Linux, please refer to `Linux - Download To Development Board`.
+
 # Problems
 
-If the compilation doesn't reflect your code changes, please clean the workspace with
-```bash
-# Clean previouse files
-make distclean
-# Recompile
-make
-```
+1. Download Failed
+When it shows `can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`, check if any other applications are occupying the USB port, if yes, close it and retry.
+2. Delay function failed in FreeRTOS
+In /include/arch/xt804/csi_config.h, please comment out `#define CONFIG_KERNEL_NONE 1`
+3. Hex is not updated
+If the compilation doesn't reflect your code changes, please clean the workspace with`make clean` or `make distclean`
+4. Auto-reset failed
+In some cases the auto-reset may fail, you need to press the Reset key to reset the board manually.
