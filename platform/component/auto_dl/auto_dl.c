@@ -16,6 +16,7 @@
 #if USE_UART0_AUTO_DL
 
 #define __AUTO_DL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__) ((__HANDLE__)->INTS |= __FLAG__)
+#define __AUTO_DL_PREFREE 50
 #define __AUTO_DL_TIMEOUT 5
 #define __AUTO_DL_BUF_SIZE 32
 
@@ -25,9 +26,9 @@ uint32_t auto_dl_act_ts = 0;
 
 void AUTO_DL_Reset(void)
 {
-    CLEAR_REG(RCC->RST);  // reset all peripheral
+    CLEAR_REG(RCC->RST);                     // reset all peripherals
     uint32_t rv = *(uint32_t*)(0x00000000U); // get reset vector
-    ((void (*)())(rv))(); // go to ROM
+    ((void (*)())(rv))();                    // go to ROM
 }
 
 __attribute__((weak)) void USER_UART0_RX(uint8_t ch)
@@ -57,13 +58,12 @@ void AUTO_DL_UART_IRQHandler(USART_TypeDef* huart)
                 // Restart the comparison if timeout
                 auto_dl_cmd_pt = 0;
             }
-            // auto_dl_act_ts: Record last active timestamp, restart the comparison if timeout.
-            auto_dl_act_ts = ts;
             ch = (uint8_t)(huart->RDW);
             auto_dl_buf[auto_dl_buf_pt++] = ch;
             if (auto_dl_buf_pt == __AUTO_DL_BUF_SIZE) auto_dl_buf_pt = 0;
-            // Compare
-            if (auto_dl_cmd[auto_dl_cmd_pt] == ch)
+            // Compare, not first char or enough free time
+            if ((auto_dl_cmd[auto_dl_cmd_pt] == ch) && \
+                ((auto_dl_cmd_pt > 0) || ((ts - auto_dl_act_ts) > __AUTO_DL_PREFREE)))
             {
                 auto_dl_cmd_pt++;
                 if (auto_dl_cmd_pt == 6)
@@ -76,6 +76,8 @@ void AUTO_DL_UART_IRQHandler(USART_TypeDef* huart)
                 // Restart the comparison
                 auto_dl_cmd_pt = 0;
             }
+            // auto_dl_act_ts: Record last active timestamp, restart the comparison if timeout.
+            auto_dl_act_ts = ts;
             USER_UART0_RX(ch);
         }
     }
