@@ -68,7 +68,7 @@ __attribute__((weak)) void HAL_SPI_MspDeInit(SPI_HandleTypeDef *hspi)
     UNUSED(hspi);
 }
 
-HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint32_t Size, uint32_t Timeout)
+HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, const uint8_t *pData, uint32_t Size, uint32_t Timeout)
 {
     uint32_t tickstart, data = 0, i = 0;
     HAL_StatusTypeDef errorcode = HAL_OK;

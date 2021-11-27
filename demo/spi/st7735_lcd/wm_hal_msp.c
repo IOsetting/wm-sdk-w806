@@ -1,0 +1,25 @@
+#include "wm_hal.h"
+#include "st7735.h"
+ 
+void HAL_MspInit(void)
+{
+ 
+}
+
+#if ST7735_HARDWARE_SPI
+void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
+{
+    __HAL_RCC_SPI_CLK_ENABLE();
+    __HAL_AFIO_REMAP_SPI_CS(ST7735_CS_PORT, ST7735_CS_PIN);
+    __HAL_AFIO_REMAP_SPI_CLK(ST7735_SCK_PORT, ST7735_SCK_PIN);
+    __HAL_AFIO_REMAP_SPI_MOSI(ST7735_MOSI_PORT, ST7735_MOSI_PIN);
+}
+
+void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
+{
+    __HAL_RCC_SPI_CLK_DISABLE();
+    HAL_GPIO_DeInit(ST7735_CS_PORT, ST7735_CS_PIN);
+    HAL_GPIO_DeInit(ST7735_SCK_PORT, ST7735_SCK_PIN);
+    HAL_GPIO_DeInit(ST7735_MOSI_PORT, ST7735_MOSI_PIN);
+}
+#endif
