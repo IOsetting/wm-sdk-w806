@@ -225,11 +225,11 @@ The rest are the same as operations in Linux, please refer to `Linux - Download 
 
 # Problems
 
-1. Download Failed
+1. Download Failed  
 When it shows `can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`, check if any other applications are occupying the USB port, if yes, close it and retry.
-2. Delay function failed in FreeRTOS
+2. Delay function failed in FreeRTOS  
 In /include/arch/xt804/csi_config.h, please comment out `#define CONFIG_KERNEL_NONE 1`
-3. Hex is not updated
+3. Hex is not updated  
 If the compilation doesn't reflect your code changes, please clean the workspace with`make clean` or `make distclean`
-4. Auto-reset failed
+4. Auto-reset failed  
 In some cases the auto-reset may fail, you need to press the Reset key to reset the board manually.

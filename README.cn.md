@@ -218,11 +218,11 @@ make menuconfig
 
 ## 问题
 
-1. 下载失败
+1. 下载失败  
 如果出现`can not open serial make: *** [tools/w806/rules.mk:158: flash] Error 255`错误, 检查一下是否有其他串口软件占用了这个端口, 如果有需要先关闭
-2. 使用FreeRTOS时, 延时无效
+2. 使用FreeRTOS时, 延时无效  
 请检查: 在/include/arch/xt804/csi_config.h中, 是否未将`#define CONFIG_KERNEL_NONE 1`宏定义注释掉?
-3. 编译结果未更新
+3. 编译结果未更新  
 如果修改代码后编译, 发现固件未更新, 可以执行下面的命令清空旧的编译输出, 然后再次编译
 ```bash
 # 清理旧的编译结果和中间结果
@@ -230,5 +230,5 @@ make distclean
 # 重新编译
 make
 ```
-4. 自动复位失败
+4. 自动复位失败  
 在个别情况下, 自动复位会失败, 这时候需要按开发板的 Reset 键进行手工复位
