@@ -100,12 +100,6 @@ int main(void)
 
         ST7735_DrawImage(0, 0, 128, 128, (uint16_t *)test_img_128x128);
         HAL_Delay(2000);
-        /*ST7735_Fill(0, 0, ST7735_WIDTH, ST7735_HEIGHT, ST7735_RED);
-        HAL_Delay(500);
-        ST7735_DrawImage(0, 32, 128, 128, test_img_128x128);
-        HAL_Delay(1000);
-        ST7735_BackLight_Off();
-        HAL_Delay(1000);*/
     }
 }
 

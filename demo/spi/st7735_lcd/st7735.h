@@ -6,7 +6,7 @@
 #include "st7735_fonts.h"
 
 #define ST7735_BUF_SIZE         1024
-#define ST7735_HARDWARE_SPI     0
+#define ST7735_HARDWARE_SPI     1
 
 // CS: B4, B14
 #define ST7735_CS_PORT      GPIOB
