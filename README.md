@@ -8,17 +8,15 @@ A SDK for WinnerMicro MCU W806.
 
 ```
 wm-sdk-w806
-├─app              # User application source code
-├─bin              # Compilaion results
+├─app              # User application code
+├─bin              # Compilation results
 ├─demo             # Demos
-├─doc              # Release notes, API Docs 
-├─include          # API header files 
+├─include          # SDK header files 
 ├─ld               # Link scripts
 ├─lib              # Libraries
 ├─Makefile
-├─platform         # Chip&Platform related common code
-├─src              # Applications, network protocols, OS and 3rd party source code
-└─tools            # Compilation scripts, utilities for CDS IDE project、CDK project and IMAGE generation
+├─platform         # SDK source code
+└─tools            # Utilities
 ```
 
 # For Linux Users
@@ -29,7 +27,10 @@ wm-sdk-w806
 * You need to register an account for download
 * 导航->工具->工具链-800系列->(For now, it is V3.10.29)
 * Download according to your OS version, e.g. for Ubuntu20.04, download csky-elfabiv2-tools-x86_64-minilibc-yyyymmdd.tar.gz
-* If you cannot download it from above link, try this https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+* If you can not download from above link, try
+   * https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+   * https://ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
+   * https://gateway.ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
 
 ## Installation
 
@@ -137,7 +138,10 @@ make monitor
 * Download toolchains: [https://occ.t-head.cn/community/download](https://occ.t-head.cn/community/download)
    * 导航 -> 工具 -> 工具链-800系列 -> (Currently it is V3.10.29)
    * Download csky-elfabiv2-tools-mingw-minilibc-yyyymmdd.tar.gz for Windows
-   * If you cannot download it from above link, try this link https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+* If you can not download from above link, try
+   * https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+   * https://ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
+   * https://gateway.ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
 * Download Flash Tool: [https://h.hlktech.com/Mobile/download/fdetail/143.html](https://h.hlktech.com/Mobile/download/fdetail/143.html)
    * Click the download link right to 'W800串口烧录工具_V1.4.8(.rar)'
 

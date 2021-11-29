@@ -11,13 +11,11 @@ wm-sdk-w806
 ├─app              # 用户应用代码
 ├─bin              # 编译中间及结果产物
 ├─demo             # 功能演示代码
-├─doc              # 文档及发布说明
-├─include          # API头文件
+├─include          # SDK头文件
 ├─ld               # 链接脚本
 ├─lib              # 库文件
 ├─Makefile
-├─platform         # 芯片和平台相关公共代码
-├─src              # 操作系统,网络协议及应用和第三方项目源代码
+├─platform         # SDK源代码
 └─tools            # 编译脚本和工具
 ```
 
