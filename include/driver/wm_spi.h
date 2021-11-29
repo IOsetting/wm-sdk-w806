@@ -2,6 +2,7 @@
 #define __WM_SPI_H__
 
 #include "wm_hal.h"
+#include "wm_dma.h"
 
 typedef struct
 {
@@ -60,6 +61,10 @@ typedef struct __SPI_HandleTypeDef
 
     __IO uint32_t              RxXferCount;    /*!< SPI Rx Transfer Counter                  */
 
+    DMA_HandleTypeDef          *hdmatx;        /*!< SPI Tx DMA Handle parameters             */
+    
+    DMA_HandleTypeDef          *hdmarx;        /*!< SPI Rx DMA Handle parameters             */
+
     HAL_LockTypeDef            Lock;           /*!< Locking object                           */
 
     __IO HAL_SPI_StateTypeDef  State;          /*!< SPI communication state                  */
@@ -69,9 +74,13 @@ typedef struct __SPI_HandleTypeDef
 } SPI_HandleTypeDef;
 
 
-#define SPI                ((SPI_TypeDef *)SPI_BASE)
+#define SPI                             ((SPI_TypeDef *)SPI_BASE)
 
 #define HAL_SPI_ERROR_NONE              (0x00000000U)   /*!< No error                               */
+#define HAL_SPI_ERROR_TXERR             (0x00000001U)   /*!< Tx error                               */
+#define HAL_SPI_ERROR_RXERR             (0x00000002U)   /*!< Rx error                               */
+#define HAL_SPI_ERROR_DMA               (0x00000010U)   /*!< DMA transfer error                     */
+
 
 // SPI_Mode
 #define SPI_MODE_SLAVE                  (0x00000000U)
@@ -102,7 +111,7 @@ typedef struct __SPI_HandleTypeDef
 #define SPI_BAUDRATEPRESCALER_40        (0x00000013U)    // 40M / 40 = 1M
 
 
-#define BLOCK_SIZE (8 * 1024 - 4)
+#define BLOCK_SIZE (8 * 1024 - 8)
 
 #define IS_SPI_ALL_INSTANCE(INSTANCE) ((INSTANCE) == SPI1)
 
@@ -115,13 +124,19 @@ typedef struct __SPI_HandleTypeDef
 #define IS_SPI_BIG_OR_LITTLE(__ENDIAN__)       (((__ENDIAN__) == SPI_LITTLEENDIAN) || \
                                                 ((__ENDIAN__) == SPI_BIGENDIAN))
                                     
+#define IS_SPI_DMA_HANDLE(__HANDLE__)    ((__HANDLE__) != NULL)
+
 #define __HAL_SPI_ENABLE_TX(__HANDLE__)  SET_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_TXON)
+
+#define __HAL_SPI_DISABLE_TX(__HANDLE__)    CLEAR_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_TXON)
 
 #define __HAL_SPI_ENABLE_RX(__HANDLE__)  SET_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_RXON)
 
-#define __HAL_SPI_ENABLE(__HANDLE__)  SET_BIT((__HANDLE__)->Instance->CH_CFG, (SPI_CH_CFG_RXON | SPI_CH_CFG_TXON))
+#define __HAL_SPI_DISABLE_RX(__HANDLE__)  CLEAR_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_RXON)
 
-#define __HAL_SPI_DISABLE(__HANDLE__) CLEAR_BIT((__HANDLE__)->Instance->CH_CFG, (SPI_CH_CFG_RXON | SPI_CH_CFG_TXON | SPI_CH_CFG_START))
+#define __HAL_SPI_ENABLE_TXRX(__HANDLE__)  SET_BIT((__HANDLE__)->Instance->CH_CFG, (SPI_CH_CFG_RXON | SPI_CH_CFG_TXON))
+
+#define __HAL_SPI_DISABLE_TXRX(__HANDLE__) CLEAR_BIT((__HANDLE__)->Instance->CH_CFG, (SPI_CH_CFG_RXON | SPI_CH_CFG_TXON))
 
 #define __HAL_SPI_CLEAR_FIFO(__HANDLE__) do{SET_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_CLEARFIFOS);\
                                             while(READ_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_CLEARFIFOS));}while(0U);
@@ -132,9 +147,7 @@ typedef struct __SPI_HandleTypeDef
 
 #define __HAL_SPI_SET_CLK_NUM(__HANDLE__, NUM)    (MODIFY_REG((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_LEN, NUM << SPI_CH_CFG_LEN_Pos))
 
-#define __HAL_SPI_SET_START(__HANDLE__) (SET_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_START))
-
-#define __HAL_SPI_GET_START(__HANDLE__) (READ_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_START))
+#define __HAL_SPI_SET_START(__HANDLE__) SET_BIT((__HANDLE__)->Instance->CH_CFG, SPI_CH_CFG_START)
 
 #define __HAL_SPI_GET_BUSY_STATUS(__HANDLE__)    (READ_BIT((__HANDLE__)->Instance->STATUS, SPI_STATUS_BUSY))
 
@@ -144,7 +157,11 @@ typedef struct __SPI_HandleTypeDef
 
 #define __HAL_SPI_GET_FLAG(__HANDLE__, FLAG)    READ_BIT((__HANDLE__)->Instance->INT_SRC, FLAG)
 
-#define __HAL_SPI_CELAR_FLAG(__HANDLE__, FLAG)    SET_BIT((__HANDLE__)->Instance->INT_SRC, FLAG)
+#define __HAL_SPI_CLEAR_FLAG(__HANDLE__, FLAG)    SET_BIT((__HANDLE__)->Instance->INT_SRC, FLAG)
+
+#define __HAL_SPI_ENABLE_IT(__HANDLE__, IT)        CLEAR_BIT((__HANDLE__)->Instance->INT_MASK, IT)
+
+#define __HAL_SPI_DISABLE_IT(__HANDLE__, IT)    SET_BIT((__HANDLE__)->Instance->INT_MASK, IT)
 
 #ifdef __cplusplus
 extern "C"{
@@ -158,6 +175,32 @@ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, const uint8_t *pData
 HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint32_t Size, uint32_t Timeout);
 HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxData, uint8_t *pRxData, uint32_t Size,
                                           uint32_t Timeout);
+
+HAL_StatusTypeDef HAL_SPI_Transmit_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, uint32_t Size);
+HAL_StatusTypeDef HAL_SPI_Receive_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, uint32_t Size);
+HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, uint8_t *pTxData, uint8_t *pRxData,
+                                             uint32_t Size);
+
+HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, uint32_t Size);
+HAL_StatusTypeDef HAL_SPI_Receive_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, uint32_t Size);
+HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, uint8_t *pTxData, uint8_t *pRxData,
+                                              uint32_t Size);
+
+HAL_StatusTypeDef HAL_SPI_DMAPause(SPI_HandleTypeDef *hspi);
+HAL_StatusTypeDef HAL_SPI_DMAResume(SPI_HandleTypeDef *hspi);
+HAL_StatusTypeDef HAL_SPI_DMAStop(SPI_HandleTypeDef *hspi);
+
+void HAL_SPI_IRQHandler(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxHalfCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_RxHalfCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi);
+
+HAL_SPI_StateTypeDef HAL_SPI_GetState(SPI_HandleTypeDef *hspi);
+uint32_t             HAL_SPI_GetError(SPI_HandleTypeDef *hspi);
 
 #ifdef __cplusplus
 }

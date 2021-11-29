@@ -419,6 +419,10 @@ uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma)
   */
 static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint16_t DataLength)
 {
+    assert_param(IS_DMA_SRC_ADDR(SrcAddress));
+    assert_param(IS_DMA_DEST_ADDR(DstAddress));
+    assert_param(IS_DMA_LENGTH(hdma->Init.DataAlignment, DataLength));
+
     hdma->DmaBaseAddress->IF = ((DMA_IF_TRANSFER_DONE | DMA_IF_BURST_DONE) << (hdma->ChannelIndex * 2));
     
     if (hdma->Init.Mode == DMA_MODE_NORMAL_SINGLE)
@@ -447,6 +451,7 @@ static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t
     }
     else
     {
+        assert_param(IS_DMA_LINK_LENGTH(DataLength));
         hdma->LinkDesc[0].Control |= ((DataLength / 2) << 7);
         hdma->LinkDesc[0].Valid = (1 << 31);
         hdma->LinkDesc[0].SrcAddr = SrcAddress;

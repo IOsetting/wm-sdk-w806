@@ -5,39 +5,37 @@
 void Error_Handler(void);
 
 SPI_HandleTypeDef hspi;
+DMA_HandleTypeDef hdma_spi_tx;
+DMA_HandleTypeDef hdma_spi_rx;
+
 static void SPI_Init(void);
-#define data_len (20*1024)
+static void DMA_Init(void);
+#define data_len (10000)
 uint8_t tx_data[data_len] = {0};
 uint8_t rx_data[data_len] = {0};
 
 int main(void)
 {
     int i = 0;
+    uint16_t *p = (uint16_t *)tx_data;
     
     SystemClock_Config(CPU_CLK_160M);
     printf("enter main\r\n");
+    DMA_Init();
     SPI_Init();
-    
-    for(i = 0; i < data_len; i++)
+
+    for(i = 0; i < (data_len / 2); i++)
     {
-        tx_data[i] = i;
+        p[i] = i;
     }
+    __HAL_SPI_SET_CS_LOW(&hspi);
+    HAL_SPI_Transmit_DMA(&hspi, (uint8_t *)tx_data, data_len);
+
+//    __HAL_SPI_SET_CS_LOW(&hspi);
+//    HAL_SPI_Receive_DMA(&hspi, (uint8_t *)rx_data, data_len);
+
     while (1)
     {
-        memset(rx_data, 0, data_len);
-        __HAL_SPI_SET_CS_LOW(&hspi);
-    //    HAL_SPI_Transmit(&hspi, tx_data, data_len, 1000);
-    //    HAL_SPI_Receive(&hspi, rx_data, data_len, 1000);
-        HAL_SPI_TransmitReceive(&hspi, tx_data, rx_data, data_len, 1000);
-        __HAL_SPI_SET_CS_HIGH(&hspi);
-        for (i = 0; i < data_len; i++)
-        {
-            if (rx_data[i] != tx_data[i])
-            {
-                printf("err\r\n");
-                break;
-            }
-        }
         HAL_Delay(1000);
     }
 }
@@ -56,6 +54,29 @@ static void SPI_Init(void)
     {
         Error_Handler();
     }
+}
+
+static void DMA_Init(void)
+{
+    __HAL_RCC_DMA_CLK_ENABLE();
+    
+    HAL_NVIC_SetPriority(DMA_Channel0_IRQn, 0);
+    HAL_NVIC_EnableIRQ(DMA_Channel0_IRQn);
+    
+    HAL_NVIC_SetPriority(DMA_Channel1_IRQn, 0);
+    HAL_NVIC_EnableIRQ(DMA_Channel1_IRQn);
+}
+
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    __HAL_SPI_SET_CS_HIGH(hspi);
+    printf("tx cplt\r\n");
+}
+
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    __HAL_SPI_SET_CS_HIGH(hspi);
+    printf("rx cplt\r\n");
 }
 
 void Error_Handler(void)

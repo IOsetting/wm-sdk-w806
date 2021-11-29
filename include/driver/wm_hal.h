@@ -24,7 +24,7 @@
 #include "wm_i2s.h"
 #include "wm_dma.h"
 
-#define VER "0.5.0"
+#define VER "0.6.0"
 
 #define __HAL_LOCK(__HANDLE__)                                           \
                                 do{                                        \

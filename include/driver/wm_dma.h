@@ -221,6 +221,16 @@ typedef struct __DMA_HandleTypeDef
 
 #define IS_DMA_BUFFER_SIZE(SIZE)         (((SIZE) >= 0x1U) && ((SIZE) < 0x10000U))
 
+#define IS_DMA_SRC_ADDR(SRC)            (((SRC) % 4) == 0)
+
+#define IS_DMA_DEST_ADDR(DEST)            (((DEST) % 4) == 0)
+
+#define IS_DMA_LENGTH(DATAALIGN, LEN)    ((((DATAALIGN) == DMA_DATAALIGN_BYTE) && (((LEN) % 1) == 0)) || \
+                                         (((DATAALIGN) == DMA_DATAALIGN_HALFWORD) && (((LEN) % 2) == 0)) || \
+                                         (((DATAALIGN) == DMA_DATAALIGN_WORD) && (((LEN) % 4) == 0)))
+
+#define IS_DMA_LINK_LENGTH(LEN)            (((LINK) % 8) == 0)
+
 #define IS_DMA_COMPLETELEVEL(LEVEL)      (((LEVEL) == HAL_DMA_HALF_TRANSFER) || ((LEVEL) = HAL_DMA_FULL_TRANSFER))
 
 #define __HAL_DMA_ENABLE(__HANDLE__)     (SET_BIT((__HANDLE__)->Instance->CR1, DMA_CR1_START))
