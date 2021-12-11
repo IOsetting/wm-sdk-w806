@@ -237,3 +237,13 @@ In /include/arch/xt804/csi_config.h, please comment out `#define CONFIG_KERNEL_N
 If the compilation doesn't reflect your code changes, please clean the workspace with`make clean` or `make distclean`
 4. Auto-reset failed  
 In some cases the auto-reset may fail, you need to press the Reset key to reset the board manually.
+
+# License
+
+WM-SDK-W806 is based on the code released by WinnerMicro without license attached, so the former LICENSE is suspended till I get the formal reply from WinnerMicro. For the time being the license of this project is:
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+As WM-SDK-W806 includes code from many upstream projects it includes many copyright owners. WM-SDK-W806 makes NO claim of copyright on any upstream code. Patches to upstream code have the same license as the upstream project, unless specified otherwise. For a complete copyright list please checkout the source code to examine license headers. 
+
+Unless expressly stated otherwise all code submitted to the WM-SDK-W806 project (in any form) will be licensed under the same license. You are absolutely free to retain copyright. To retain copyright simply add a copyright header to each submitted code page. If you submit code that is not your own work it is your responsibility to place a header stating the copyright.
