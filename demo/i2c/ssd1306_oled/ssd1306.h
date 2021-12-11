@@ -2,24 +2,24 @@
  * original author:  Tilen Majerle<tilen@majerle.eu>, Alexander Lutsai<s.lyra@ya.ru>
  * modification for W806: IOsetting<iosetting@outlook.com>
 
-   ----------------------------------------------------------------------
+    ----------------------------------------------------------------------
     Copyright (C) IOsetting, 2021
-   	Copyright (C) Alexander Lutsai, 2016
+    Copyright (C) Alexander Lutsai, 2016
     Copyright (C) Tilen Majerle, 2015
-    
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     any later version.
-     
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-   ----------------------------------------------------------------------
+    ----------------------------------------------------------------------
  */
 #ifndef __SSD1306_H__
 #define __SSD1306_H__
@@ -52,11 +52,45 @@ SDA        |PA4          |Serial data line
 #include "stdlib.h"
 #include "string.h"
 
+/**
+ * Mode switch: 0 - SPI, 1 - I2C
+ */
+#define SSD1306_MODE_I2C          1
 
-/* I2C address */
-#ifndef SSD1306_I2C_ADDR
-#define SSD1306_I2C_ADDR         0x78
-//#define SSD1306_I2C_ADDR       0x7A
+#if SSD1306_MODE_I2C
+    /* I2C address
+    * address: 7 bit slave address, left aligned, bits 7:1 are used, LSB bit is not used
+    */
+    #ifndef SSD1306_I2C_ADDR
+    #define SSD1306_I2C_ADDR         0x78
+    //#define SSD1306_I2C_ADDR       0x7A
+    #endif
+
+#else
+
+    // CS: B4, B14
+    #define SSD1306_CS_PORT      GPIOB
+    #define SSD1306_CS_PIN       GPIO_PIN_14
+    // SCK: B1, B2, B15, B24
+    #define SSD1306_SCK_PORT     GPIOB
+    #define SSD1306_SCK_PIN      GPIO_PIN_15
+    // MOSI: B5, B17, B26, PA7
+    #define SSD1306_MOSI_PORT    GPIOB
+    #define SSD1306_MOSI_PIN     GPIO_PIN_17
+    // MISO: B0, B3, B16, B25
+
+    #define SSD1306_RES_PORT     GPIOB
+    #define SSD1306_RES_PIN      GPIO_PIN_10
+    #define SSD1306_DC_PORT      GPIOB
+    #define SSD1306_DC_PIN       GPIO_PIN_11
+
+    #define SSD1306_CS_LOW       __HAL_SPI_SET_CS_LOW(&hspi)
+    #define SSD1306_CS_HIGH      __HAL_SPI_SET_CS_HIGH(&hspi)
+    #define SSD1306_DC_LOW        HAL_GPIO_WritePin(SSD1306_DC_PORT, SSD1306_DC_PIN, GPIO_PIN_RESET)
+    #define SSD1306_DC_HIGH       HAL_GPIO_WritePin(SSD1306_DC_PORT, SSD1306_DC_PIN, GPIO_PIN_SET)
+    #define SSD1306_RESET_LOW     HAL_GPIO_WritePin(SSD1306_RES_PORT, SSD1306_RES_PIN, GPIO_PIN_RESET)
+    #define SSD1306_RESET_HIGH    HAL_GPIO_WritePin(SSD1306_RES_PORT, SSD1306_RES_PIN, GPIO_PIN_SET)
+
 #endif
 
 /* SSD1306 settings */
@@ -67,6 +101,10 @@ SDA        |PA4          |Serial data line
 /* SSD1306 LCD height in pixels */
 #ifndef SSD1306_HEIGHT
 #define SSD1306_HEIGHT           64
+#endif
+
+#ifndef SSD1306_TIMEOUT
+#define SSD1306_TIMEOUT					20000
 #endif
 
 /*!< Black color, no pixel */
@@ -226,21 +264,21 @@ void SSD1306_DrawFilledCircle(int16_t x0, int16_t y0, int16_t r, uint8_t c);
  * @param  count: how many bytes will be written
  * @retval None
  */
-void ssd1306_image(uint8_t *img, uint8_t frame, uint8_t x, uint8_t y);
-
-#ifndef ssd1306_I2C_TIMEOUT
-#define ssd1306_I2C_TIMEOUT					20000
-#endif
+void SSD1306_Image(uint8_t *img, uint8_t frame, uint8_t x, uint8_t y);
 
 /**
- * @brief  Writes single byte to slave
- * @param  *I2Cx: I2C used
- * @param  address: 7 bit slave address, left aligned, bits 7:1 are used, LSB bit is not used
- * @param  reg: register to write to
+ * @brief  Writes single byte command to slave
+ * @param  command: command to be written
+ * @retval None
+ */
+void SSD1306_WriteCommand(uint8_t command);
+
+/**
+ * @brief  Writes single byte data to slave
  * @param  data: data to be written
  * @retval None
  */
-void ssd1306_I2C_Write(uint8_t address, uint8_t reg, uint8_t data);
+void SSD1306_WriteData(uint8_t data);
 
 /* C++ detection */
 #ifdef __cplusplus
