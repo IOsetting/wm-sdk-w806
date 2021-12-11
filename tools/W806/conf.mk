@@ -53,13 +53,19 @@ ifeq ($(CONFIG_W800_FIRMWARE_DEBUG),y)
 optimization += -g -DWM_SWD_ENABLE=1
 endif
 
+cputype = ck804ef
+
 # YES; NO
 VERBOSE ?= NO
 
-UNAME_O:=$(shell uname -o)
-UNAME_S:=$(shell uname -s)
+UNAME:=$(shell uname)
+ifneq (,$(findstring MINGW,$(UNAME)))
+    UNAME=Msys
+else ifneq (,$(findstring MSYS_NT,$(UNAME)))
+    UNAME=Msys
+endif
 
-$(shell gcc $(SDK_TOOLS)/wm_getver.c -Wall -O2 -o $(VER_TOOL))
+$(shell cc $(SDK_TOOLS)/wm_getver.c -Wall -O2 -o $(VER_TOOL))
 
 TOOL_CHAIN_PREFIX = $(CONFIG_W800_TOOLCHAIN_PREFIX)
 TOOL_CHAIN_PATH = $(subst ",,$(CONFIG_W800_TOOLCHAIN_PATH))
@@ -91,7 +97,7 @@ LIB_EXT = .a
 CCFLAGS := -Wall \
     -DTLS_CONFIG_CPU_XT804=1 \
     -DGCC_COMPILE=1 \
-    -mcpu=ck804ef \
+    -mcpu=$(cputype) \
     $(optimization) \
     -std=gnu99 \
     -c  \
@@ -103,7 +109,7 @@ CCFLAGS := -Wall \
 CCXXFLAGS := -Wall \
     -DTLS_CONFIG_CPU_XT804=1 \
     -DGCC_COMPILE=1 \
-    -mcpu=ck804ef \
+    -mcpu=$(cputype) \
     $(optimization) \
     -std=gnu++11 \
     -c  \
@@ -115,7 +121,7 @@ CCXXFLAGS := -Wall \
 ASMFLAGS := -Wall \
     -DTLS_CONFIG_CPU_XT804=1 \
     -DGCC_COMPILE=1 \
-    -mcpu=ck804ef \
+    -mcpu=$(cputype) \
     $(optimization) \
     -std=gnu99 \
     -c  \
@@ -128,7 +134,7 @@ ARFLAGS := ru
 
 ARFLAGS_2 = xo
 
-LINKFLAGS := -mcpu=ck804ef \
+LINKFLAGS := -mcpu=$(cputype) \
     -nostartfiles \
     -mhard-float \
     -lm \
