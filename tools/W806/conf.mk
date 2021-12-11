@@ -53,7 +53,20 @@ ifeq ($(CONFIG_W800_FIRMWARE_DEBUG),y)
 optimization += -g -DWM_SWD_ENABLE=1
 endif
 
-cputype = ck804ef
+use_csky_toolchain = y
+ifeq ($(use_csky_toolchain),y)
+  # C-SKY toolchain
+  cputype = ck804ef
+  extra_lib =
+  extra_flag =
+  ld_map_opt = -ckmap
+else
+  # generic toolchain (binutils-2.34 + gcc-9.4.0 + newlib-4.1.0)
+  cputype = ck803efr1
+  extra_lib = -lc -lnosys
+  extra_flag = -mistack
+  ld_map_opt = -Map
+endif
 
 # YES; NO
 VERBOSE ?= NO
@@ -103,6 +116,7 @@ CCFLAGS := -Wall \
     -c  \
     -mhard-float  \
     -Wall  \
+    $(extra_flag)  \
     -fdata-sections  \
     -ffunction-sections
 
@@ -115,6 +129,7 @@ CCXXFLAGS := -Wall \
     -c  \
     -mhard-float  \
     -Wall  \
+    $(extra_flag)  \
     -fdata-sections  \
     -ffunction-sections
 
@@ -127,6 +142,7 @@ ASMFLAGS := -Wall \
     -c  \
     -mhard-float \
     -Wa,--gdwarf2 \
+    $(extra_flag)  \
     -fdata-sections  \
     -ffunction-sections
 
@@ -137,10 +153,11 @@ ARFLAGS_2 = xo
 LINKFLAGS := -mcpu=$(cputype) \
     -nostartfiles \
     -mhard-float \
-    -lm \
+    $(extra_flag)  \
+    -lm $(extra_lib) \
     -Wl,-T$(LD_FILE)
 
-MAP := -Wl,-ckmap=$(IMAGEODIR)/$(TARGET).map
+MAP := -Wl,$(ld_map_opt)=$(IMAGEODIR)/$(TARGET).map
 
 ifneq ($(PRIKEY_SEL),0)
     $(IMG_TYPE) = $(IMG_TYPE) + 32 * $(PRIKEY_SEL)
