@@ -44,6 +44,7 @@
 # Kernel Module Compile Results
 *.mod*
 *.cmd
+.vscode/
 .tmp_versions/
 tools/W806/wm_tool
 tools/W806/wm_getver
