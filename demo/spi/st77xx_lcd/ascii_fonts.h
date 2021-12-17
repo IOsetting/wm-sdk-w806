@@ -1,5 +1,5 @@
-#ifndef __ST7735_FONTS_H__
-#define __ST7735_FONTS_H__
+#ifndef __ASCII_FONTS_H__
+#define __ASCII_FONTS_H__
 
 #include <stdint.h>
 
@@ -10,6 +10,7 @@ typedef struct {
     const uint8_t *data;
 } FontDef;
 
+extern FontDef Font_6x8;
 extern FontDef Font_6x12;
 extern FontDef Font_7x10;
 extern FontDef Font_8x16;
@@ -18,4 +19,4 @@ extern FontDef Font_12x24;
 extern FontDef Font_16x26;
 extern FontDef Font_16x32;
 
-#endif // __FONTS_H__
+#endif // __ASCII_FONTS_H__
