@@ -28,7 +28,6 @@
 *.dylib
 
 # Executables
-*.exe
 *.out
 *.app
 *.i*86
@@ -48,6 +47,7 @@
 .tmp_versions/
 tools/W806/wm_tool
 tools/W806/wm_getver
+tools/W806/wm_getver.exe
 tools/W806/.config
 tools/W806/.config.old
 bin/*

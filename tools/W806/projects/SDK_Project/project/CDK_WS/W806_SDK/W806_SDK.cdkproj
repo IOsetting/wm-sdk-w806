@@ -181,6 +181,11 @@
           </File>
         </VirtualDirectory>
       </VirtualDirectory>
+      <VirtualDirectory Name="auto_dl">
+        <File Name="../../../../../../../platform/component/auto_dl/auto_dl.c">
+          <FileOption/>
+        </File>
+      </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="ld">
@@ -297,7 +302,9 @@
       <File Name="../../../../../../../app/src/wm_hal_msp.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../../../app/src/wm_it.c"/>
+      <File Name="../../../../../../../app/src/wm_it.c">
+        <FileOption/>
+      </File>
     </VirtualDirectory>
     <VirtualDirectory Name="inc">
       <File Name="../../../../../../../app/inc/wm_it.h">
