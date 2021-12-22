@@ -323,21 +323,21 @@ void ST77XX_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint
     ST77XX_WriteData((uint8_t *)data, sizeof(uint16_t) * w * h);
 }
 
-void ST77XX_DrawChar(uint16_t x, uint16_t y, char ch, FontDef font, uint16_t color, uint16_t bgcolor)
+void ST77XX_DrawChar(uint16_t x, uint16_t y, char ch, FontDef_t* font, uint16_t color, uint16_t bgcolor)
 {
     uint8_t b, i, j, k, bytes;
 
-    ST77XX_SetAddrWindow(x, y, x + font.width - 1, y + font.height - 1);
-    bytes = font.width / 8 + ((font.width % 8)? 1 : 0);
+    ST77XX_SetAddrWindow(x, y, x + font->width - 1, y + font->height - 1);
+    bytes = font->width / 8 + ((font->width % 8)? 1 : 0);
 
-    for (i = 0; i < font.height; i++)
+    for (i = 0; i < font->height; i++)
     {
         for (j = 0; j < bytes; j++)
         {
-            b = font.data[((ch - 32) * font.height + i) * bytes + j];
-            if (font.order == 0)
+            b = font->data[((ch - 32) * font->height + i) * bytes + j];
+            if (font->order == 0)
             {
-                for (k = 0; k < 8 && k < font.width - j * 8; k++)
+                for (k = 0; k < 8 && k < font->width - j * 8; k++)
                 {
                     if ((b << k) & 0x80)
                     {
@@ -351,7 +351,7 @@ void ST77XX_DrawChar(uint16_t x, uint16_t y, char ch, FontDef font, uint16_t col
             }
             else
             {
-                for (k = 0; k < 8 && k < font.width - j * 8; k++)
+                for (k = 0; k < 8 && k < font->width - j * 8; k++)
                 {
                     if (b & (0x0001 << k))
                     {
@@ -369,12 +369,12 @@ void ST77XX_DrawChar(uint16_t x, uint16_t y, char ch, FontDef font, uint16_t col
     ST77XX_FlushBuff();
 }
 
-void ST77XX_DrawString(uint16_t x, uint16_t y, const char *p, FontDef font, uint16_t color, uint16_t bgcolor)
+void ST77XX_DrawString(uint16_t x, uint16_t y, const char *p, FontDef_t* font, uint16_t color, uint16_t bgcolor)
 {
     while (*p != '\0')
     {
         ST77XX_DrawChar(x, y, *p, font, color, bgcolor);
-        x += font.width;
+        x += font->width;
         p++;
     }
 }

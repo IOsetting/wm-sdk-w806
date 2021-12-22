@@ -43,7 +43,7 @@
  * In actual test the Page Address will grow automatically.
 */
 /* ST7567 data buffer */
-static uint8_t ST7567_Buffer_all[(ST7567_WIDTH + ST7567_SEG_EXPAND) * ST7567_HEIGHT / 8 + 128];
+static uint8_t ST7567_Buffer_all[(ST7567_WIDTH + ST7567_SEG_EXPAND) * ST7567_HEIGHT / 8];
 
 /* Private ST7567 structure */
 typedef struct {

@@ -47,7 +47,7 @@ SDA        |PA4          |Serial data line
  */
 
 #include "wm_hal.h"
-#include "ssd1306_fonts.h"
+#include "ascii_fonts.h"
 
 #include "stdlib.h"
 #include "string.h"

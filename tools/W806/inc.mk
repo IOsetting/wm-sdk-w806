@@ -12,6 +12,7 @@ INCLUDES += -I $(TOP_DIR)/include/platform
 INCLUDES += -I $(TOP_DIR)/include/wifi
 INCLUDES += -I $(TOP_DIR)/include/bt
 
+INCLUDES += -I $(TOP_DIR)/platform/component/ascii_fonts
 INCLUDES += -I $(TOP_DIR)/platform/component/FreeRTOS/include
 INCLUDES += -I $(TOP_DIR)/platform/component/FreeRTOS/portable/xt804
 

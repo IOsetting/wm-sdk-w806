@@ -63,31 +63,31 @@ int main(void)
 
         y = 10;
 
-        ST77XX_DrawString(5, y, (const char *)"0123456789ABCDE", Font_6x12, ST77XX_YELLOW, ST77XX_RED);
+        ST77XX_DrawString(5, y, (const char *)"0123456789ABCDE", &Font_6x12, ST77XX_YELLOW, ST77XX_RED);
         HAL_Delay(500);
         y += Font_6x12.height + 2;
 
-        ST77XX_DrawString(5, y, (const char *)"0123456789ABCDE", Font_7x10, ST77XX_YELLOW, ST77XX_BLUE);
+        ST77XX_DrawString(5, y, (const char *)"0123456789ABCDE", &Font_7x10, ST77XX_YELLOW, ST77XX_BLUE);
         HAL_Delay(500);
         y += Font_7x10.height + 2;
 
-        ST77XX_DrawString(5, y, (const char *)"0123456789ABCDE", Font_8x16, ST77XX_YELLOW, ST77XX_BLUE);
+        ST77XX_DrawString(5, y, (const char *)"0123456789ABCDE", &Font_8x16, ST77XX_YELLOW, ST77XX_BLUE);
         HAL_Delay(500);
         y += Font_8x16.height + 2;
 
-        ST77XX_DrawString(5, y, (const char *)"0123456ABC", Font_11x18, ST77XX_YELLOW, ST77XX_BLUE);
+        ST77XX_DrawString(5, y, (const char *)"0123456ABC", &Font_11x18, ST77XX_YELLOW, ST77XX_BLUE);
         HAL_Delay(500);
         y += Font_11x18.height + 2;
 
-        ST77XX_DrawString(5, y, (const char *)"0123456AB", Font_12x24, ST77XX_YELLOW, ST77XX_BLUE);
+        ST77XX_DrawString(5, y, (const char *)"0123456AB", &Font_12x24, ST77XX_YELLOW, ST77XX_BLUE);
         HAL_Delay(500);
         y += Font_12x24.height + 2;
 
-        ST77XX_DrawString(5, y, (const char *)"ST7735", Font_16x26, ST77XX_WHITE, ST77XX_BLUE);
+        ST77XX_DrawString(5, y, (const char *)"ST7735", &Font_16x26, ST77XX_WHITE, ST77XX_BLUE);
         HAL_Delay(500);
         y += Font_16x26.height + 2;
 
-        ST77XX_DrawString(0, y, (const char *)"W806 SDK", Font_16x32, ST77XX_WHITE, ST77XX_BLUE);
+        ST77XX_DrawString(0, y, (const char *)"W806 SDK", &Font_16x32, ST77XX_WHITE, ST77XX_BLUE);
         HAL_Delay(3000);
 
         ST77XX_DrawImage(0, 0, 128, 128, (uint16_t *)test_img_128x128);
