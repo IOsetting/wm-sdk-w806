@@ -14,8 +14,8 @@
 
 #include "wm_i2c.h"
 
-#define I2C_FREQ_MAX			(1000000)
-#define I2C_FREQ_MIN			(100000)
+#define I2C_FREQ_MAX            (1000000)
+#define I2C_FREQ_MIN            (100000)
 
 
 HAL_StatusTypeDef HAL_I2C_Init(I2C_HandleTypeDef *hi2c)
@@ -29,16 +29,16 @@ HAL_StatusTypeDef HAL_I2C_Init(I2C_HandleTypeDef *hi2c)
     HAL_I2C_MspInit(hi2c);
 
     wm_sys_clk sysclk;
-	uint32_t div = 0;
-	if (hi2c->Frequency < I2C_FREQ_MIN)
-	{
-		hi2c->Frequency = I2C_FREQ_MIN;
-	}
-	else if (hi2c->Frequency > I2C_FREQ_MAX)
-	{
-		hi2c->Frequency = I2C_FREQ_MAX;
-	}
-	SystemClock_Get(&sysclk);
+    uint32_t div = 0;
+    if (hi2c->Frequency < I2C_FREQ_MIN)
+    {
+        hi2c->Frequency = I2C_FREQ_MIN;
+    }
+    else if (hi2c->Frequency > I2C_FREQ_MAX)
+    {
+        hi2c->Frequency = I2C_FREQ_MAX;
+    }
+    SystemClock_Get(&sysclk);
     div = (sysclk.apbclk * 1000000) / (5 * hi2c->Frequency) - 1;
     WRITE_REG(hi2c->Instance->PRESCALE_L, div & 0xff);
     WRITE_REG(hi2c->Instance->PRESCALE_H, (div >> 8) & 0xff);
@@ -86,69 +86,69 @@ __attribute__((weak)) void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
 }
 
 /**
- * @brief	Send stop signal
+ * @brief    Send stop signal
  */
 void HAL_I2C_Stop(I2C_HandleTypeDef *hi2c)
 {
     WRITE_REG(hi2c->Instance->CR_SR, I2C_CR_STOP);
-	while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
+    while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
 }
 
 /**
- * @brief	Waiting for ack signal
+ * @brief    Waiting for ack signal
  */
 int HAL_I2C_Wait_Ack(I2C_HandleTypeDef *hi2c)
 {
-	uint16_t errtime=0;
+    uint16_t errtime=0;
 
-	while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
-	while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_RXACK))
-	{
-		errtime ++;
-		if(errtime > 512)
-		{
+    while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
+    while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_RXACK))
+    {
+        errtime ++;
+        if(errtime > 512)
+        {
             printf("i2c ack error");
-			HAL_I2C_Stop(hi2c);
-			return HAL_ERROR;
-		}
-	}
-	return HAL_OK;
+            HAL_I2C_Stop(hi2c);
+            return HAL_ERROR;
+        }
+    }
+    return HAL_OK;
 }
 
 /**
- * @brief	Send one byte
- * @param[in] dat	the byte to be sent
+ * @brief    Send one byte
+ * @param[in] dat    the byte to be sent
  * @param[in] ifstart  0: data only, 1: with start signal
  */
 void HAL_I2C_Write_Byte(I2C_HandleTypeDef *hi2c, uint8_t dat, uint8_t ifstart)
 {
-	WRITE_REG(hi2c->Instance->DATA, dat);
-	if(ifstart)
-		WRITE_REG(hi2c->Instance->CR_SR, I2C_CR_START | I2C_CR_WR);
-	else
-		WRITE_REG(hi2c->Instance->CR_SR, I2C_CR_WR);
-	while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
+    WRITE_REG(hi2c->Instance->DATA, dat);
+    if(ifstart)
+        WRITE_REG(hi2c->Instance->CR_SR, I2C_CR_START | I2C_CR_WR);
+    else
+        WRITE_REG(hi2c->Instance->CR_SR, I2C_CR_WR);
+    while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
 }
 
 /**
- * @brief	Read one byte
- * @param[in] ifack	0:no ack, 1:send ack
+ * @brief    Read one byte
+ * @param[in] ifack    0:no ack, 1:send ack
  * @param[in] ifstop 0:no stop signal, 1:send stop signal
- * @retval	the received byte
+ * @retval    the received byte
  */
 uint8_t HAL_I2C_Read_Byte(I2C_HandleTypeDef *hi2c, uint8_t ifack, uint8_t ifstop)
 {
-	uint32_t value = I2C_CR_RD;
+    uint32_t value = I2C_CR_RD;
 
-	if(!ifack)
-		value |= I2C_CR_ACK;
-	if(ifstop)
-		value |= I2C_CR_STOP;
-	
-	WRITE_REG(hi2c->Instance->CR_SR, value);
-	/** Waiting finish */
-	while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
-	return READ_REG(hi2c->Instance->DATA);
+    if(!ifack)
+        value |= I2C_CR_ACK;
+    if(ifstop)
+        value |= I2C_CR_STOP;
+    
+    WRITE_REG(hi2c->Instance->CR_SR, value);
+    /** Waiting finish */
+    while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
+    return READ_REG(hi2c->Instance->DATA);
 }
 
 HAL_StatusTypeDef HAL_I2C_Write(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, uint8_t MemAddress, uint8_t *pData, uint16_t Size)

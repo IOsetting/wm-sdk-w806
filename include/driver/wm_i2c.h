@@ -19,10 +19,10 @@
 
 typedef struct __I2C_HandleTypeDef
 {
-    I2C_TypeDef                	*Instance;		/*!< I2C registers base address               */
-	uint32_t 					Frequency;
-	HAL_LockTypeDef            	Lock;           /*!< Object lock                              */
-	__IO uint32_t               ErrorCode;      /*!< I2C Error code                           */
+    I2C_TypeDef                 *Instance;      /*!< I2C registers base address               */
+    uint32_t                    Frequency;
+    HAL_LockTypeDef             Lock;           /*!< Object lock                              */
+    __IO uint32_t               ErrorCode;      /*!< I2C Error code                           */
 } I2C_HandleTypeDef;
 
 #define I2C                             ((I2C_TypeDef *)I2C_BASE)
