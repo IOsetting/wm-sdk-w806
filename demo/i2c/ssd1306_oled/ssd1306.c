@@ -1,31 +1,16 @@
-/******************************************************************************
-** 
- * \file        ssd1306.c
- * \author      Tilen Majerle<tilen@majerle.eu>, Alexander Lutsai<s.lyra@ya.ru>
- * \author      IOsetting | iosetting@outlook.com
- * \date        
- * \brief       Library of SSD1306 OLED on W806
- * \note        
- * \version     v0.1
- * \ingroup     demo
- * \remarks     test-board: HLK-W806-KIT-V1.0
- *
- *              I2C Mode:
- *                PA1   -> SCL
- *                PA4   -> SDA
- *                GND   -> GND
- *                3.3V  -> VCC
- * 
- *              SPI Mode:
- *                PB14  -> CS
- *                PB15  -> SCK/CLK/D0
- *                PB17  -> MOSI/SDA/D1
- *                PB10  -> RES
- *                PB11  -> DC
- *                GND   -> GND
- *                3.3V  -> VCC
- * 
-******************************************************************************/
+// Copyright 2021 IOsetting <iosetting(at)outlook.com>
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #include "ssd1306.h"
 
@@ -315,7 +300,6 @@ char SSD1306_Puts(char* str, FontDef_t* Font, uint8_t color)
     /* Everything OK, zero should be returned */
     return *str;
 }
- 
 
 void SSD1306_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint8_t c)
 {
@@ -418,138 +402,6 @@ void SSD1306_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint8_
     }
 }
 
-void SSD1306_DrawRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t c)
-{
-    /* Check input parameters */
-    if (x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT)
-    {
-        /* Return error */
-        return;
-    }
-
-    /* Check width and height */
-    if ((x + w) >= SSD1306_WIDTH)
-    {
-        w = SSD1306_WIDTH - x;
-    }
-    if ((y + h) >= SSD1306_HEIGHT)
-    {
-        h = SSD1306_HEIGHT - y;
-    }
-
-    /* Draw 4 lines */
-    SSD1306_DrawLine(x, y, x + w, y, c);         /* Top line */
-    SSD1306_DrawLine(x, y + h, x + w, y + h, c); /* Bottom line */
-    SSD1306_DrawLine(x, y, x, y + h, c);         /* Left line */
-    SSD1306_DrawLine(x + w, y, x + w, y + h, c); /* Right line */
-}
-
-void SSD1306_DrawFilledRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t c)
-{
-    uint8_t i;
-    
-    /* Check input parameters */
-    if (x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT)
-    {
-        /* Return error */
-        return;
-    }
-
-    /* Check width and height */
-    if ((x + w) >= SSD1306_WIDTH)
-    {
-        w = SSD1306_WIDTH - x;
-    }
-    if ((y + h) >= SSD1306_HEIGHT)
-    {
-        h = SSD1306_HEIGHT - y;
-    }
-
-    /* Draw lines */
-    for (i = 0; i <= h; i++)
-    {
-        /* Draw lines */
-        SSD1306_DrawLine(x, y + i, x + w, y + i, c);
-    }
-}
-
-void SSD1306_DrawTriangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint8_t color)
-{
-    /* Draw lines */
-    SSD1306_DrawLine(x1, y1, x2, y2, color);
-    SSD1306_DrawLine(x2, y2, x3, y3, color);
-    SSD1306_DrawLine(x3, y3, x1, y1, color);
-}
-
-
-void SSD1306_DrawFilledTriangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint8_t color)
-{
-    int16_t deltax = 0, deltay = 0, x = 0, y = 0, xinc1 = 0, xinc2 = 0, 
-    yinc1 = 0, yinc2 = 0, den = 0, num = 0, numadd = 0, numpixels = 0, 
-    curpixel = 0;
-    
-    deltax = ABS(x2 - x1);
-    deltay = ABS(y2 - y1);
-    x = x1;
-    y = y1;
-
-    if (x2 >= x1)
-    {
-        xinc1 = 1;
-        xinc2 = 1;
-    }
-    else
-    {
-        xinc1 = -1;
-        xinc2 = -1;
-    }
-
-    if (y2 >= y1)
-    {
-        yinc1 = 1;
-        yinc2 = 1;
-    }
-    else
-    {
-        yinc1 = -1;
-        yinc2 = -1;
-    }
-
-    if (deltax >= deltay)
-    {
-        xinc1 = 0;
-        yinc2 = 0;
-        den = deltax;
-        num = deltax / 2;
-        numadd = deltay;
-        numpixels = deltax;
-    }
-    else
-    {
-        xinc2 = 0;
-        yinc1 = 0;
-        den = deltay;
-        num = deltay / 2;
-        numadd = deltax;
-        numpixels = deltay;
-    }
-
-    for (curpixel = 0; curpixel <= numpixels; curpixel++)
-    {
-        SSD1306_DrawLine(x, y, x3, y3, color);
-
-        num += numadd;
-        if (num >= den)
-        {
-            num -= den;
-            x += xinc1;
-            y += yinc1;
-        }
-        x += xinc2;
-        y += yinc2;
-    }
-}
-
 void SSD1306_DrawCircle(int16_t x0, int16_t y0, int16_t r, uint8_t c)
 {
     int16_t f = 1 - r;
@@ -584,40 +436,6 @@ void SSD1306_DrawCircle(int16_t x0, int16_t y0, int16_t r, uint8_t c)
         SSD1306_DrawPixel(x0 - y, y0 + x, c);
         SSD1306_DrawPixel(x0 + y, y0 - x, c);
         SSD1306_DrawPixel(x0 - y, y0 - x, c);
-    }
-}
-
-void SSD1306_DrawFilledCircle(int16_t x0, int16_t y0, int16_t r, uint8_t c)
-{
-    int16_t f = 1 - r;
-    int16_t ddF_x = 1;
-    int16_t ddF_y = -2 * r;
-    int16_t x = 0;
-    int16_t y = r;
-
-    SSD1306_DrawPixel(x0, y0 + r, c);
-    SSD1306_DrawPixel(x0, y0 - r, c);
-    SSD1306_DrawPixel(x0 + r, y0, c);
-    SSD1306_DrawPixel(x0 - r, y0, c);
-    SSD1306_DrawLine(x0 - r, y0, x0 + r, y0, c);
-
-    while (x < y)
-    {
-        if (f >= 0)
-        {
-            y--;
-            ddF_y += 2;
-            f += ddF_y;
-        }
-        x++;
-        ddF_x += 2;
-        f += ddF_x;
-
-        SSD1306_DrawLine(x0 - x, y0 + y, x0 + x, y0 + y, c);
-        SSD1306_DrawLine(x0 + x, y0 - y, x0 - x, y0 - y, c);
-
-        SSD1306_DrawLine(x0 + y, y0 + x, x0 - y, y0 + x, c);
-        SSD1306_DrawLine(x0 + y, y0 - x, x0 - y, y0 - x, c);
     }
 }
 

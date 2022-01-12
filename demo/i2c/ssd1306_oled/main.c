@@ -1,12 +1,20 @@
+// Copyright 2021 IOsetting <iosetting(at)outlook.com>
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 /******************************************************************************
 ** 
- * \file        main.c
- * \author      IOsetting | iosetting@outlook.com
- * \date        
  * \brief       Demo code of SSD1306 OLED
- * \note        
- * \version     v0.2
- * \ingroup     demo
  * \remarks     test-board: HLK-W806-KIT-V1.0
  * 
  *              In ssd1306.h define SSD1306_MODE_I2C: 0 for SPI Mode, 1 for I2C Mode
@@ -40,12 +48,23 @@ void Error_Handler(void);
 
     void I2C_Init(void)
     {
-        hi2c.SCL_Port = GPIOA;
-        hi2c.SCL_Pin = GPIO_PIN_1;
-        hi2c.SDA_Port = GPIOA;
-        hi2c.SDA_Pin = GPIO_PIN_4;
-
+        hi2c.Instance = I2C;
+        hi2c.Frequency = 1000000;
         HAL_I2C_Init(&hi2c);
+    }
+
+    static void GPIO_Init(void)
+    {
+        GPIO_InitTypeDef GPIO_InitStruct = {0};
+        __HAL_RCC_GPIO_CLK_ENABLE();
+        GPIO_InitStruct.Pin = SSD1306_SCL_PIN;
+        GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        HAL_GPIO_Init(SSD1306_SCL_PORT, &GPIO_InitStruct);
+        GPIO_InitStruct.Pin = SSD1306_SDA_PIN;
+        GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        HAL_GPIO_Init(SSD1306_SDA_PORT, &GPIO_InitStruct);
     }
 #else
     SPI_HandleTypeDef hspi;
@@ -87,10 +106,10 @@ int main(void)
     uint8_t d1, d2;
 
     SystemClock_Config(CPU_CLK_160M);
+    GPIO_Init();
 #if SSD1306_MODE_I2C
     I2C_Init();
 #else
-    GPIO_Init();
     SPI_Init();
 #endif
     printf("enter main\r\n");
@@ -188,8 +207,6 @@ int main(void)
     SSD1306_GotoXY(50, 27);
     sprintf(buf, "END");
     SSD1306_Puts(buf, &Font_7x10, 1);
-    SSD1306_GotoXY(10, 52);
-    SSD1306_Puts("Lutsai Alexander", &Font_7x10, 1);
     SSD1306_UpdateScreen();
     SSD1306_Fill(0);
     HAL_Delay(1000);

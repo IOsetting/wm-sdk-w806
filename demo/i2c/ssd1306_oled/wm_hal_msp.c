@@ -6,7 +6,23 @@ void HAL_MspInit(void)
 
 }
 
-#if !SSD1306_MODE_I2C
+#if SSD1306_MODE_I2C
+
+void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
+{
+    __HAL_RCC_I2C_CLK_ENABLE();
+    __HAL_AFIO_REMAP_I2C_SCL(SSD1306_SCL_PORT, SSD1306_SCL_PIN);
+    __HAL_AFIO_REMAP_I2C_SDA(SSD1306_SDA_PORT, SSD1306_SDA_PIN);
+}
+
+void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
+{
+    __HAL_RCC_I2C_CLK_DISABLE();
+    HAL_GPIO_DeInit(SSD1306_SCL_PORT, SSD1306_SCL_PIN);
+    HAL_GPIO_DeInit(SSD1306_SDA_PORT, SSD1306_SDA_PIN);
+}
+
+#else
 void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 {
     __HAL_RCC_SPI_CLK_ENABLE();
