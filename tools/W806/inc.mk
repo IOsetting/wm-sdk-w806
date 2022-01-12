@@ -15,6 +15,7 @@ INCLUDES += -I $(TOP_DIR)/include/bt
 INCLUDES += -I $(TOP_DIR)/platform/component/ascii_fonts
 INCLUDES += -I $(TOP_DIR)/platform/component/FreeRTOS/include
 INCLUDES += -I $(TOP_DIR)/platform/component/FreeRTOS/portable/xt804
+INCLUDES += -I $(TOP_DIR)/platform/component/FatFs
 
 INCLUDES += -I $(TOP_DIR)/src/app/wm_atcmd
 INCLUDES += -I $(TOP_DIR)/src/app/dhcpserver
