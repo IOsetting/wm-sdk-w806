@@ -240,10 +240,8 @@ In some cases the auto-reset may fail, you need to press the Reset key to reset 
 
 # License
 
-WM-SDK-W806 is based on the code released by WinnerMicro without license attached, so the former LICENSE is suspended till I get the formal reply from WinnerMicro. For the time being the license of this project is:
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The code of WM-SDK-W806 is licensed under the Apache-2.0 license.
 
 As WM-SDK-W806 includes code from many upstream projects it includes many copyright owners. WM-SDK-W806 makes NO claim of copyright on any upstream code. Patches to upstream code have the same license as the upstream project, unless specified otherwise. For a complete copyright list please checkout the source code to examine license headers. 
 
-Unless expressly stated otherwise all code submitted to the WM-SDK-W806 project (in any form) will be licensed under the same license. You are absolutely free to retain copyright. To retain copyright simply add a copyright header to each submitted code page. If you submit code that is not your own work it is your responsibility to place a header stating the copyright.
+Unless expressly stated otherwise all code submitted to the WM-SDK-W806 project (in any form) will be licensed under Apache-2.0 license. You are absolutely free to retain copyright. To retain copyright simply add a copyright header to each submitted code page. If you submit code that is not your own work it is your responsibility to resolve the conflicts and place a header stating the copyright.
