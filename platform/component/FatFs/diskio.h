@@ -70,6 +70,15 @@ DRESULT disk_ioctl (BYTE pdrv, BYTE cmd, void* buff);
 #define ATA_GET_MODEL		21	/* Get model name */
 #define ATA_GET_SN			22	/* Get serial number */
 
+
+DSTATUS MMC_disk_status(void);
+DSTATUS MMC_disk_initialize(void);
+DRESULT MMC_disk_read(BYTE *buff, LBA_t sector, UINT count);
+DRESULT MMC_disk_write(const BYTE *buff, LBA_t sector, UINT count);
+DRESULT MMC_disk_ioctl(BYTE cmd, void* buff);
+DWORD MMC_get_fattime();
+
+
 #ifdef __cplusplus
 }
 #endif
