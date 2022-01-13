@@ -16,7 +16,7 @@
 
 static volatile DSTATUS mmc_state = STA_NOINIT;     /* Disk Status */
 static uint8_t CardType;                            /* Type 0:MMC, 1:SDC, 2:Block addressing */
-static uint8_t PowerFlag = 0;				        /* Power flag */
+static uint8_t PowerFlag = 0;                       /* Power flag */
 
 /***************************************
  * SPI functions
@@ -25,22 +25,22 @@ static uint8_t PowerFlag = 0;				        /* Power flag */
 /* SPI transmit a byte */
 static void MMC_SPI_TxByte(uint8_t data)
 {
-	HAL_SPI_Transmit(&hspi, &data, 1, SPI_TIMEOUT);
+    HAL_SPI_Transmit(&hspi, &data, 1, SPI_TIMEOUT);
 }
 
 /* SPI transmit buffer */
 static void MMC_SPI_TxBuffer(uint8_t *buffer, uint16_t len)
 {
-	HAL_SPI_Transmit(&hspi, buffer, len, SPI_TIMEOUT);
+    HAL_SPI_Transmit(&hspi, buffer, len, SPI_TIMEOUT);
 }
 
 /* SPI receive a byte */
 static uint8_t MMC_SPI_RxByte(void)
 {
-	uint8_t dummy, data;
-	dummy = 0xFF;
-	HAL_SPI_TransmitReceive(&hspi, &dummy, &data, 1, SPI_TIMEOUT);
-	return data;
+    uint8_t dummy, data;
+    dummy = 0xFF;
+    HAL_SPI_TransmitReceive(&hspi, &dummy, &data, 1, SPI_TIMEOUT);
+    return data;
 }
 
 /***************************************
@@ -612,7 +612,5 @@ DWORD MMC_get_fattime(void)
     val += rtc_time.Hours << 11;
     val += rtc_time.Minutes << 5;
     val += rtc_time.Seconds;
-    printf("MMC_get_fattime: %d-%d-%d %d:%d:%d\r\n", 
-            (rtc_time.Year + 1900), rtc_time.Month, rtc_time.Date, rtc_time.Hours, rtc_time.Minutes, rtc_time.Seconds);
     return val;
 }
