@@ -61,10 +61,11 @@ static void RTC_Init(void);
 static void SPI_Init(void);
 
 static void FatFs_Init(void);
-static FRESULT MMC_ScanFiles(char* path);
+static FRESULT FatFs_ScanFiles(char* path);
 static FRESULT FatFs_CheckFileStates(void);
 static FRESULT FatFs_DeleteFile(void);
 static void FatFs_WriteFile(void);
+static void FatFs_Unmount(void);
 
 int main(void)
 {
@@ -81,7 +82,7 @@ int main(void)
     HAL_Delay(500);
     FatFs_Init();
     strcpy(buff, "");
-    MMC_ScanFiles(buff);
+    FatFs_ScanFiles(buff);
     fres = FatFs_CheckFileStates();
     if (fres == FR_OK)
     {
@@ -93,6 +94,7 @@ int main(void)
         printf("file deleted\r\n");
     }
     FatFs_WriteFile();
+    FatFs_Unmount();
 
     while (1)
     {
@@ -110,7 +112,7 @@ static void FatFs_Init(void)
     fres = f_mount(&fs, "", 0x01);
     if (fres != FR_OK)
     {
-        printf("f_mount failed\r\n");
+        printf("f_mount failed: %02X\r\n", fres);
         Error_Handler();
     }
     else
@@ -119,15 +121,16 @@ static void FatFs_Init(void)
     }
 
     /* Check freeSpace space */
-    if (f_getfree("", &fre_clust, &pfs) != FR_OK)
+    fres = f_getfree("", &fre_clust, &pfs);
+    if (fres != FR_OK)
     {
-        printf("f_getfree failed\r\n");
+        printf("f_getfree failed: %02X\r\n", fres);
         Error_Handler();
     }
 
     totalSpace = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
     freeSpace = (uint32_t)(fre_clust * pfs->csize * 0.5);
-    printf("total:%dKB, free:%dKB\r\n", totalSpace, freeSpace);
+    printf("Total:%dKB, Free:%dKB\r\n", totalSpace, freeSpace);
 
     /* free space is less than 1kb */
     if (freeSpace < 1)
@@ -137,7 +140,7 @@ static void FatFs_Init(void)
     }
 }
 
-static FRESULT MMC_ScanFiles(char* path)
+static FRESULT FatFs_ScanFiles(char* path)
 {
     FRESULT res;
     DIR dir;
@@ -152,11 +155,11 @@ static FRESULT MMC_ScanFiles(char* path)
             if (fno.fattrib & AM_DIR) {                    /* It is a directory */
                 i = strlen(path);
                 sprintf(&path[i], "/%s", fno.fname);
-                res = MMC_ScanFiles(path);                    /* Enter the directory */
+                res = FatFs_ScanFiles(path);                    /* Enter the directory */
                 if (res != FR_OK) break;
                 path[i] = 0;
             } else {                                       /* It is a file. */
-                printf("%s/%s %u\r\n", path, fno.fname, fno.fsize);
+                printf("%s/%s %llu\r\n", path, fno.fname, fno.fsize);
             }
         }
         f_closedir(&dir);
@@ -174,7 +177,7 @@ static FRESULT FatFs_CheckFileStates(void)
     switch (fres) {
 
     case FR_OK:
-        printf("Size: %u\n", fno.fsize);
+        printf("Size: %llu\n", fno.fsize);
         printf("Timestamp: %u/%02u/%02u, %02u:%02u\n",
                (fno.fdate >> 9) + 1980, fno.fdate >> 5 & 15, fno.fdate & 31,
                fno.ftime >> 11, fno.ftime >> 5 & 63);
@@ -187,7 +190,7 @@ static FRESULT FatFs_CheckFileStates(void)
         break;
 
     case FR_NO_FILE:
-        printf("It is not exist.\n");
+        printf("File does not exist.\n");
         break;
 
     default:
@@ -245,6 +248,22 @@ static void FatFs_WriteFile(void)
     {
         printf("f_close failed\r\n");
         Error_Handler();
+    }
+}
+
+static void FatFs_Unmount(void)
+{
+    /* Unmount */
+    printf("Unmount sd card\r\n");
+    fres = f_unmount("");
+    if (fres!= FR_OK)
+    {
+        printf("f_unmount failed: %02X\r\n", fres);
+        Error_Handler();
+    }
+    else
+    {
+        printf("f_unmount succeeded\r\n");
     }
 }
 

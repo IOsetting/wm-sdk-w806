@@ -391,7 +391,7 @@ DSTATUS MMC_disk_initialize(void)
         /* Initialization failed */
         MMC_PowerOff();
     }
-    //printf("Stat:%02X\r\n", Stat);
+    //printf("Stat:%02X\r\n", mmc_state);
     return mmc_state;
 }
 
