@@ -115,7 +115,6 @@ CCFLAGS := -Wall \
     -std=gnu99 \
     -c  \
     -mhard-float  \
-    -Wall  \
     $(extra_flag)  \
     -fdata-sections  \
     -ffunction-sections
@@ -128,7 +127,6 @@ CCXXFLAGS := -Wall \
     -std=gnu++11 \
     -c  \
     -mhard-float  \
-    -Wall  \
     $(extra_flag)  \
     -fdata-sections  \
     -ffunction-sections
