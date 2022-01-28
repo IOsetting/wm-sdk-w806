@@ -1,14 +1,19 @@
 MENUBUILD   := ../../../bin/build/config
 
 MENUCFLAGS  := -I/usr/include/ncurses -DCURSES_LOC="<ncurses.h>" -DLOCALE -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer
-
-ifeq ($(shell uname -s),Linux)
 MENULDFLAGS := -lncurses
+
+UNAME:=$(shell uname)
+ifeq ($(UNAME),Linux)
+  # do nothing
+else ifeq ($(UNAME),OpenBSD)
+  MENUCFLAGS += -I/usr/local/include
+  MENULDFLAGS += -L/usr/local/lib -lintl
 else
-MENULDFLAGS := -lncurses -lintl
+  MENULDFLAGS += -lintl
 endif
 
-HOSTCC      := gcc
+HOSTCC      := cc
 
 CONFBASE    := $(MENUBUILD)/lxdialog/menubox.o   \
                $(MENUBUILD)/lxdialog/yesno.o     \

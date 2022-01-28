@@ -2957,6 +2957,8 @@ static void wm_tool_print_usage(const char *name)
                    "                          e.g: tty.usbserial0 tty.usbserial3 tty.usbserial7\r\n"
 #elif defined(__MINGW32__) || defined(__CYGWIN__)
                    "                          e.g: COM0 COM3 COM7\r\n"
+#elif defined(__OpenBSD__)
+                   "                          e.g: ttyU0 ttyU1 ttyU3\r\n"
 #elif defined(__linux__)
                    "                          e.g: ttyUSB0 ttyUSB3 ttyUSB7\r\n"
 #endif
@@ -4832,11 +4834,13 @@ static void wm_tool_show_local_com(void)
 #elif defined(__CYGWIN__)
     int num;
     char *comstr = "ttyS";
+#elif defined(__OpenBSD__)
+    char *comstr = "ttyU";
 #elif defined(__linux__)
     char *comstr = "ttyUSB";
 #endif
 
-#if defined(__APPLE__) || defined(__MACH__) || defined(__CYGWIN__) || defined(__linux__)
+#if defined(__APPLE__) || defined(__MACH__) || defined(__CYGWIN__) || defined(__linux__) || defined(__OpenBSD__)
 
     DIR *dir;
     struct dirent *file;
