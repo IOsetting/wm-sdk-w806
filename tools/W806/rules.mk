@@ -128,13 +128,10 @@ help:
 	@echo  '               and capture the log output by the device'
 
 lib: .subdirs $(OBJS) $(OLIBS)
-	@cp $(LIBODIR)/libapp$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
+	@cp $(LIBODIR)/libappuser$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
 	@cp $(LIBODIR)/libwmarch$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
-	@cp $(LIBODIR)/libwmcommon$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
+	@cp $(LIBODIR)/libwmcomponent$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
 	@cp $(LIBODIR)/libdrivers$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
-	@cp $(LIBODIR)/libnetwork$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
-	@cp $(LIBODIR)/libos$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
-	@cp $(LIBODIR)/libwmsys$(LIB_EXT) $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)
 	@echo "libs has been updated."
 
 menuconfig:

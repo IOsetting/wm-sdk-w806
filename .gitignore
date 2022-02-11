@@ -51,3 +51,7 @@ tools/W806/wm_getver.exe
 tools/W806/.config
 tools/W806/.config.old
 bin/*
+lib/W806/libappuser.a
+lib/W806/libdrivers.a
+lib/W806/libwmarch.a
+lib/W806/libwmcomponent.a
