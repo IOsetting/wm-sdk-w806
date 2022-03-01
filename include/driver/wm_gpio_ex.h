@@ -342,7 +342,7 @@
 												{													\
 													__AFIO_REMAP_SET_OPT2(__HANDLE__, __IOPOSITION__);	\
 												}													\
-												else if ((__HANDLE__ == GPIOA) && (__IOPOSITION__ == GPIO_PIN_08))	\
+												else if ((__HANDLE__ == GPIOA) && (__IOPOSITION__ == GPIO_PIN_8))	\
 												{													\
 													__AFIO_REMAP_SET_OPT3(__HANDLE__, __IOPOSITION__);	\
 												}													\
