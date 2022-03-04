@@ -26,7 +26,10 @@ wm-sdk-w806
 * https://occ.t-head.cn/community/download 下载编译工具
 * 导航->工具->工具链-800系列->(当前是V3.10.29)
 * 根据自己的操作系统, 下载对应版本, 对于Ubuntu20.04, 下载 csky-elfabiv2-tools-x86_64-minilibc-yyyymmdd.tar
-* 如果上面的链接有问题或者无法注册, 可以通过百度盘下载 https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+* 其它下载方式
+   * 百度盘下载 https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+   * http://82.157.145.101/download/toolkits/winnermicro/w806/
+   * AUR https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=csky-toolchain-bin (在source中找到下载地址)
 
 ## 安装
 
@@ -131,9 +134,11 @@ make monitor
 * 下载工具链 [https://occ.t-head.cn/community/download](https://occ.t-head.cn/community/download)
    * 导航 -> 工具 -> 工具链-800系列 -> (当前是V3.10.29)
    * 下载对应版本, 对于Win10, 下载 csky-elfabiv2-tools-mingw-minilibc-20210423.tar.gz
-   * 如果无法下载或无法注册, 请通过百度盘下载 https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
 * 下载烧录工具 [https://h.hlktech.com/Mobile/download/fdetail/143.html](https://h.hlktech.com/Mobile/download/fdetail/143.html)
    * 点击 'W800串口烧录工具_V1.4.8(.rar)' 右侧的下载链接下载
+* 其它下载方式
+   * 百度盘下载 https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+   * http://82.157.145.101/download/toolkits/winnermicro/w806/
 
 ## 安装和配置
 

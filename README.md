@@ -27,10 +27,10 @@ wm-sdk-w806
 * You need to register an account for download
 * 导航->工具->工具链-800系列->(For now, it is V3.10.29)
 * Download according to your OS version, e.g. for Ubuntu20.04, download csky-elfabiv2-tools-x86_64-minilibc-yyyymmdd.tar.gz
-* If you can not download from above link, try
+* Alternative download links
    * https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
-   * https://ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
-   * https://gateway.ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
+   * http://82.157.145.101/download/toolkits/winnermicro/w806/
+   * https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=csky-toolchain-bin (links in `source`)
 
 ## Installation
 
@@ -140,10 +140,11 @@ make monitor
    * Download csky-elfabiv2-tools-mingw-minilibc-yyyymmdd.tar.gz for Windows
 * If you can not download from above link, try
    * https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
-   * https://ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
-   * https://gateway.ipfs.io/ipfs/QmNmtn1gsqWq2641vJJrLbBfENCKHT4xpiH5cdaPnkxzqd
 * Download Flash Tool: [https://h.hlktech.com/Mobile/download/fdetail/143.html](https://h.hlktech.com/Mobile/download/fdetail/143.html)
    * Click the download link right to 'W800串口烧录工具_V1.4.8(.rar)'
+* Alternative download links
+   * https://pan.baidu.com/s/1Mp-oHNM3k4Hb8vEybv8pZg code:vw42
+   * http://82.157.145.101/download/toolkits/winnermicro/w806/
 
 ## Installation
 
