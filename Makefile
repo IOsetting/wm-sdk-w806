@@ -29,10 +29,14 @@ COMPONENTS_$(TARGET) += \
     $(TOP_DIR)/platform/drivers/libdrivers$(LIB_EXT)  
 endif
 
-
 LINKLIB =     \
-    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libdsp$(LIB_EXT)    
-
+    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libdsp$(LIB_EXT)
+ifeq ($(USE_LIB), 1)
+LINKLIB +=    \
+    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libwmarch$(LIB_EXT)    \
+    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libwmcomponent$(LIB_EXT)    \
+    $(TOP_DIR)/lib/$(CONFIG_ARCH_TYPE)/libdrivers$(LIB_EXT)
+endif
 
 LINKFLAGS_$(TARGET) =  \
     $(LINKLIB)
