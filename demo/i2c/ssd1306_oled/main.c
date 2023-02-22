@@ -49,7 +49,8 @@ void Error_Handler(void);
     void I2C_Init(void)
     {
         hi2c.Instance = I2C;
-        hi2c.Frequency = 1000000;
+        // frequency range [100KHz, 1MHz]
+        hi2c.Frequency = 400000;
         HAL_I2C_Init(&hi2c);
     }
 

@@ -474,6 +474,8 @@ void SSD1306_WriteCommand(uint8_t command)
 {
 #if SSD1306_MODE_I2C
     HAL_I2C_Write(&hi2c, SSD1306_I2C_ADDR, 0x00, &command, 1);
+    // Fix: add 1ms delay to make it work under low i2c clock
+    HAL_Delay(1);
 #else
     SSD1306_DC_LOW;
     SSD1306_CS_LOW;
