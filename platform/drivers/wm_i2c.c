@@ -39,7 +39,11 @@ HAL_StatusTypeDef HAL_I2C_Init(I2C_HandleTypeDef *hi2c)
         hi2c->Frequency = I2C_FREQ_MAX;
     }
     SystemClock_Get(&sysclk);
-    div = (sysclk.apbclk * 1000000) / (5 * hi2c->Frequency) - 1;
+    /*
+     * Original calculation leads to a lower clock (about 10% less)
+     *   div = (sysclk.apbclk * 1000000) / (5 * hi2c->Frequency) - 1; 
+    */
+    div = (sysclk.apbclk * 1000000 * 3) / (16 * hi2c->Frequency) - 3;
     WRITE_REG(hi2c->Instance->PRESCALE_L, div & 0xff);
     WRITE_REG(hi2c->Instance->PRESCALE_H, (div >> 8) & 0xff);
     WRITE_REG(hi2c->Instance->EN, I2C_EN_ENABLE | I2C_EN_IEMASK);
@@ -101,7 +105,6 @@ int HAL_I2C_Wait_Ack(I2C_HandleTypeDef *hi2c)
 {
     uint16_t errtime=0;
 
-    while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_TIP));
     while(READ_BIT(hi2c->Instance->CR_SR, I2C_SR_RXACK))
     {
         errtime ++;
