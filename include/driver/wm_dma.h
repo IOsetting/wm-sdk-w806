@@ -229,7 +229,7 @@ typedef struct __DMA_HandleTypeDef
                                          (((DATAALIGN) == DMA_DATAALIGN_HALFWORD) && (((LEN) % 2) == 0)) || \
                                          (((DATAALIGN) == DMA_DATAALIGN_WORD) && (((LEN) % 4) == 0)))
 
-#define IS_DMA_LINK_LENGTH(LEN)            (((LINK) % 8) == 0)
+#define IS_DMA_LINK_LENGTH(LEN)            (((LEN) % 8) == 0)
 
 #define IS_DMA_COMPLETELEVEL(LEVEL)      (((LEVEL) == HAL_DMA_HALF_TRANSFER) || ((LEVEL) = HAL_DMA_FULL_TRANSFER))
 

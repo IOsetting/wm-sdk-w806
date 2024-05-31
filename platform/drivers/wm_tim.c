@@ -11,7 +11,7 @@ HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
     }
 
     assert_param(IS_TIM_INSTANCE(htim->Instance));
-    assert_param(IS_TIM_UNIT(htim->Init.unit));
+    assert_param(IS_TIM_UNIT(htim->Init.Unit));
     assert_param(IS_TIM_AUTORELOAD(htim->Init.AutoReload));
 
     if (htim->State == HAL_TIM_STATE_RESET)

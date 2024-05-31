@@ -7,7 +7,7 @@ HAL_StatusTypeDef HAL_PMU_Init(PMU_HandleTypeDef *hpmu)
         return HAL_ERROR;
     }
     assert_param(IS_PMU_ALL_INSTANCE(hpmu->Instance));
-    assert_param(IS_PMU_CLKSOURCE(SOURCE));
+    assert_param(IS_PMU_CLKSOURCE(hpmu->ClkSource));
     
     HAL_PMU_MspInit(hpmu);
     

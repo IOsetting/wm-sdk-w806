@@ -81,7 +81,7 @@ typedef enum
                             ((MODE) == GPIO_MODE_OUTPUT)             ||\
                             ((MODE) == GPIO_MODE_IT_RISING)          ||\
                             ((MODE) == GPIO_MODE_IT_FALLING)         ||\
-                            ((MODE) == GPIO_MODE_IT_RISING_FALLING)  ||\
+                            ((MODE) == GPIO_MODE_IT_RISING_FALLING))
 
 #define IS_GPIO_PULL(PULL) (((PULL) == GPIO_NOPULL) || ((PULL) == GPIO_PULLUP) || \
                             ((PULL) == GPIO_PULLDOWN))

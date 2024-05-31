@@ -28,12 +28,9 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
 
     assert_param(IS_SPI_ALL_INSTANCE(hspi->Instance));
     assert_param(IS_SPI_MODE(hspi->Init.Mode));
-    assert_param(IS_SPI_DIRECTION(hspi->Init.Direction));
-    assert_param(IS_SPI_DATASIZE(hspi->Init.DataSize));
     assert_param(IS_SPI_NSS(hspi->Init.NSS));
-    assert_param(IS_SPI_BAUDRATE_PRESCALER(hspi->Init.BaudRatePrescaler));
-    assert_param(IS_SPI_CPOL(hspi->Init.CLKPolarity));
-    assert_param(IS_SPI_CPHA(hspi->Init.CLKPhase));
+    assert_param(IS_SPI_CLKPolarity(hspi->Init.CLKPolarity));
+    assert_param(IS_SPI_CLKPhase(hspi->Init.CLKPhase));
     assert_param(IS_SPI_BIG_OR_LITTLE(hspi->Init.FirstByte));
 
     if (hspi->State == HAL_SPI_STATE_RESET)
@@ -1036,7 +1033,7 @@ __attribute__((weak)) void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi)
   *               the configuration information for SPI module.
   * @retval None
   */
-void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+__attribute__((weak)) void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
 {
     UNUSED(hspi);
 }

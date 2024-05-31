@@ -113,13 +113,17 @@ typedef struct __SPI_HandleTypeDef
 
 #define BLOCK_SIZE (8 * 1024 - 8)
 
-#define IS_SPI_ALL_INSTANCE(INSTANCE) ((INSTANCE) == SPI1)
+#define IS_SPI_ALL_INSTANCE(INSTANCE) ((INSTANCE) == SPI)
 
 #define IS_SPI_MODE(__MODE__)      ((__MODE__) == SPI_MODE_MASTER)
 
 #define IS_SPI_NSS(__NSS__)        (((__NSS__) == SPI_NSS_SOFT)       || \
-                                    ((__NSS__) == SPI_NSS_HARD_INPUT) || \
-                                    ((__NSS__) == SPI_NSS_HARD_OUTPUT))
+                                    ((__NSS__) == SPI_NSS_HARD))
+
+#define IS_SPI_CLKPolarity(__NSS__)        (((__NSS__) == SPI_POLARITY_LOW)       || \
+                                            ((__NSS__) == SPI_POLARITY_HIGH))
+#define IS_SPI_CLKPhase(__NSS__)           (((__NSS__) == SPI_PHASE_1EDGE)       || \
+                                            ((__NSS__) == SPI_PHASE_2EDGE))
                                     
 #define IS_SPI_BIG_OR_LITTLE(__ENDIAN__)       (((__ENDIAN__) == SPI_LITTLEENDIAN) || \
                                                 ((__ENDIAN__) == SPI_BIGENDIAN))
