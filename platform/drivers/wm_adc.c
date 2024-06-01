@@ -108,7 +108,7 @@ HAL_StatusTypeDef HAL_ADC_Stop(ADC_HandleTypeDef* hadc)
 HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc)
 {
     uint32_t count = 0;
-    assert_param(IS_ADC_ALL_INSTANCE(hadc->Instansce));
+    assert_param(IS_ADC_ALL_INSTANCE(hadc->Instance));
     
     while (1)
     {

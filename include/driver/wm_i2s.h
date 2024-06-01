@@ -144,12 +144,8 @@ typedef struct
 
 #define IS_I2S_ALL_INSTANCE(INSTANCE)    ((INSTANCE) == I2S)
 
-#define IS_I2S_MODE(__MODE__)    (((__MODE__) == I2S_MODE_MASTER_TX)   || \
-                                 ((__MODE__) == I2S_MODE_MASTER_RX)    || \
-                                 ((__MODE__) == I2S_MODE_MASTER_TX_RX) || \
-                                 ((__MODE__) == I2S_MODE_SLAVE_TX)     || \
-                                 ((__MODE__) == I2S_MODE_SLAVE_RX)     || \
-                                 ((__MODE__) == I2S_MODE_SLAVE_TX_RX))
+#define IS_I2S_MODE(__MODE__)    (((__MODE__) == I2S_MODE_MASTER)   || \
+                                 ((__MODE__) == I2S_MODE_SLAVE))
                                  
 #define IS_I2S_STANDARD(__STANDARD__)    (((__STANDARD__) == I2S_STANDARD_PHILIPS) || \
                                          ((__STANDARD__) == I2S_STANDARD_MSB)      || \
@@ -177,8 +173,8 @@ typedef struct
                                          ((__FREQ__) == I2S_AUDIOFREQ_8K) || \
                                          ((__FREQ__) == I2S_AUDIOFREQ_DEFAULT))
                                          
-#define IS_I2S_CHANNEL(__CHANNEL__)     (((__CHANNEL__) == I2S_AUDIO_MONO) || \
-                                        ((__CHANNEL__) == I2S_AUIDO_STEREO))
+#define IS_I2S_CHANNEL(__CHANNEL__)     (((__CHANNEL__) == I2S_CHANNEL_MONO) || \
+                                        ((__CHANNEL__) == I2S_CHANNEL_STEREO))
                                             
 #define IS_I2S_CHANNELSEL(__SEL__)      (((__SEL__) == I2S_CHANNELSEL_LEFT) || \
                                         ((__SEL__) == I2S_CHANNELSEL_RIGHT))
