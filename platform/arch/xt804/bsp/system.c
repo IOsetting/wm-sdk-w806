@@ -30,6 +30,25 @@
   * @param  None
   * @return None
   */
+extern int __dtor_end__;
+extern int __ctor_end__;
+extern int __ctor_start__;
+typedef void (*func_ptr)(void);
+__attribute__((weak)) void cxx_system_init(void)
+{
+    func_ptr *p;
+    for (p = (func_ptr *)&__ctor_end__ -1; p >= (func_ptr *)&__ctor_start__; p--)
+    {
+        (*p)();
+    }
+}
+
+/**
+  * @brief  initialize the system
+  *         Initialize the psr and vbr.
+  * @param  None
+  * @return None
+  */
 void SystemInit(void)
 {
     __set_VBR((uint32_t) & (irq_vectors));
@@ -51,4 +70,6 @@ void SystemInit(void)
 #ifdef CONFIG_KERNEL_NONE
     __enable_excp_irq();
 #endif
+
+    cxx_system_init();
 }
